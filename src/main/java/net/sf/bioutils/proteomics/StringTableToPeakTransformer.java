@@ -5,6 +5,6 @@ import net.sf.jtables.table.impl.StringTable;
 import net.sf.kerner.utils.transformer.Transformer;
 
 
-public interface ToPeakTransformer extends Transformer<StringTable, List<? extends Peak>> {
+public interface StringTableToPeakTransformer extends Transformer<StringTable, List<? extends Peak>> {
 
 }

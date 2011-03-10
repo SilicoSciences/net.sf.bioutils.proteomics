@@ -7,41 +7,41 @@ public class PeakImpl implements Peak {
 	
 	private static final long serialVersionUID = 4114258693936960376L;
 
-	private final Object id;
+	private final String id;
 	
-	private final double mass;
+	private final double mz;
 	
 	private final int intensity;
 	
 	private final int intensityToNoise;
 	
-	public PeakImpl(Object id, double mass, int intensity, int intensityToNoise){
+	public PeakImpl(String id, double mz, int intensity, int intensityToNoise){
 		if(id == null)
 			id = "null";
 		this.id = id;
-		this.mass = mass;
+		this.mz = mz;
 		this.intensity = intensity;
 		this.intensityToNoise = intensityToNoise;
 	}
 	
-	public PeakImpl(Object id, double mass, int intensity){
-		this(id, mass, intensity, intensity);
+	public PeakImpl(String id, double mz, int intensity){
+		this(id, mz, intensity, intensity);
 	}
 	
-	public PeakImpl(double mass, int intensity){
-		this(null, mass, intensity, intensity);
+	public PeakImpl(double mz, int intensity){
+		this(null, mz, intensity, intensity);
 	}
 	
 	public PeakImpl(PeakImpl template){
-		this(template.getId(), template.getMass(), template.getIntensity(), template.getIntensityToNoise());
+		this(template.getName(), template.getMassOverCharge(), template.getIntensity(), template.getIntensityToNoise());
 	}
 	
-	public PeakImpl(Object id, PeakImpl template){
-		this(id, template.getMass(), template.getIntensity(), template.getIntensityToNoise());
+	public PeakImpl(String id, PeakImpl template){
+		this(id, template.getMassOverCharge(), template.getIntensity(), template.getIntensityToNoise());
 	}
 	
-	public static String massToString(double mass) {
-		return String.format("%12.6f", mass);
+	public static String mzToString(double mz) {
+		return String.format("%12.6f", mz);
 	}
 
 	public static String intensityToString(int intensity) {
@@ -55,17 +55,17 @@ public class PeakImpl implements Peak {
 	public List<String> toStringList(){
 		final List<String> result = new ArrayList<String>();
 		
-		result.add(massToString(getMass()));
+		result.add(mzToString(getMassOverCharge()));
 		result.add(intensityToString(getIntensity()));
 		result.add(intensityToNoise(getIntensityToNoise()));
-		result.add(getId().toString());
+		result.add(getName().toString());
 		
 		return result;
 	}
 	
 	@Override
 	public String toString() {
-		return "id:"+id + ",mass:"+mass + ",intensity:"+intensity;
+		return "id:"+id + ",mz:"+mz + ",intensity:"+intensity;
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class PeakImpl implements Peak {
 		result = prime * result + intensity;
 		result = prime * result + intensityToNoise;
 		long temp;
-		temp = Double.doubleToLongBits(mass);
+		temp = Double.doubleToLongBits(mz);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
@@ -99,21 +99,21 @@ public class PeakImpl implements Peak {
 			return false;
 		if (intensityToNoise != other.intensityToNoise)
 			return false;
-		if (Double.doubleToLongBits(mass) != Double
-				.doubleToLongBits(other.mass))
+		if (Double.doubleToLongBits(mz) != Double
+				.doubleToLongBits(other.mz))
 			return false;
 		return true;
 	}
 
-	public double getMass() {
-		return mass;
+	public double getMassOverCharge() {
+		return mz;
 	}
 
 	public int getIntensity() {
 		return intensity;
 	}
 	
-	public Object getId() {
+	public String getName() {
 		return id;
 	}
 

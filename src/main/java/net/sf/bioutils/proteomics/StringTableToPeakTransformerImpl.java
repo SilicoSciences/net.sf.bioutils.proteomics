@@ -5,13 +5,13 @@ import java.util.List;
 
 import net.sf.jtables.table.impl.StringTable;
 
-public class ToPeakTransformerImpl implements ToPeakTransformer {
+public class StringTableToPeakTransformerImpl implements StringTableToPeakTransformer {
 	
 	private final String massRowIdent;
 	
 	private final String intensityRowIdent;
 	
-	public ToPeakTransformerImpl(String massRowIdent, String intensityRowIdent){
+	public StringTableToPeakTransformerImpl(String massRowIdent, String intensityRowIdent){
 		this.massRowIdent = massRowIdent;
 		this.intensityRowIdent = intensityRowIdent;
 	}

@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public interface Peak extends Serializable {
 
-	double getMass();
+	double getMassOverCharge();
 
 	int getIntensity();
 
-	Object getId();
+	String getName();
 
 	int getIntensityToNoise();
 

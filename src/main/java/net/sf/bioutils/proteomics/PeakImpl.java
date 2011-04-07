@@ -32,11 +32,11 @@ public class PeakImpl implements Peak {
 		this(null, mz, intensity, intensity);
 	}
 	
-	public PeakImpl(PeakImpl template){
+	public PeakImpl(Peak template){
 		this(template.getName(), template.getMassOverCharge(), template.getIntensity(), template.getIntensityToNoise());
 	}
 	
-	public PeakImpl(String id, PeakImpl template){
+	public PeakImpl(String id, Peak template){
 		this(id, template.getMassOverCharge(), template.getIntensity(), template.getIntensityToNoise());
 	}
 	
@@ -65,7 +65,7 @@ public class PeakImpl implements Peak {
 	
 	@Override
 	public String toString() {
-		return "id:"+id + ",mz:"+mz + ",intensity:"+intensity;
+		return (!id.equals("null") ? id + ":" : "") + "("+ mz + "|"+intensity + ")";
 	}
 
 	@Override
@@ -83,25 +83,32 @@ public class PeakImpl implements Peak {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (!(obj instanceof PeakImpl)) {
 			return false;
+		}
 		PeakImpl other = (PeakImpl) obj;
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
-		if (intensity != other.intensity)
+		}
+		if (intensity != other.intensity) {
 			return false;
-		if (intensityToNoise != other.intensityToNoise)
+		}
+		if (intensityToNoise != other.intensityToNoise) {
 			return false;
-		if (Double.doubleToLongBits(mz) != Double
-				.doubleToLongBits(other.mz))
+		}
+		if (Double.doubleToLongBits(mz) != Double.doubleToLongBits(other.mz)) {
 			return false;
+		}
 		return true;
 	}
 

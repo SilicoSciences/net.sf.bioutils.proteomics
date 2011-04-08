@@ -9,9 +9,9 @@ public class PeakUtils {
 	private PeakUtils() {
 	}
 
-	public static Peak findClosestToMZ(Iterable<? extends Peak> peaks, double mass) {
-		Peak result = null;
-		for (Peak p : peaks) {
+	public static <T extends Peak> T findClosestToMZ(Iterable<T> peaks, double mass) {
+		T result = null;
+		for (T p : peaks) {
 			if (result == null)
 				result = p;
 			else {
@@ -30,9 +30,9 @@ public class PeakUtils {
 		return result;
 	}
 
-	public static Peak findClosestToIntensity(Iterable<? extends Peak> peaks, int intensity) {
-		Peak result = null;
-		for (Peak p : peaks) {
+	public static <T extends Peak> T findClosestToIntensity(Iterable<T> peaks, int intensity) {
+		T result = null;
+		for (T p : peaks) {
 			if (result == null)
 				result = p;
 			else {
@@ -51,20 +51,24 @@ public class PeakUtils {
 		return result;
 	}
 	
-	public static Peak findHighestMZ(Iterable<? extends Peak> peaks) {
-		final List<Peak> copy = new ArrayList<Peak>();
-		for(Peak p : peaks){
+	public static <T extends Peak> T findHighestMZ(Iterable<T> peaks) {
+		final List<T> copy = new ArrayList<T>();
+		for(T p : peaks){
 			copy.add(p);
 		}
+		if(copy.isEmpty())
+			return null;
 		Collections.sort(copy, new PeakComparatorByMZ(false));
 		return copy.get(0);
 	}
 	
-	public static Peak findHighestIntensity(Iterable<? extends Peak> peaks) {
-		final List<Peak> copy = new ArrayList<Peak>();
-		for(Peak p : peaks){
+	public static <T extends Peak> T findHighestIntensity(Iterable<T> peaks) {
+		final List<T> copy = new ArrayList<T>();
+		for(T p : peaks){
 			copy.add(p);
 		}
+		if(copy.isEmpty())
+			return null;
 		Collections.sort(copy, new PeakComparatorByIntensity(false));
 		return copy.get(0);
 	}

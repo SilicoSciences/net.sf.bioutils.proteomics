@@ -7,13 +7,13 @@ public class PeakImpl implements Peak {
 	
 	private static final long serialVersionUID = 4114258693936960376L;
 
-	private final String id;
+	protected final String id;
 	
-	private final double mz;
+	protected final double mz;
 	
-	private final int intensity;
+	protected final int intensity;
 	
-	private final int intensityToNoise;
+	protected final int intensityToNoise;
 	
 	public PeakImpl(String id, double mz, int intensity, int intensityToNoise){
 		if(id == null)

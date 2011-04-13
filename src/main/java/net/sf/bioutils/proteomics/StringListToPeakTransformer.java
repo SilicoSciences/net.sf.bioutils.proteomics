@@ -4,8 +4,8 @@ import java.util.List;
 
 import net.sf.kerner.utils.transformer.Transformer;
 
-public class DoubleListToPeakTransformer implements
-		Transformer<List<? extends Double>, Peak> {
+public class StringListToPeakTransformer implements
+		Transformer<List<? extends String>, Peak> {
 
 	private final int massIndex;
 
@@ -13,7 +13,7 @@ public class DoubleListToPeakTransformer implements
 
 	private final PeakFactory peakFactory;
 
-	public DoubleListToPeakTransformer(int massIndex, int intensityIndex,
+	public StringListToPeakTransformer(int massIndex, int intensityIndex,
 			PeakFactory peakFactory) {
 		this.massIndex = massIndex;
 		this.intensityIndex = intensityIndex;
@@ -23,9 +23,9 @@ public class DoubleListToPeakTransformer implements
 			this.peakFactory = peakFactory;
 	}
 
-	public Peak transform(List<? extends Double> element) {
-		return peakFactory.create(element.get(massIndex),
-				(int) element.get(intensityIndex).doubleValue());
+	public Peak transform(List<? extends String> element) throws NumberFormatException {
+		return peakFactory.create(Double.parseDouble(element.get(massIndex)),
+				Integer.parseInt(element.get(intensityIndex)));
 	}
 
 }

@@ -89,24 +89,24 @@ public class PeakImpl implements Peak {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof PeakImpl)) {
+		if (!(obj instanceof Peak)) {
 			return false;
 		}
-		PeakImpl other = (PeakImpl) obj;
+		Peak other = (Peak) obj;
 		if (id == null) {
-			if (other.id != null) {
+			if (other.getName() != null) {
 				return false;
 			}
-		} else if (!id.equals(other.id)) {
+		} else if (!id.equals(other.getName())) {
 			return false;
 		}
-		if (intensity != other.intensity) {
+		if (intensity != other.getIntensity()) {
 			return false;
 		}
-		if (intensityToNoise != other.intensityToNoise) {
+		if (intensityToNoise != other.getIntensityToNoise()) {
 			return false;
 		}
-		if (Double.doubleToLongBits(mz) != Double.doubleToLongBits(other.mz)) {
+		if (Double.doubleToLongBits(mz) != Double.doubleToLongBits(other.getMassOverCharge())) {
 			return false;
 		}
 		return true;

@@ -16,9 +16,9 @@ public class PeakComparatorByMZ implements Comparator<Peak> {
 
 	public int compare(Peak o1, Peak o2) {
 		if (smallestFirst)
-			return Double.compare(o1.getMassOverCharge(), o2.getMassOverCharge());
+			return Double.compare(o1.getMZ(), o2.getMZ());
 		else
-			return Double.compare(o2.getMassOverCharge(), o1.getMassOverCharge());
+			return Double.compare(o2.getMZ(), o1.getMZ());
 	}
 
 }

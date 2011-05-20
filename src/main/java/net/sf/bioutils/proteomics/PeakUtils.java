@@ -16,11 +16,11 @@ public class PeakUtils {
 				result = p;
 			else {
 				final double massDiffNew = Math.abs(mass
-						- p.getMassOverCharge());
+						- p.getMZ());
 
 				// TODO cache this
 				final double massDiffOld = Math.abs(mass
-						- result.getMassOverCharge());
+						- result.getMZ());
 
 				if (massDiffNew < massDiffOld) {
 					result = p;
@@ -58,8 +58,8 @@ public class PeakUtils {
 		}
 		if(copy.isEmpty())
 			return null;
-		Collections.sort(copy, new PeakComparatorByMZ(false));
-		return copy.get(0);
+		Collections.sort(copy, new PeakComparatorByMZ());
+		return copy.get(copy.size()-1);
 	}
 	
 	public static <T extends Peak> T findHighestIntensity(Iterable<T> peaks) {
@@ -69,8 +69,8 @@ public class PeakUtils {
 		}
 		if(copy.isEmpty())
 			return null;
-		Collections.sort(copy, new PeakComparatorByIntensity(false));
-		return copy.get(0);
+		Collections.sort(copy, new PeakComparatorByIntensity());
+		return copy.get(copy.size()-1);
 	}
 
 }

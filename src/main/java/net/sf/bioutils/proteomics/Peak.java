@@ -1,10 +1,8 @@
 package net.sf.bioutils.proteomics;
 
-import java.io.Serializable;
+public interface Peak {
 
-public interface Peak extends Serializable {
-
-	double getMassOverCharge();
+	double getMZ();
 
 	int getIntensity();
 

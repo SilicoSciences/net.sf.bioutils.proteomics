@@ -9,8 +9,13 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.List;
 
-import net.sf.bioutils.proteomics.PeakImpl;
+import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.StringListToPeakTransformer;
+import net.sf.bioutils.proteomics.impl.PeakImplFactory;
+import net.sf.bioutils.proteomics.impl.PeakImpl;
+import net.sf.bioutils.proteomics.io.AbstractStringListToPeakTransformer;
 import net.sf.kerner.utils.io.IOUtils;
 
 import org.junit.After;
@@ -38,7 +43,9 @@ import org.junit.Test;
  */
 public class TestPeakReaderImpl {
 	
-	private PeakReaderImpl r;
+	private StringListToPeakTransformer<Peak> transformer = new PeakFactory(0, 1);
+	
+	private PeakReader<Peak> r;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -58,7 +65,7 @@ public class TestPeakReaderImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.io.impl.PeakReaderImpl#readAll()}.
+	 * Test method for {@link net.sf.bioutils.proteomics.io.impl.PeakReader#readAll()}.
 	 * @throws IOException 
 	 */
 	@Test
@@ -67,27 +74,27 @@ public class TestPeakReaderImpl {
 				"1 1" + IOUtils.NEW_LINE_STRING +
 				"2 2"
 				);
-		r = new PeakReaderImpl(sreader, " ", 0, 1);
+		r = new PeakReader<Peak>(sreader," ", false, transformer);
 		assertArrayEquals(new PeakImpl[]{new PeakImpl(1,1), new PeakImpl(2,2)}, r.readAll().toArray());
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.io.impl.PeakReaderImpl#next()}.
+	 * Test method for {@link net.sf.bioutils.proteomics.io.impl.PeakReader#next()}.
 	 * @throws IOException 
 	 */
 	@Test
 	public final void testNext() throws IOException {
 		StringReader sreader = new StringReader(
-				"1	1" + IOUtils.NEW_LINE_STRING +
-				"2	2"
+				"1\t1" + IOUtils.NEW_LINE_STRING +
+				"2\t2"
 				);
-		r = new PeakReaderImpl(sreader, null, 0, 1);
+		r = new PeakReader<Peak>(sreader,"\t", false, transformer);
 		assertTrue(r.hasNext());
 		assertEquals(new PeakImpl(1,1), r.next());
 	}
 	
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.io.impl.PeakReaderImpl#next()}.
+	 * Test method for {@link net.sf.bioutils.proteomics.io.impl.PeakReader#next()}.
 	 * @throws IOException 
 	 */
 	@Test
@@ -96,7 +103,7 @@ public class TestPeakReaderImpl {
 				"1g1" + IOUtils.NEW_LINE_STRING +
 				"2g2"
 				);
-		r = new PeakReaderImpl(sreader, "g", 0, 1);
+		r = new PeakReader<Peak>(sreader, "g", false, transformer);
 		assertTrue(r.hasNext());
 		r.next();
 		assertTrue(r.hasNext());

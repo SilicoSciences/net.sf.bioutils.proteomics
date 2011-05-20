@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Arrays;
 
 
+import net.sf.bioutils.proteomics.impl.PeakImpl;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -9,13 +9,10 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.List;
 
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.StringListToPeakTransformer;
-import net.sf.bioutils.proteomics.impl.PeakImplFactory;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
-import net.sf.bioutils.proteomics.io.AbstractStringListToPeakTransformer;
 import net.sf.kerner.utils.io.IOUtils;
 
 import org.junit.After;

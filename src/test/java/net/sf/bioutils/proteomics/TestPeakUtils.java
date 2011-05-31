@@ -21,7 +21,7 @@ import org.junit.Test;
 /**
  *
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2011-04-08
+ * @version 2011-05-31
  *
  */
 public class TestPeakUtils {
@@ -52,7 +52,7 @@ public class TestPeakUtils {
 	}
 	
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.PeakUtils#findClosestToIntensity(java.lang.Iterable, int)}.
+	 * Test method for {@link net.sf.bioutils.proteomics.PeakUtils#findClosestToIntensity(java.lang.Iterable, double)}.
 	 */
 	@Test
 	public final void testFindClosestToIntensity() {
@@ -70,7 +70,7 @@ public class TestPeakUtils {
 	}
 	
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.PeakUtils#findClosestToIntensity(java.lang.Iterable, int)}.
+	 * Test method for {@link net.sf.bioutils.proteomics.PeakUtils#findClosestToIntensity(java.lang.Iterable, double)}.
 	 */
 	@Test
 	public final void testFindClosestToIntensity01() {
@@ -88,7 +88,7 @@ public class TestPeakUtils {
 	}
 	
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.PeakUtils#findClosestToIntensity(java.lang.Iterable, int)}.
+	 * Test method for {@link net.sf.bioutils.proteomics.PeakUtils#findClosestToIntensity(java.lang.Iterable, double)}.
 	 */
 	@Test
 	public final void testFindClosestToIntensity02() {

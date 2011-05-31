@@ -8,6 +8,18 @@ public class PeakUtils {
 
 	private PeakUtils() {
 	}
+	
+	public static String mzToString(Peak peak) {
+		return String.format("%12.6f", peak.getMZ());
+	}
+
+	public static String intensityToString(Peak peak) {
+		return String.format("%6d", peak.getIntensity());
+	}
+	
+	public static String intensityToNoise(Peak peak) {
+		return String.format("%6d", peak.getIntensityToNoise());
+	}
 
 	public static <T extends Peak> T findClosestToMZ(Iterable<T> peaks, double mass) {
 		T result = null;
@@ -36,7 +48,7 @@ public class PeakUtils {
 			if (result == null)
 				result = p;
 			else {
-				final int intDiffNew = Math.abs(intensity
+				final double intDiffNew = Math.abs(intensity
 						- p.getIntensity());
 
 				// TODO cache this

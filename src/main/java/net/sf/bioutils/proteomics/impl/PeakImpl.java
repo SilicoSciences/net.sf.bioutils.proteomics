@@ -1,34 +1,29 @@
 package net.sf.bioutils.proteomics.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import net.sf.bioutils.proteomics.Peak;
 
 public class PeakImpl implements Peak {
-	
-	private static final long serialVersionUID = 4114258693936960376L;
 
-	protected final String id;
+	protected final String name;
 	
 	protected final double mz;
 	
-	protected final int intensity;
+	protected final double intensity;
 	
-	protected final int intensityToNoise;
+	protected final double intensityToNoise;
 	
-	public PeakImpl(String id, double mz, int intensity, int intensityToNoise){
-		this.id = id;
+	public PeakImpl(String id, double mz, double intensity, double intensityToNoise){
+		this.name = id;
 		this.mz = mz;
 		this.intensity = intensity;
 		this.intensityToNoise = intensityToNoise;
 	}
 	
-	public PeakImpl(String id, double mz, int intensity){
+	public PeakImpl(String id, double mz, double intensity){
 		this(id, mz, intensity, intensity);
 	}
 	
-	public PeakImpl(double mz, int intensity){
+	public PeakImpl(double mz, double intensity){
 		this(null, mz, intensity, intensity);
 	}
 	
@@ -38,29 +33,6 @@ public class PeakImpl implements Peak {
 	
 	public PeakImpl(String id, Peak template){
 		this(id, template.getMZ(), template.getIntensity(), template.getIntensityToNoise());
-	}
-	
-	public static String mzToString(double mz) {
-		return String.format("%12.6f", mz);
-	}
-
-	public static String intensityToString(int intensity) {
-		return String.format("%6d", intensity);
-	}
-	
-	public static String intensityToNoise(int sn) {
-		return String.format("%6d", sn);
-	}
-	
-	public List<String> toStringList(){
-		final List<String> result = new ArrayList<String>();
-		
-		result.add(mzToString(getMZ()));
-		result.add(intensityToString(getIntensity()));
-		result.add(intensityToNoise(getIntensityToNoise()));
-		result.add(getName().toString());
-		
-		return result;
 	}
 
 	@Override
@@ -72,9 +44,11 @@ public class PeakImpl implements Peak {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + intensity;
-		result = prime * result + intensityToNoise;
 		long temp;
+		temp = Double.doubleToLongBits(intensity);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(intensityToNoise);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		temp = Double.doubleToLongBits(mz);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
@@ -92,10 +66,12 @@ public class PeakImpl implements Peak {
 			return false;
 		}
 		PeakImpl other = (PeakImpl) obj;
-		if (intensity != other.intensity) {
+		if (Double.doubleToLongBits(intensity) != Double
+				.doubleToLongBits(other.intensity)) {
 			return false;
 		}
-		if (intensityToNoise != other.intensityToNoise) {
+		if (Double.doubleToLongBits(intensityToNoise) != Double
+				.doubleToLongBits(other.intensityToNoise)) {
 			return false;
 		}
 		if (Double.doubleToLongBits(mz) != Double.doubleToLongBits(other.mz)) {
@@ -108,15 +84,15 @@ public class PeakImpl implements Peak {
 		return mz;
 	}
 
-	public int getIntensity() {
+	public double getIntensity() {
 		return intensity;
 	}
 	
 	public String getName() {
-		return id;
+		return name;
 	}
 
-	public int getIntensityToNoise() {
+	public double getIntensityToNoise() {
 		return intensityToNoise;
 	}
 

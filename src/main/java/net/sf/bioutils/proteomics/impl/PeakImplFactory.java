@@ -6,9 +6,9 @@ public class PeakImplFactory implements Factory<PeakImpl>{
 
 	private final double mz;
 	
-	private final int intensity;
+	private final double intensity;
 	
-	public PeakImplFactory(double mz, int intensity) {
+	public PeakImplFactory(double mz, double intensity) {
 		super();
 		this.intensity = intensity;
 		this.mz = mz;

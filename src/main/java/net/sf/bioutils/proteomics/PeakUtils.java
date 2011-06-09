@@ -70,7 +70,7 @@ public class PeakUtils {
 		}
 		if(copy.isEmpty())
 			return null;
-		Collections.sort(copy, new PeakComparatorByMZ());
+		Collections.sort(copy, new ComparatorPeakByMZ());
 		return copy.get(copy.size()-1);
 	}
 	
@@ -81,7 +81,7 @@ public class PeakUtils {
 		}
 		if(copy.isEmpty())
 			return null;
-		Collections.sort(copy, new PeakComparatorByIntensity());
+		Collections.sort(copy, new ComparatorPeakByIntensity());
 		return copy.get(copy.size()-1);
 	}
 

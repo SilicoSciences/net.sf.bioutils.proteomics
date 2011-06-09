@@ -1,8 +1,9 @@
 package net.sf.bioutils.proteomics.impl;
 
 import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.Standard;
 
-public class PeakImpl implements Peak {
+public class PeakImpl implements Peak, Standard {
 
 	protected final String name;
 	

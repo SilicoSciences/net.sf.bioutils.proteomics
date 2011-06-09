@@ -1,13 +1,17 @@
 package net.sf.bioutils.proteomics.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import net.sf.bioutils.proteomics.Peak;
-import net.sf.kerner.utils.factory.Factory;
+import net.sf.bioutils.proteomics.PeakFactory;
 
-public class PeakImplFactory implements Factory<Peak>{
+public class PeakImplFactory implements PeakFactory {
 
-	private final double mz;
+	protected final double mz;
 	
-	private final double intensity;
+	protected final double intensity;
 	
 	public PeakImplFactory() {
 		super();
@@ -27,6 +31,22 @@ public class PeakImplFactory implements Factory<Peak>{
 	
 	public Peak create(double mz, double intensity) {
 		return new PeakImpl(mz, intensity);
+	}
+
+	public List<Peak> createCollection() {
+		final List<Peak> result = new ArrayList<Peak>();
+		// TODO fill?!
+		return result;
+	}
+
+	public List<Peak> createCollection(Collection<? extends Peak> elements) {
+		final List<Peak> result = new ArrayList<Peak>();
+		
+		for(Peak p : elements){
+			result.add(create(p.getMZ(), p.getIntensity()));
+		}
+		
+		return result;
 	}
 
 }

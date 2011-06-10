@@ -3,8 +3,8 @@ package net.sf.bioutils.proteomics;
 import net.sf.kerner.utils.collections.list.ListFactory;
 import net.sf.kerner.utils.factory.Factory;
 
-public interface PeakFactory extends Factory<Peak>, ListFactory<Peak>{
+public interface PeakFactory<P extends Peak> extends Factory<P>, ListFactory<P>{
 	
-	Peak create(double mz, double intensity);
+	P create(double mz, double intensity);
 
 }

@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.PeakFactory;
 
-public class PeakImplFactory implements PeakFactory {
+public class PeakImplFactory implements PeakFactory<PeakImpl> {
 
 	protected final double mz;
 	
@@ -25,24 +24,24 @@ public class PeakImplFactory implements PeakFactory {
 		this.mz = mz;
 	}
 	
-	public Peak create() {
+	public PeakImpl create() {
 		return new PeakImpl(mz, intensity);
 	}
 	
-	public Peak create(double mz, double intensity) {
+	public PeakImpl create(double mz, double intensity) {
 		return new PeakImpl(mz, intensity);
 	}
 
-	public List<Peak> createCollection() {
-		final List<Peak> result = new ArrayList<Peak>();
+	public List<PeakImpl> createCollection() {
+		final List<PeakImpl> result = new ArrayList<PeakImpl>();
 		// TODO fill?!
 		return result;
 	}
 
-	public List<Peak> createCollection(Collection<? extends Peak> elements) {
-		final List<Peak> result = new ArrayList<Peak>();
+	public List<PeakImpl> createCollection(Collection<? extends PeakImpl> elements) {
+		final List<PeakImpl> result = new ArrayList<PeakImpl>();
 		
-		for(Peak p : elements){
+		for(PeakImpl p : elements){
 			result.add(create(p.getMZ(), p.getIntensity()));
 		}
 		

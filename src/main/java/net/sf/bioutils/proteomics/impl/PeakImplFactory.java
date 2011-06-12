@@ -33,20 +33,4 @@ public class PeakImplFactory implements PeakFactory {
 		return new PeakImpl(mz, intensity);
 	}
 
-	public List<Peak> createCollection() {
-		final List<Peak> result = new ArrayList<Peak>();
-		// TODO fill?!
-		return result;
-	}
-
-	public List<Peak> createCollection(Collection<? extends Peak> elements) {
-		final List<Peak> result = new ArrayList<Peak>();
-		
-		for(Peak p : elements){
-			result.add(create(p.getMZ(), p.getIntensity()));
-		}
-		
-		return result;
-	}
-
 }

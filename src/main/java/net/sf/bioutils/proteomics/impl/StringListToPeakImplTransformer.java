@@ -19,7 +19,7 @@ public class StringListToPeakImplTransformer<P extends Peak> extends AbstractStr
 	public P transform(List<? extends String> element)
 			throws NumberFormatException {
 		return factory.create(Double.parseDouble(element.get(massIndex).trim()),
-				Integer.parseInt(element.get(intensityIndex).trim()));
+				Double.parseDouble(element.get(intensityIndex).trim()));
 	}
 
 }

@@ -1,9 +1,12 @@
 package net.sf.bioutils.proteomics.impl;
 
+import net.sf.bioutils.proteomics.MassUnit;
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.Standard;
 
 public class PeakImpl implements Peak, Standard {
+	
+	public final static MassUnit DEFAULT_UNIT = MassUnit.DALTON;
 
 	protected final String name;
 	
@@ -85,6 +88,10 @@ public class PeakImpl implements Peak, Standard {
 		return mz;
 	}
 
+	public double getMZ(MassUnit unit) {
+		return DEFAULT_UNIT.convert(mz, unit);
+	}
+	
 	public double getIntensity() {
 		return intensity;
 	}

@@ -50,6 +50,11 @@
 	</build>
 	<dependencies>
 		<dependency>
+			<groupId>net.sf.kerner-utils</groupId>
+			<artifactId>kerner-utils</artifactId>
+			<version>0.2.5</version>
+		</dependency>
+		<dependency>
 			<groupId>net.sf.jtables</groupId>
 			<artifactId>jtables</artifactId>
 			<version>0.3.1</version>
@@ -58,11 +63,6 @@
 			<groupId>net.sf.kerner-utils-collections</groupId>
 			<artifactId>kerner-utils-collections</artifactId>
 			<version>0.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.kerner-utils</groupId>
-			<artifactId>kerner-utils</artifactId>
-			<version>0.2.3</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

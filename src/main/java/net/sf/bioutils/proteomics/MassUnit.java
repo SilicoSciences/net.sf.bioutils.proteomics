@@ -99,7 +99,7 @@ public enum MassUnit implements PrefixableDouble {
 	}
 	
 	public double toPpm(double parentMass, double absMass){
-		return 1.0E+6 * parentMass / absMass;
+		return 1.0E+6 * absMass / parentMass;
 	}
 	
 	public double toAbs(double parentMass, double ppmMass){

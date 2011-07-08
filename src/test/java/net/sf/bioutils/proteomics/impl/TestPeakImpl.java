@@ -147,8 +147,8 @@ public class TestPeakImpl {
 	 */
 	@Test
 	public final void testHashCode05() {
-		p1 = new PeakImpl("null", 1.5, 1);
-		p2 = new PeakImpl("null", 1.5, 1);
+		p1 = new PeakImpl("null", 15, 1);
+		p2 = new PeakImpl("null", 15, 1);
 		assertEquals(p1.hashCode(), p2.hashCode());
 	}
 
@@ -157,8 +157,8 @@ public class TestPeakImpl {
 	 */
 	@Test
 	public final void testEqualsObject05() {
-		p1 = new PeakImpl("null", 1.5, 1);
-		p2 = new PeakImpl("null", 1.5, 1);
+		p1 = new PeakImpl("null", 15, 1);
+		p2 = new PeakImpl("null", 15, 1);
 		assertEquals(p1, p2);
 	}
 	
@@ -167,8 +167,8 @@ public class TestPeakImpl {
 	 */
 	@Test
 	public final void testHashCode06() {
-		p1 = new PeakImpl("null", 1.5, 1);
-		p2 = new PeakImpl("null", 1.51, 1);
+		p1 = new PeakImpl("null", 15, 1);
+		p2 = new PeakImpl("null", 151, 1);
 		assertNotSame(p1.hashCode(), p2.hashCode());
 	}
 
@@ -177,8 +177,8 @@ public class TestPeakImpl {
 	 */
 	@Test
 	public final void testEqualsObject06() {
-		p1 = new PeakImpl("null", 1.5, 1);
-		p2 = new PeakImpl("null", 1.51, 1);
+		p1 = new PeakImpl("null", 15, 1);
+		p2 = new PeakImpl("null", 151, 1);
 		assertNotSame(p1, p2);
 	}
 
@@ -187,10 +187,10 @@ public class TestPeakImpl {
 	 */
 	@Test
 	public final void testHashCode07() {
-		p1 = new PeakImpl("null", 1.5, 1);
-		p2 = new PeakImpl("null", 1.6, 1);
-		System.out.println(p1.hashCode());
-		System.out.println(p2.hashCode());
+		p1 = new PeakImpl("null", 15, 1);
+		p2 = new PeakImpl("null", 16, 1);
+//		System.out.println(p1.hashCode());
+//		System.out.println(p2.hashCode());
 		assertNotSame(p1.hashCode(), p2.hashCode());
 	}
 
@@ -199,8 +199,8 @@ public class TestPeakImpl {
 	 */
 	@Test
 	public final void testEqualsObject07() {
-		p1 = new PeakImpl("null", 1.5, 1);
-		p2 = new PeakImpl("null", 1.6, 1);
+		p1 = new PeakImpl("null", 15, 1);
+		p2 = new PeakImpl("null", 16, 1);
 		assertNotSame(p1, p2);
 	}
 	

@@ -34,8 +34,13 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 	public List<P> readAll() throws IOException {
 		final List<P> result = new ArrayList<P>();
 		while (hasNext()) {
+			try{
 			result.add(next());
+			}catch(NumberFormatException e){
+//				System.err.println();
+			};
 		}
+//		System.err.println("returning [" + result + "]");
 		return result;
 	}
 

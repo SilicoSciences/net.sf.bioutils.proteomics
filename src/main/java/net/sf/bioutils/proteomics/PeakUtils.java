@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import net.sf.bioutils.proteomics.impl.ComparatorPeakByIntensity;
+import net.sf.bioutils.proteomics.impl.ComparatorPeakByMZ;
+
 public class PeakUtils {
 
 	private PeakUtils() {

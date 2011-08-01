@@ -1,6 +1,8 @@
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.impl;
 
 import java.util.Comparator;
+
+import net.sf.bioutils.proteomics.Peak;
 
 public class ComparatorPeakByIntensity implements Comparator<Peak> {
 

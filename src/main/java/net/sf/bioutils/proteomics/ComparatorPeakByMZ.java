@@ -1,6 +1,8 @@
 package net.sf.bioutils.proteomics;
 
-public class ComparatorPeakByMZ implements ComparatorPeak {
+import java.util.Comparator;
+
+public class ComparatorPeakByMZ implements Comparator<Peak> {
 
 	public int compare(Peak o1, Peak o2) {
 

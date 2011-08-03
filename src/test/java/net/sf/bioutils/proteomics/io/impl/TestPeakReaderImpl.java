@@ -14,7 +14,6 @@ import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.StringListToPeakTransformer;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
 import net.sf.bioutils.proteomics.impl.PeakImplFactory;
-import net.sf.bioutils.proteomics.impl.StringListToPeakImplTransformer;
 import net.sf.kerner.utils.io.IOUtils;
 
 import org.junit.After;
@@ -44,7 +43,7 @@ import org.junit.Test;
  */
 public class TestPeakReaderImpl {
 
-	private StringListToPeakTransformer<Peak> transformer = new StringListToPeakImplTransformer<Peak>(
+	private StringListToPeakTransformer<Peak> transformer = new StringListToPeakTransformerImpl<Peak>(
 			0, 1, new PeakImplFactory());
 
 	private PeakReader<Peak> r;

@@ -18,10 +18,11 @@ public class StringListToPeakTransformerImpl<P extends Peak> extends AbstractStr
 	@Override
 	public P transform(List<? extends String> element)
 			throws NumberFormatException {
-		if(element.size() < massIndex || element.size() < intensityIndex)
-			throw new NumberFormatException("string list does not have secified index " + element);
+		try{
 		return factory.create(Double.parseDouble(element.get(massIndex).trim()),
 				Double.parseDouble(element.get(intensityIndex).trim()));
+		}catch(Exception e){
+			return null;
+		}
 	}
-
 }

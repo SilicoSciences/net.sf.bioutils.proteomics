@@ -18,11 +18,11 @@
 	<distributionManagement>
 		<repository>
 			<id>strato</id>
-			<url>http://pantsdown.info/nexus-webapp-1.9/content/repositories/releases</url>
+			<url>http://pantsdown.info:45881/nexus-webapp-1.9.2/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>strato</id>
-			<url>http://pantsdown.info/nexus-webapp-1.9/content/repositories/snapshots</url>
+			<url>http://pantsdown.info:45881/nexus-webapp-1.9.2/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<developers>

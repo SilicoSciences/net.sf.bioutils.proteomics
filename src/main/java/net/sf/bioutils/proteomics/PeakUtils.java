@@ -17,11 +17,11 @@ public class PeakUtils {
 	}
 
 	public static String intensityToString(Peak peak) {
-		return String.format("%6d", peak.getIntensity());
+		return String.format("%6.0f", peak.getIntensity());
 	}
 	
-	public static String intensityToNoise(Peak peak) {
-		return String.format("%6d", peak.getIntensityToNoise());
+	public static String intensityToNoiseToString(Peak peak) {
+		return String.format("%6.0f", peak.getIntensityToNoise());
 	}
 
 	public static <T extends Peak> T findClosestToMZ(Iterable<T> peaks, double mass) {

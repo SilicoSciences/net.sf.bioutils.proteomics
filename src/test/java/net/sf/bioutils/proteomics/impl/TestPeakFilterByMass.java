@@ -21,7 +21,7 @@ import org.junit.Test;
  */
 public class TestPeakFilterByMass {
 
-	private PeakFilterByMass<Peak> f;
+	private PeakFilterByMass f;
 	
 	private Peak p1;
 	
@@ -45,42 +45,42 @@ public class TestPeakFilterByMass {
 	@Test
 	public final void testVisit01() {
 		p1 = new PeakImpl(1,1);
-		f = new PeakFilterByMass<Peak>(1);
+		f = new PeakFilterByMass(1);
 		assertTrue(f.visit(p1));
 	}
 	
 	@Test
 	public final void testVisit02() {
 		p1 = new PeakImpl(1,1);
-		f = new PeakFilterByMass<Peak>(1.001);
+		f = new PeakFilterByMass(1.001);
 		assertFalse(f.visit(p1));
 	}
 	
 	@Test
 	public final void testVisit03() {
 		p1 = new PeakImpl(1,1);
-		f = new PeakFilterByMass<Peak>(0.999);
+		f = new PeakFilterByMass(0.999);
 		assertFalse(f.visit(p1));
 	}
 	
 	@Test
 	public final void testVisit04() {
 		p1 = new PeakImpl(1,5);
-		f = new PeakFilterByMass<Peak>(1);
+		f = new PeakFilterByMass(1);
 		assertTrue(f.visit(p1));
 	}
 	
 	@Test
 	public final void testVisit05() {
 		p1 = new PeakImpl(1,5);
-		f = new PeakFilterByMass<Peak>(1.001);
+		f = new PeakFilterByMass(1.001);
 		assertFalse(f.visit(p1));
 	}
 	
 	@Test
 	public final void testVisit06() {
 		p1 = new PeakImpl(1,5);
-		f = new PeakFilterByMass<Peak>(0.999);
+		f = new PeakFilterByMass(0.999);
 		assertFalse(f.visit(p1));
 	}
 

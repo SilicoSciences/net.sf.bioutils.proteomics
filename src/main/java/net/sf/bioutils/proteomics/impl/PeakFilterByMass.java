@@ -7,8 +7,8 @@ import net.sf.kerner.utils.collections.Filter;
 
 /**
  * 
- * A {@code Filter} that checks weather a given {@code Peak's} m/z is within a
- * given {@code Range}.
+ * A {@link Filter} that checks weather a given {@link Peak}'s {@code m/z} is
+ * within a given {@link Range}.
  * 
  * <p>
  * <b>Example:</b><br>
@@ -23,9 +23,8 @@ import net.sf.kerner.utils.collections.Filter;
  * </p>
  * 
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2011-08-01
+ * @version 2011-09-30
  * 
- * @param <P>
  */
 public class PeakFilterByMass implements Filter<Peak> {
 

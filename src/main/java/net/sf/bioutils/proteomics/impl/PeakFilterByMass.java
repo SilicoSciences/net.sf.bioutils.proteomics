@@ -27,7 +27,7 @@ import net.sf.kerner.utils.collections.Filter;
  * 
  * @param <P>
  */
-public class PeakFilterByMass<P extends Peak> implements Filter<P> {
+public class PeakFilterByMass implements Filter<Peak> {
 
 	private final DoubleRange range;
 
@@ -55,7 +55,7 @@ public class PeakFilterByMass<P extends Peak> implements Filter<P> {
 		this.range = new DummyDoubleRange(mass, mass);
 	}
 
-	public Boolean visit(P element) {
+	public Boolean visit(Peak element) {
 		return range.includes(element.getMZ());
 	}
 

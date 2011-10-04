@@ -12,7 +12,30 @@ import net.sf.jtables.table.impl.StringTableReader;
 import net.sf.kerner.utils.io.IOUtils;
 import net.sf.kerner.utils.io.buffered.IOIterator;
 
+/**
+ * 
+ * TODO description
+ * 
+ * <p>
+ * <b>Example:</b><br>
+ *
+ * </p>
+ * <p>
+ * <pre>
+ * TODO example
+ * </pre>
+ * </p>
+ *
+ * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
+ * @version 2011-10-04
+ *
+ * @param <P> type of {@link Peak}
+ */
 public class PeakReader<P extends Peak> implements IOIterator<P> {
+	
+	public final static String DEFAULT_DELIM = "\t";
+	
+	public final static boolean DEFAULT_HAS_HEADER = false;
 
 	protected final StringTableReader reader;
 
@@ -25,7 +48,7 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 
 	public PeakReader(InputStream stream, StringListToPeakTransformer<P> transformer)
 			throws IOException {
-		this(stream, "\t", false, transformer);
+		this(stream, DEFAULT_DELIM, DEFAULT_HAS_HEADER, transformer);
 	}
 
 	public PeakReader(Reader reader, String delim, boolean header,

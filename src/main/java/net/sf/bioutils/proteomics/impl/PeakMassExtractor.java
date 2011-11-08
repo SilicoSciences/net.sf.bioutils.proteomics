@@ -1,7 +1,7 @@
 package net.sf.bioutils.proteomics.impl;
 
 import net.sf.bioutils.proteomics.Peak;
-import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
+import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 
 public class PeakMassExtractor<P extends Peak> extends AbstractTransformingListFactory<P, Double>{
 

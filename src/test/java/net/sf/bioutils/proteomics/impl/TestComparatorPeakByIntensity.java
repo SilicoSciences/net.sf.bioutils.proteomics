@@ -1,7 +1,6 @@
 package net.sf.bioutils.proteomics.impl;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
 import net.sf.bioutils.proteomics.Peak;
 
 import org.junit.After;

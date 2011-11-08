@@ -1,7 +1,7 @@
 package net.sf.bioutils.proteomics.impl;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 

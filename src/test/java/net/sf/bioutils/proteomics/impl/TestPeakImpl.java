@@ -3,10 +3,8 @@
  */
 package net.sf.bioutils.proteomics.impl;
 
-import static org.junit.Assert.*;
-
-
-import net.sf.bioutils.proteomics.impl.PeakImpl;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 import org.junit.After;
 import org.junit.AfterClass;

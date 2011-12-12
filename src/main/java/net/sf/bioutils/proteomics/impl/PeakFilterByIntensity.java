@@ -5,7 +5,7 @@ import net.sf.jranges.range.doublerange.DoubleRange;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 import net.sf.kerner.utils.collections.Filter;
 
-public class PeakFilterByIntensity<P extends Peak> implements Filter<P> {
+public class PeakFilterByIntensity implements Filter<Peak> {
 	
 	private final DoubleRange range;
 
@@ -17,7 +17,7 @@ public class PeakFilterByIntensity<P extends Peak> implements Filter<P> {
 		this.range = new DummyDoubleRange(intensity, intensity);
 	}
 	
-	public Boolean visit(P element) {
+	public Boolean visit(Peak element) {
 		return range.includes(element.getIntensity());
 	}
 

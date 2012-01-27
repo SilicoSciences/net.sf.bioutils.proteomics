@@ -18,11 +18,11 @@
 	<distributionManagement>
 		<repository>
 			<id>strato</id>
-			<url>http://pantsdown.info:45881/nexus-webapp-1.9.2/content/repositories/releases</url>
+			<url>http://85.214.96.166:42004/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>strato</id>
-			<url>http://pantsdown.info:45881/nexus-webapp-1.9.2/content/repositories/snapshots</url>
+			<url>http://85.214.96.166:42004/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<developers>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>net.sf.jtables</groupId>
 			<artifactId>jtables</artifactId>
-			<version>0.4.3</version>
+			<version>1.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>net.sf.jranges</groupId>
 			<artifactId>jranges</artifactId>
-			<version>0.3.1</version>
+			<version>0.3.3</version>
 		</dependency>
 	</dependencies>
 	<profiles>

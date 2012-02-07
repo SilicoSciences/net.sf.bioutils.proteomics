@@ -26,7 +26,7 @@ import net.sf.kerner.utils.collections.Filter;
  * @version 2011-09-30
  * 
  */
-public class PeakFilterByMass implements Filter<Peak> {
+public class PeakFilterByMZ<P extends Peak> implements Filter<P> {
 
 	private final DoubleRange range;
 
@@ -38,7 +38,7 @@ public class PeakFilterByMass implements Filter<Peak> {
 	 *            m/z range in which a peak's m/z must be in in order for this
 	 *            {@code Filter} t accept this peak
 	 */
-	public PeakFilterByMass(DoubleRange range) {
+	public PeakFilterByMZ(DoubleRange range) {
 		this.range = range;
 	}
 
@@ -50,12 +50,17 @@ public class PeakFilterByMass implements Filter<Peak> {
 	 *            m/z that must be equal to a peak's m/z in order for this
 	 *            {@code Filter} t accept this peak
 	 */
-	public PeakFilterByMass(double mass) {
+	public PeakFilterByMZ(double mass) {
 		this.range = new DummyDoubleRange(mass, mass);
 	}
 
-	public Boolean visit(Peak element) {
+	public Boolean visit(P element) {
 		return range.includes(element.getMZ());
+	}
+
+	@Override
+	public String toString() {
+		return "massRange=" + range;
 	}
 
 }

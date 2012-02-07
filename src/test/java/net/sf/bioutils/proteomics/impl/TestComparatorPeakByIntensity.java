@@ -10,9 +10,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestComparatorPeakByIntensity {
-	
+
 	private ComparatorPeakByIntensity c;
-	
+
 	private Peak p1, p2;
 
 	@BeforeClass
@@ -34,43 +34,43 @@ public class TestComparatorPeakByIntensity {
 
 	@Test
 	public final void testCompare01() {
-		p1 = new PeakImpl(1,1);
-		p2 = new PeakImpl(1,1);
+		p1 = new PeakImpl(1, 1);
+		p2 = new PeakImpl(1, 1);
 		assertEquals(0, c.compare(p1, p2));
 	}
-	
+
 	@Test
 	public final void testCompare02() {
 		p1 = null;
 		p2 = null;
 		assertEquals(0, c.compare(p1, p2));
 	}
-	
+
 	@Test
 	public final void testCompare03() {
-		p1 = new PeakImpl(1,1);
+		p1 = new PeakImpl(1, 1);
 		p2 = null;
 		assertEquals(1, c.compare(p1, p2));
 	}
-	
+
 	@Test
 	public final void testCompare04() {
-		p2 = new PeakImpl(1,1);
+		p2 = new PeakImpl(1, 1);
 		p1 = null;
 		assertEquals(-1, c.compare(p1, p2));
 	}
-	
+
 	@Test
 	public final void testCompare05() {
-		p1 = new PeakImpl(1,2);
-		p2 = new PeakImpl(1,1);
+		p1 = new PeakImpl(1, 2);
+		p2 = new PeakImpl(1, 1);
 		assertEquals(1, c.compare(p1, p2));
 	}
-	
+
 	@Test
 	public final void testCompare06() {
-		p1 = new PeakImpl(1,2);
-		p2 = new PeakImpl(1,3);
+		p1 = new PeakImpl(1, 2);
+		p2 = new PeakImpl(1, 3);
 		assertEquals(-1, c.compare(p1, p2));
 	}
 

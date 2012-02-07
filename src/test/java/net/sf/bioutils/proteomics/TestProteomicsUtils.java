@@ -15,7 +15,7 @@ public class TestProteomicsUtils {
 	public final void testToAbs01() {
 		assertEquals(0.03, ProteomicsUtils.getAbsDelta(1000, 30), 0);
 	}
-	
+
 	@Test
 	public final void testToPpm02() {
 		assertEquals(30, ProteomicsUtils.getPpmDelta(3000, 0.09), 0);

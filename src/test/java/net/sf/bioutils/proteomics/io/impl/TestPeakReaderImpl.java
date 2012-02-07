@@ -73,11 +73,10 @@ public class TestPeakReaderImpl {
 	 */
 	@Test
 	public final void testReadAll() throws IOException {
-		StringReader sreader = new StringReader("1 1" + IOUtils.NEW_LINE_STRING
-				+ "2 2");
+		StringReader sreader = new StringReader("1 1" + IOUtils.NEW_LINE_STRING + "2 2");
 		r = new PeakReader<Peak>(sreader, " ", false, transformer);
-		assertArrayEquals(new PeakImpl[] { new PeakImpl(1, 1),
-				new PeakImpl(2, 2) }, r.readAll().toArray());
+		assertArrayEquals(new PeakImpl[] { new PeakImpl(1, 1), new PeakImpl(2, 2) }, r.readAll()
+				.toArray());
 	}
 
 	/**
@@ -88,8 +87,7 @@ public class TestPeakReaderImpl {
 	 */
 	@Test
 	public final void testNext() throws IOException {
-		StringReader sreader = new StringReader("1\t1"
-				+ IOUtils.NEW_LINE_STRING + "2\t2");
+		StringReader sreader = new StringReader("1\t1" + IOUtils.NEW_LINE_STRING + "2\t2");
 		r = new PeakReader<Peak>(sreader, "\t", false, transformer);
 		assertTrue(r.hasNext());
 		assertEquals(new PeakImpl(1, 1), r.next());
@@ -103,8 +101,7 @@ public class TestPeakReaderImpl {
 	 */
 	@Test
 	public final void testNext01() throws IOException {
-		StringReader sreader = new StringReader("1g1" + IOUtils.NEW_LINE_STRING
-				+ "2g2");
+		StringReader sreader = new StringReader("1g1" + IOUtils.NEW_LINE_STRING + "2g2");
 		r = new PeakReader<Peak>(sreader, "g", false, transformer);
 		assertTrue(r.hasNext());
 		r.next();

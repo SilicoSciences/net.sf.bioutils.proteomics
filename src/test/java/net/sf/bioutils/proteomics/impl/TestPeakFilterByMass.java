@@ -14,17 +14,17 @@ import org.junit.Test;
  * 
  * Test PeakFilterByMass(double).
  * 
- *
+ * 
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
  * @version 2011-08-01
- *
+ * 
  */
 public class TestPeakFilterByMass {
 
-	private PeakFilterByMass f;
-	
+	private PeakFilterByMZ f;
+
 	private Peak p1;
-	
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -35,7 +35,7 @@ public class TestPeakFilterByMass {
 
 	@Before
 	public void setUp() throws Exception {
-		
+
 	}
 
 	@After
@@ -44,43 +44,43 @@ public class TestPeakFilterByMass {
 
 	@Test
 	public final void testVisit01() {
-		p1 = new PeakImpl(1,1);
-		f = new PeakFilterByMass(1);
+		p1 = new PeakImpl(1, 1);
+		f = new PeakFilterByMZ(1);
 		assertTrue(f.visit(p1));
 	}
-	
+
 	@Test
 	public final void testVisit02() {
-		p1 = new PeakImpl(1,1);
-		f = new PeakFilterByMass(1.001);
+		p1 = new PeakImpl(1, 1);
+		f = new PeakFilterByMZ(1.001);
 		assertFalse(f.visit(p1));
 	}
-	
+
 	@Test
 	public final void testVisit03() {
-		p1 = new PeakImpl(1,1);
-		f = new PeakFilterByMass(0.999);
+		p1 = new PeakImpl(1, 1);
+		f = new PeakFilterByMZ(0.999);
 		assertFalse(f.visit(p1));
 	}
-	
+
 	@Test
 	public final void testVisit04() {
-		p1 = new PeakImpl(1,5);
-		f = new PeakFilterByMass(1);
+		p1 = new PeakImpl(1, 5);
+		f = new PeakFilterByMZ(1);
 		assertTrue(f.visit(p1));
 	}
-	
+
 	@Test
 	public final void testVisit05() {
-		p1 = new PeakImpl(1,5);
-		f = new PeakFilterByMass(1.001);
+		p1 = new PeakImpl(1, 5);
+		f = new PeakFilterByMZ(1.001);
 		assertFalse(f.visit(p1));
 	}
-	
+
 	@Test
 	public final void testVisit06() {
-		p1 = new PeakImpl(1,5);
-		f = new PeakFilterByMass(0.999);
+		p1 = new PeakImpl(1, 5);
+		f = new PeakFilterByMZ(0.999);
 		assertFalse(f.visit(p1));
 	}
 

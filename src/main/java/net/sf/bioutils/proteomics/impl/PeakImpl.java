@@ -5,37 +5,38 @@ import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.Standard;
 
 public class PeakImpl implements Peak, Standard {
-	
+
 	public final static MassUnit DEFAULT_UNIT = MassUnit.DALTON;
 
 	protected final String name;
-	
+
 	protected final double mz;
-	
+
 	protected final double intensity;
-	
+
 	protected final double intensityToNoise;
-	
-	public PeakImpl(String id, double mz, double intensity, double intensityToNoise){
+
+	public PeakImpl(String id, double mz, double intensity, double intensityToNoise) {
 		this.name = id;
 		this.mz = mz;
 		this.intensity = intensity;
 		this.intensityToNoise = intensityToNoise;
 	}
-	
-	public PeakImpl(String id, double mz, double intensity){
+
+	public PeakImpl(String id, double mz, double intensity) {
 		this(id, mz, intensity, intensity);
 	}
-	
-	public PeakImpl(double mz, double intensity){
+
+	public PeakImpl(double mz, double intensity) {
 		this(null, mz, intensity, intensity);
 	}
-	
-	public PeakImpl(Peak template){
-		this(template.getName(), template.getMZ(), template.getIntensity(), template.getIntensityToNoise());
+
+	public PeakImpl(Peak template) {
+		this(template.getName(), template.getMZ(), template.getIntensity(), template
+				.getIntensityToNoise());
 	}
-	
-	public PeakImpl(String id, Peak template){
+
+	public PeakImpl(String id, Peak template) {
 		this(id, template.getMZ(), template.getIntensity(), template.getIntensityToNoise());
 	}
 
@@ -70,8 +71,7 @@ public class PeakImpl implements Peak, Standard {
 			return false;
 		}
 		PeakImpl other = (PeakImpl) obj;
-		if (Double.doubleToLongBits(intensity) != Double
-				.doubleToLongBits(other.intensity)) {
+		if (Double.doubleToLongBits(intensity) != Double.doubleToLongBits(other.intensity)) {
 			return false;
 		}
 		if (Double.doubleToLongBits(intensityToNoise) != Double
@@ -91,11 +91,11 @@ public class PeakImpl implements Peak, Standard {
 	public double getMZ(MassUnit unit) {
 		return DEFAULT_UNIT.convert(mz, unit);
 	}
-	
+
 	public double getIntensity() {
 		return intensity;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

@@ -13,13 +13,13 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- *
+ * 
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
  * @version 2011-02-24
- *
+ * 
  */
 public class TestPeakImpl {
-	
+
 	private PeakImpl p1, p2;
 
 	@BeforeClass
@@ -32,16 +32,17 @@ public class TestPeakImpl {
 
 	@Before
 	public void setUp() throws Exception {
-		
+
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		p1 = p2 = null; 
+		p1 = p2 = null;
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode() {
@@ -51,7 +52,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject() {
@@ -59,9 +62,10 @@ public class TestPeakImpl {
 		p2 = new PeakImpl(null, 0, 0);
 		assertEquals(p1, p2);
 	}
-	
+
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode01() {
@@ -71,7 +75,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject01() {
@@ -79,9 +85,10 @@ public class TestPeakImpl {
 		p2 = new PeakImpl(null, 1, 1);
 		assertEquals(p1, p2);
 	}
-	
+
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode02() {
@@ -91,7 +98,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject02() {
@@ -99,9 +108,10 @@ public class TestPeakImpl {
 		p2 = new PeakImpl(null, 2, 2);
 		assertNotSame(p1, p2);
 	}
-	
+
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode03() {
@@ -111,7 +121,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject03() {
@@ -119,9 +131,10 @@ public class TestPeakImpl {
 		p2 = new PeakImpl(null, 1, 1);
 		assertNotSame(p1, p2);
 	}
-	
+
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode04() {
@@ -131,7 +144,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject04() {
@@ -139,9 +154,10 @@ public class TestPeakImpl {
 		p2 = new PeakImpl("null", 1, 1);
 		assertEquals(p1, p2);
 	}
-	
+
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode05() {
@@ -151,7 +167,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject05() {
@@ -159,9 +177,10 @@ public class TestPeakImpl {
 		p2 = new PeakImpl("null", 15, 1);
 		assertEquals(p1, p2);
 	}
-	
+
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode06() {
@@ -171,7 +190,9 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject06() {
@@ -181,19 +202,22 @@ public class TestPeakImpl {
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#hashCode()}.
 	 */
 	@Test
 	public final void testHashCode07() {
 		p1 = new PeakImpl("null", 15, 1);
 		p2 = new PeakImpl("null", 16, 1);
-//		System.out.println(p1.hashCode());
-//		System.out.println(p2.hashCode());
+		// System.out.println(p1.hashCode());
+		// System.out.println(p2.hashCode());
 		assertNotSame(p1.hashCode(), p2.hashCode());
 	}
 
 	/**
-	 * Test method for {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}.
+	 * Test method for
+	 * {@link net.sf.bioutils.proteomics.impl.PeakImpl#equals(java.lang.Object)}
+	 * .
 	 */
 	@Test
 	public final void testEqualsObject07() {
@@ -201,5 +225,5 @@ public class TestPeakImpl {
 		p2 = new PeakImpl("null", 16, 1);
 		assertNotSame(p1, p2);
 	}
-	
+
 }

@@ -10,6 +10,7 @@ public enum MassUnit implements PrefixableDouble {
 		protected DoubleUnit getUnit() {
 			return DoubleUnit.NANO;
 		}
+
 		@Override
 		public double convert(double mass, MassUnit unit) {
 			return unit.toNanos(mass);
@@ -20,6 +21,7 @@ public enum MassUnit implements PrefixableDouble {
 		protected DoubleUnit getUnit() {
 			return DoubleUnit.MICRO;
 		}
+
 		@Override
 		public double convert(double mass, MassUnit unit) {
 			return unit.toMicros(mass);
@@ -30,24 +32,29 @@ public enum MassUnit implements PrefixableDouble {
 		protected DoubleUnit getUnit() {
 			return DoubleUnit.MILLI;
 		}
+
 		@Override
 		public double convert(double mass, MassUnit unit) {
 			return unit.toMillis(mass);
 		}
-	}, DALTON{
+	},
+	DALTON {
 		@Override
 		protected DoubleUnit getUnit() {
 			return DoubleUnit.UNIT;
 		}
+
 		@Override
 		public double convert(double mass, MassUnit unit) {
 			return unit.toUnits(mass);
 		}
-	}, KILODALTON{
+	},
+	KILODALTON {
 		@Override
 		protected DoubleUnit getUnit() {
 			return DoubleUnit.KILO;
 		}
+
 		@Override
 		public double convert(double mass, MassUnit unit) {
 			return unit.toKilos(mass);

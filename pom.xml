@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.sf.bioutils</groupId>
 	<artifactId>bioutils-proteomics</artifactId>
-	<version>0.6.5-SNAPSHOT</version>
+	<version>0.7.2-SNAPSHOT</version>
 	<name>BioUtils - Proteomics</name>
 	<description>A Collection of classes related to biological and bioinformatical topics related to proteomics</description>
 	<properties>
@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>net.sf.jtables</groupId>
 			<artifactId>jtables</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

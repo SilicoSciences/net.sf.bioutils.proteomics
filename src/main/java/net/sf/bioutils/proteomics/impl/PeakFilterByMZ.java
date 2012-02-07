@@ -57,10 +57,10 @@ public class PeakFilterByMZ<P extends Peak> implements Filter<P> {
 	public Boolean visit(P element) {
 		return range.includes(element.getMZ());
 	}
-	
+
 	@Override
 	public String toString() {
-		return "massRange="+range;
+		return "massRange=" + range;
 	}
 
 }

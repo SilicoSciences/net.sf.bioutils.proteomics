@@ -11,7 +11,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class TestMassUnitNano {
-	
+
 	private MassUnit m;
 
 	@BeforeClass
@@ -36,7 +36,7 @@ public class TestMassUnitNano {
 	public final void testToNanos01() {
 		assertEquals(1, m.toNanos(1), 0);
 	}
-	
+
 	@Test
 	public final void testToNanos02() {
 		assertEquals(15, m.toNanos(15), 0);
@@ -46,12 +46,12 @@ public class TestMassUnitNano {
 	public final void testToMicros01() {
 		assertEquals(0.001, m.toMicros(1), 0);
 	}
-	
+
 	@Test
 	public final void testToMicros02() {
 		assertEquals(1.456, m.toMicros(1456), 0);
 	}
-	
+
 	@Test
 	public final void testToMicros03() {
 		assertEquals(1.567, m.toMicros(1567), 0);
@@ -61,7 +61,7 @@ public class TestMassUnitNano {
 	public final void testToMillis01() {
 		assertEquals(0.000001, m.toMillis(1), 0);
 	}
-	
+
 	@Test
 	public final void testToMillis02() {
 		assertEquals(0.001345, m.toMillis(1345), 0);

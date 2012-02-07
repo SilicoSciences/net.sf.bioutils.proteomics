@@ -61,12 +61,13 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 	public final static boolean DEFAULT_HAS_HEADER = false;
 
 	/**
-	 *  {@link StringTableReader} to which reading is delegated.
+	 * {@link StringTableReader} to which reading is delegated.
 	 */
 	protected final StringTableReader reader;
 
 	/**
-	 * {@link Transformer} that is used to build a {@link Peak} from one line of read table.
+	 * {@link Transformer} that is used to build a {@link Peak} from one line of
+	 * read table.
 	 */
 	protected final StringListToPeakTransformer<P> transformer;
 
@@ -88,10 +89,12 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 
 	/**
 	 * 
-	 * Read all peaks at once. If is was not possible to build {@link Peak} from provided line (e.g. empty line), line is ignored.
-	 *
+	 * Read all peaks at once. If is was not possible to build {@link Peak} from
+	 * provided line (e.g. empty line), line is ignored.
+	 * 
 	 * @return {@link List} of extracted {@link Peak}s
-	 * @throws IOException if reading failes
+	 * @throws IOException
+	 *             if reading failes
 	 */
 	public List<P> readAll() throws IOException {
 		final List<P> result = new ArrayList<P>();

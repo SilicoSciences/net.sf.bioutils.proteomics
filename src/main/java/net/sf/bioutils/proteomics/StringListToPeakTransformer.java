@@ -26,7 +26,8 @@ import net.sf.kerner.utils.transformer.Transformer;
  * @see Transformer
  * @see Peak
  * 
- * @param <P> type of {@link Peak}
+ * @param <P>
+ *            type of {@link Peak}
  */
 public interface StringListToPeakTransformer<P extends Peak> extends
 		Transformer<List<? extends String>, P> {

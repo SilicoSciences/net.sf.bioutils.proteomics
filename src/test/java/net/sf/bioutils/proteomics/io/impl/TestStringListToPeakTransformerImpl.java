@@ -15,7 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestStringListToPeakTransformerImpl {
-	
+
 	private StringListToPeakTransformerImpl<PeakImpl> t;
 
 	@BeforeClass
@@ -31,8 +31,9 @@ public class TestStringListToPeakTransformerImpl {
 		t = new StringListToPeakTransformerImpl<PeakImpl>(0, 1, new PeakFactory<PeakImpl>() {
 			@Override
 			public PeakImpl create() {
-				return create(-1,-1);
+				return create(-1, -1);
 			}
+
 			@Override
 			public PeakImpl create(double mz, double intensity) {
 				return new PeakImpl(mz, intensity);
@@ -47,14 +48,14 @@ public class TestStringListToPeakTransformerImpl {
 
 	@Test
 	public final void testTransform01() {
-		assertEquals(new PeakImpl(1,2), t.transform(Arrays.asList("1","2")));
+		assertEquals(new PeakImpl(1, 2), t.transform(Arrays.asList("1", "2")));
 	}
-	
+
 	@Test
 	public final void testTransform02() {
 		assertNull(t.transform(Arrays.asList("1")));
 	}
-	
+
 	@Test
 	public final void testTransform03() {
 		assertNull(t.transform(Arrays.asList("1")));

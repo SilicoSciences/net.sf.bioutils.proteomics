@@ -7,7 +7,7 @@ import net.sf.kerner.utils.collections.Filter;
 
 /**
  * 
- * A {@link Filter} that checks weather a given {@link Peak}'s {@code m/z} is
+ * A {@link Filter} that checks weather a given {@link Peak Peak's} {@code m/z} is
  * within a given {@link Range}.
  * 
  * <p>
@@ -23,7 +23,7 @@ import net.sf.kerner.utils.collections.Filter;
  * </p>
  * 
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2011-09-30
+ * @version 2012-02-12
  * 
  */
 public class PeakFilterByMZ<P extends Peak> implements Filter<P> {
@@ -54,7 +54,15 @@ public class PeakFilterByMZ<P extends Peak> implements Filter<P> {
 		this.range = new DummyDoubleRange(mass, mass);
 	}
 
+	/**
+	 * 
+	 * If {@code element} is {@code null}, {@code false} is returned.
+	 * 
+	 * @return {@code true} if this peak's m/z is valid; false otherwise
+	 */
 	public Boolean visit(P element) {
+		if(element == null)
+			return false;
 		return range.includes(element.getMZ());
 	}
 

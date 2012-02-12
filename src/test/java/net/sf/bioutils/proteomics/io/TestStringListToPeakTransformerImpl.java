@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics.io.impl;
+package net.sf.bioutils.proteomics.io;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 import net.sf.bioutils.proteomics.PeakFactory;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
+import net.sf.bioutils.proteomics.io.StringListToPeakTransformerImpl;
 
 import org.junit.After;
 import org.junit.AfterClass;

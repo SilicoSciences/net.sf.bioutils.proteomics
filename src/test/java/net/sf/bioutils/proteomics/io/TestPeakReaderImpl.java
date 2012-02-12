@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.sf.bioutils.proteomics.io.impl;
+package net.sf.bioutils.proteomics.io;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
@@ -14,6 +14,8 @@ import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.StringListToPeakTransformer;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
 import net.sf.bioutils.proteomics.impl.PeakImplFactory;
+import net.sf.bioutils.proteomics.io.PeakReader;
+import net.sf.bioutils.proteomics.io.StringListToPeakTransformerImpl;
 import net.sf.kerner.utils.io.IOUtils;
 
 import org.junit.After;
@@ -67,7 +69,7 @@ public class TestPeakReaderImpl {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.bioutils.proteomics.io.impl.PeakReader#readAll()}.
+	 * {@link net.sf.bioutils.proteomics.io.PeakReader#readAll()}.
 	 * 
 	 * @throws IOException
 	 */
@@ -81,7 +83,7 @@ public class TestPeakReaderImpl {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.bioutils.proteomics.io.impl.PeakReader#next()}.
+	 * {@link net.sf.bioutils.proteomics.io.PeakReader#next()}.
 	 * 
 	 * @throws IOException
 	 */
@@ -95,7 +97,7 @@ public class TestPeakReaderImpl {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.bioutils.proteomics.io.impl.PeakReader#next()}.
+	 * {@link net.sf.bioutils.proteomics.io.PeakReader#next()}.
 	 * 
 	 * @throws IOException
 	 */

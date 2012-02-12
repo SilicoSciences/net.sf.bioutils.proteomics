@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics.io.impl;
+package net.sf.bioutils.proteomics.io;
 
 import java.io.IOException;
 import java.io.InputStream;

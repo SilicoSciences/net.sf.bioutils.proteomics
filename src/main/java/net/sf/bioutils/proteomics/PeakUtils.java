@@ -13,15 +13,27 @@ public class PeakUtils {
 	}
 
 	public static String mzToString(Peak peak) {
-		return String.format("%12.6f", peak.getMZ());
+		return mzToString(peak.getMZ());
+	}
+	
+	public static String mzToString(double mz) {
+		return String.format("%4.4f", mz);
 	}
 
 	public static String intensityToString(Peak peak) {
-		return String.format("%6.0f", peak.getIntensity());
+		return intensityToString(peak.getIntensity());
+	}
+	
+	public static String intensityToString(double intensity) {
+		return String.format("%3.0f", intensity);
 	}
 
 	public static String intensityToNoiseToString(Peak peak) {
-		return String.format("%6.0f", peak.getIntensityToNoise());
+		return String.format("%3.0f", peak.getIntensityToNoise());
+	}
+	
+	public static String ppmToString(double ppm) {
+		return String.format("%6.2f", ppm);
 	}
 
 	public static <T extends Peak> T findClosestToMZ(Iterable<T> peaks, double mass) {
@@ -69,7 +81,7 @@ public class PeakUtils {
 		}
 		if (copy.isEmpty())
 			return null;
-		Collections.sort(copy, new ComparatorPeakByMZ());
+		Collections.sort(copy, new ComparatorPeakByMZ<T>());
 		return copy.get(copy.size() - 1);
 	}
 
@@ -80,8 +92,39 @@ public class PeakUtils {
 		}
 		if (copy.isEmpty())
 			return null;
-		Collections.sort(copy, new ComparatorPeakByIntensity());
+		Collections.sort(copy, new ComparatorPeakByIntensity<T>());
 		return copy.get(copy.size() - 1);
 	}
+	
+	/**
+	 * 
+	 * Converts an absolute delta to according PPM delta.
+	 * 
+	 * @param parent
+	 * @param absDelta
+	 * @return converted delta
+	 */
+	public static double getPpmDelta(double parent, double absDelta) {
+		return 1.0E+6 * absDelta / parent;
+	}
+	
+	public static double getPpmDeltaMz(Peak p1, Peak p2) {
+		final double absDiff = Math.abs(p1.getMZ() - p2.getMZ());
+		return getPpmDelta(p1.getMZ(), absDiff);
+	}
+
+	/**
+	 * 
+	 * Converts an PPM delta to according absolute delta.
+	 * 
+	 * @param parent
+	 * @param ppmDelta
+	 * @return converted delta
+	 */
+	public static double getAbsDelta(double parent, double ppmDelta) {
+		return ppmDelta * parent / 1.0E+6;
+	}
+	
+	
 
 }

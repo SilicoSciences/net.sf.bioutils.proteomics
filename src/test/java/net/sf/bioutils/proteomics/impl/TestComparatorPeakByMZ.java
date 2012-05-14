@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class TestComparatorPeakByMZ {
 
-	private ComparatorPeakByMZ c;
+	private ComparatorPeakByMZ<Peak> c;
 
 	private Peak p1, p2;
 
@@ -25,7 +25,7 @@ public class TestComparatorPeakByMZ {
 
 	@Before
 	public void setUp() throws Exception {
-		c = new ComparatorPeakByMZ();
+		c = new ComparatorPeakByMZ<Peak>();
 	}
 
 	@After

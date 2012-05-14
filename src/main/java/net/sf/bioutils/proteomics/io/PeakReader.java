@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics.io.impl;
+package net.sf.bioutils.proteomics.io;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +8,7 @@ import java.util.List;
 
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.StringListToPeakTransformer;
-import net.sf.jtables.table.impl.StringTableReader;
+import net.sf.jtables.io.reader.ReaderTableString;
 import net.sf.kerner.utils.io.IOUtils;
 import net.sf.kerner.utils.io.buffered.IOIterator;
 
@@ -51,6 +51,7 @@ import net.sf.kerner.utils.io.buffered.IOIterator;
  * @param <P>
  *            type of {@link Peak}
  */
+@Deprecated
 public class PeakReader<P extends Peak> implements IOIterator<P> {
 
 	/**
@@ -61,9 +62,9 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 	public final static boolean DEFAULT_HAS_HEADER = false;
 
 	/**
-	 * {@link StringTableReader} to which reading is delegated.
+	 * {@link ReaderTableString} to which reading is delegated.
 	 */
-	protected final StringTableReader reader;
+	protected final ReaderTableString reader;
 
 	/**
 	 * {@link Transformer} that is used to build a {@link Peak} from one line of
@@ -83,7 +84,7 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 
 	public PeakReader(Reader reader, String delim, boolean header,
 			StringListToPeakTransformer<P> transformer) throws IOException {
-		this.reader = new StringTableReader(reader, header, false, delim);
+		this.reader = new ReaderTableString(reader, header, false, delim);
 		this.transformer = transformer;
 	}
 
@@ -116,7 +117,7 @@ public class PeakReader<P extends Peak> implements IOIterator<P> {
 		return transformer.transform(reader.next());
 	}
 
-	public boolean hasNext() {
+	public boolean hasNext() throws IOException {
 		return reader.hasNext();
 	}
 

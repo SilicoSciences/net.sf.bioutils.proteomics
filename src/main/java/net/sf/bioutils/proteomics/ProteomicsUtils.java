@@ -13,6 +13,7 @@ public class ProteomicsUtils {
 	 * @param absDelta
 	 * @return converted delta
 	 */
+	@Deprecated
 	public static double getPpmDelta(double parent, double absDelta) {
 		return 1.0E+6 * absDelta / parent;
 	}
@@ -25,6 +26,7 @@ public class ProteomicsUtils {
 	 * @param ppmDelta
 	 * @return converted delta
 	 */
+	@Deprecated
 	public static double getAbsDelta(double parent, double ppmDelta) {
 		return ppmDelta * parent / 1.0E+6;
 	}

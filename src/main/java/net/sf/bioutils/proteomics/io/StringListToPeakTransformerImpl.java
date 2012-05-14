@@ -1,11 +1,11 @@
-package net.sf.bioutils.proteomics.io.impl;
+package net.sf.bioutils.proteomics.io;
 
 import java.util.List;
 
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.PeakFactory;
-import net.sf.bioutils.proteomics.io.AbstractStringListToPeakTransformer;
 
+@Deprecated
 public class StringListToPeakTransformerImpl<P extends Peak> extends
 		AbstractStringListToPeakTransformer<P> {
 

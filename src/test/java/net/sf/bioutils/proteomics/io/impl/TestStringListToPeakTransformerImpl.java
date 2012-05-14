@@ -4,9 +4,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
 
 import net.sf.bioutils.proteomics.PeakFactory;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
+import net.sf.bioutils.proteomics.io.StringListToPeakTransformerImpl;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,6 +17,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+@SuppressWarnings("deprecation")
 public class TestStringListToPeakTransformerImpl {
 
 	private StringListToPeakTransformerImpl<PeakImpl> t;
@@ -37,6 +41,18 @@ public class TestStringListToPeakTransformerImpl {
 			@Override
 			public PeakImpl create(double mz, double intensity) {
 				return new PeakImpl(mz, intensity);
+			}
+
+			@Override
+			public List<PeakImpl> createCollection() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public List<PeakImpl> createCollection(Collection<? extends PeakImpl> template) {
+				// TODO Auto-generated method stub
+				return null;
 			}
 		});
 	}

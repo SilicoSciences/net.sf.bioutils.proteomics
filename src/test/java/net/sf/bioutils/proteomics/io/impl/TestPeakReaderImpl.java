@@ -14,6 +14,8 @@ import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.StringListToPeakTransformer;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
 import net.sf.bioutils.proteomics.impl.PeakImplFactory;
+import net.sf.bioutils.proteomics.io.PeakReader;
+import net.sf.bioutils.proteomics.io.StringListToPeakTransformerImpl;
 import net.sf.kerner.utils.io.IOUtils;
 
 import org.junit.After;
@@ -41,6 +43,7 @@ import org.junit.Test;
  * @version 2011-04-12
  * 
  */
+@SuppressWarnings("deprecation")
 public class TestPeakReaderImpl {
 
 	private StringListToPeakTransformer<Peak> transformer = new StringListToPeakTransformerImpl<Peak>(
@@ -67,7 +70,7 @@ public class TestPeakReaderImpl {
 
 	/**
 	 * Test method for
-	 * {@link net.sf.bioutils.proteomics.io.impl.PeakReader#readAll()}.
+	 * {@link net.sf.bioutils.proteomics.io.PeakReader#readAll()}.
 	 * 
 	 * @throws IOException
 	 */
@@ -80,8 +83,7 @@ public class TestPeakReaderImpl {
 	}
 
 	/**
-	 * Test method for
-	 * {@link net.sf.bioutils.proteomics.io.impl.PeakReader#next()}.
+	 * Test method for {@link net.sf.bioutils.proteomics.io.PeakReader#next()}.
 	 * 
 	 * @throws IOException
 	 */
@@ -90,12 +92,12 @@ public class TestPeakReaderImpl {
 		StringReader sreader = new StringReader("1\t1" + IOUtils.NEW_LINE_STRING + "2\t2");
 		r = new PeakReader<Peak>(sreader, "\t", false, transformer);
 		assertTrue(r.hasNext());
+//		System.out.println(r.next());
 		assertEquals(new PeakImpl(1, 1), r.next());
 	}
 
 	/**
-	 * Test method for
-	 * {@link net.sf.bioutils.proteomics.io.impl.PeakReader#next()}.
+	 * Test method for {@link net.sf.bioutils.proteomics.io.PeakReader#next()}.
 	 * 
 	 * @throws IOException
 	 */

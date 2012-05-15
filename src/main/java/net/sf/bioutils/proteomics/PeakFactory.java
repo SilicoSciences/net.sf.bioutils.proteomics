@@ -1,6 +1,6 @@
 package net.sf.bioutils.proteomics;
 
-import net.sf.kerner.utils.factory.Factory;
+import net.sf.kerner.utils.Factory;
 
 public interface PeakFactory<P extends Peak> extends Factory<P> {
 

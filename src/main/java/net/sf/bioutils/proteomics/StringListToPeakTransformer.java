@@ -2,7 +2,7 @@ package net.sf.bioutils.proteomics;
 
 import java.util.List;
 
-import net.sf.kerner.utils.transformer.Transformer;
+import net.sf.kerner.utils.Transformer;
 
 /**
  * 

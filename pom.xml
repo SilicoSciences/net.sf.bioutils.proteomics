@@ -10,7 +10,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<scm>
-		<connection>scm:git:ssh://akerner@bioutils-proteo.git.sourceforge.net/gitroot/bioutils-proteo/bioutils-proteo
+		<connection>scm:git://bioutils-proteo.git.sourceforge.net/gitroot/bioutils-proteo/bioutils-proteo
 		</connection>
 		<developerConnection>scm:git:ssh://akerner@bioutils-proteo.git.sourceforge.net/gitroot/bioutils-proteo/bioutils-proteo
 		</developerConnection>

@@ -1,9 +1,10 @@
 package net.sf.bioutils.proteomics;
 
 import net.sf.kerner.utils.Factory;
+import net.sf.kerner.utils.collections.list.FactoryList;
 
-public interface PeakFactory<P extends Peak> extends Factory<P> {
+public interface PeakFactory extends Factory<Peak>, FactoryList<Peak> {
 
-	P create(double mz, double intensity);
+	Peak create(double mz, double intensity);
 
 }

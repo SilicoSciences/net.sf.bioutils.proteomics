@@ -12,49 +12,46 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
- * 
  * Test PeakFilterByMass(DoubleRange).
- * 
  * 
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
  * @version 2011-08-01
- * 
  */
 public class TestPeakFilterByMass2 {
 
-	private PeakFilterByMZ f;
+    private PeakFilterByMZRange f;
 
-	private Peak p1;
+    private Peak p1;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
+    @BeforeClass
+    public static void setUpBeforeClass() throws Exception {
+    }
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
+    @AfterClass
+    public static void tearDownAfterClass() throws Exception {
+    }
 
-	@Before
-	public void setUp() throws Exception {
+    @Before
+    public void setUp() throws Exception {
 
-	}
+    }
 
-	@After
-	public void tearDown() throws Exception {
-	}
+    @After
+    public void tearDown() throws Exception {
+    }
 
-	@Test
-	public final void testVisit01() {
-		p1 = new PeakImpl(1, 1);
-		f = new PeakFilterByMZ(new DummyDoubleRange(0.999, 1.001));
-		assertTrue(f.visit(p1));
-	}
+    @Test
+    public final void testVisit01() {
+        p1 = new PeakImpl(1, 1);
+        f = new PeakFilterByMZRange(new DummyDoubleRange(0.999, 1.001));
+        assertTrue(f.filter(p1));
+    }
 
-	@Test
-	public final void testVisit02() {
-		p1 = new PeakImpl(1.0011, 1);
-		f = new PeakFilterByMZ(new DummyDoubleRange(0.999, 1.001));
-		assertFalse(f.visit(p1));
-	}
+    @Test
+    public final void testVisit02() {
+        p1 = new PeakImpl(1.0011, 1);
+        f = new PeakFilterByMZRange(new DummyDoubleRange(0.999, 1.001));
+        assertFalse(f.filter(p1));
+    }
 
 }

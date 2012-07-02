@@ -11,7 +11,7 @@ import org.junit.Test;
 
 public class TestComparatorPeakByIntensity {
 
-	private ComparatorPeakByIntensity c;
+	private ComparatorPeakByIntensity<Peak> c;
 
 	private Peak p1, p2;
 
@@ -25,7 +25,7 @@ public class TestComparatorPeakByIntensity {
 
 	@Before
 	public void setUp() throws Exception {
-		c = new ComparatorPeakByIntensity();
+		c = new ComparatorPeakByIntensity<Peak>();
 	}
 
 	@After

@@ -17,12 +17,12 @@
 	</scm>
 	<distributionManagement>
 		<repository>
-			<id>strato</id>
-			<url>http://85.214.96.166:42004/nexus/content/repositories/releases</url>
+			<id>hoste1-public</id>
+			<url>http://83.169.17.70:42004/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
-			<id>strato</id>
-			<url>http://85.214.96.166:42004/nexus/content/repositories/snapshots</url>
+			<id>hoste1-public</id>
+			<url>http://83.169.17.70:42004/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 	<developers>

@@ -5,9 +5,9 @@ import java.util.Collection;
 import java.util.List;
 
 import net.sf.bioutils.proteomics.Peak;
-import net.sf.bioutils.proteomics.PeakFactory;
+import net.sf.bioutils.proteomics.FactoryPeak;
 
-public class PeakImplFactory implements PeakFactory {
+public class PeakImplFactory implements FactoryPeak {
 
 	protected final double mz;
 

@@ -2,7 +2,7 @@ package net.sf.bioutils.proteomics.impl;
 
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.kerner.utils.collections.filter.Filter;
-import net.sf.kerner.utils.math.MathUtils;
+import net.sf.kerner.utils.math.UtilMath;
 
 public class PeakFilterByMZ implements Filter<Peak> {
 
@@ -23,7 +23,7 @@ public class PeakFilterByMZ implements Filter<Peak> {
 
     @Override
     public boolean filter(final Peak element) {
-        return MathUtils.round(element.getMZ(), accuracy) == MathUtils.round(mz, accuracy);
+        return UtilMath.round(element.getMZ(), accuracy) == UtilMath.round(mz, accuracy);
     }
 
     @Override

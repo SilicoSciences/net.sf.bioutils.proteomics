@@ -36,7 +36,7 @@ public class PeakFilterByMZRange implements Filter<Peak> {
 
     @Override
     public boolean filter(final Peak element) {
-        return range.includes(element.getMZ());
+        return range.includes(element.getMz());
     }
 
     @Override

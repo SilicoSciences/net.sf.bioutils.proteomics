@@ -9,7 +9,7 @@ public class PeakViewMass extends AbstractTransformingListFactory<Peak, Double> 
 
 	@Override
 	public Double transform(Peak element) {
-		return element.getMZ();
+		return element.getMz();
 	}
 
 }

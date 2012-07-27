@@ -18,7 +18,7 @@ public class PeakFilterByMZPpm<P extends Peak> implements Filter<P> {
 
     @Override
     public boolean filter(final P element) {
-        final double d = ProteomicsUtils.getPpmDelta(parentMass, Math.abs(parentMass - element.getMZ()));
+        final double d = ProteomicsUtils.getPpmDelta(parentMass, Math.abs(parentMass - element.getMz()));
         if (d <= massShift)
             return Boolean.TRUE;
         return Boolean.FALSE;

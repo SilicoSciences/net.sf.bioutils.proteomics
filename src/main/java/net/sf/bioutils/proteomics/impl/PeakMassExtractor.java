@@ -7,7 +7,7 @@ public class PeakMassExtractor<P extends Peak> extends AbstractTransformingListF
 
 	@Override
 	public Double transform(P element) {
-		return element.getMZ();
+		return element.getMz();
 	}
 
 }

@@ -23,7 +23,7 @@ public class PeakFilterByMZ implements Filter<Peak> {
 
     @Override
     public boolean filter(final Peak element) {
-        return UtilMath.round(element.getMZ(), accuracy) == UtilMath.round(mz, accuracy);
+        return UtilMath.round(element.getMz(), accuracy) == UtilMath.round(mz, accuracy);
     }
 
     @Override

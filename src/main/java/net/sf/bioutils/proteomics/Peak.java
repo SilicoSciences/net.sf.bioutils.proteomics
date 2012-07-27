@@ -2,14 +2,16 @@ package net.sf.bioutils.proteomics;
 
 public interface Peak {
 
-	String getName();
+    double getIntensity();
 
-	double getMZ();
+    double getIntensityToNoise();
 
-	double getMZ(MassUnit unit);
+    double getMz();
 
-	double getIntensity();
+    double getMz(MassUnit unit);
 
-	double getIntensityToNoise();
+    String getName();
+
+    double getSignalToNoiseRatio();
 
 }

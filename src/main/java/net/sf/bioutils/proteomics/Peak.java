@@ -2,6 +2,8 @@ package net.sf.bioutils.proteomics;
 
 public interface Peak {
 
+    Fraction getFraction();
+
     double getIntensity();
 
     double getIntensityToNoise();

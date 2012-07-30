@@ -1,5 +1,6 @@
 package net.sf.bioutils.proteomics.impl;
 
+import net.sf.bioutils.proteomics.Fraction;
 import net.sf.bioutils.proteomics.MassUnit;
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.Standard;
@@ -8,6 +9,8 @@ import net.sf.kerner.utils.impl.util.Util;
 public class PeakImpl implements Peak, Standard {
 
     public final static MassUnit DEFAULT_UNIT = MassUnit.DALTON;
+
+    private Fraction fraction = null;
 
     private final double intensity;
 
@@ -20,30 +23,36 @@ public class PeakImpl implements Peak, Standard {
     private final double signalToNoiseRatio;
 
     public PeakImpl(final double mz, final double intensity) {
-        this(mz, intensity, -1, null, -1);
+        this(mz, intensity, -1, null, -1, null);
     }
 
     public PeakImpl(final double mz, final double intensity, final double signalToNoiseRatio) {
-        this(mz, intensity, -1, null, signalToNoiseRatio);
+        this(mz, intensity, -1, null, signalToNoiseRatio, null);
     }
 
     public PeakImpl(final double mz, final double intensity, final double intensityToNoise, final String name,
-            final double signalToNoiseRatio) {
+            final double signalToNoiseRatio, final Fraction fraction) {
         super();
         this.intensity = intensity;
         this.intensityToNoise = intensityToNoise;
         this.mz = mz;
         this.name = name;
         this.signalToNoiseRatio = signalToNoiseRatio;
+        this.setFraction(fraction);
     }
 
     public PeakImpl(final double mz, final double intensity, final String name, final double signalToNoiseRatio) {
-        this(intensity, -1, mz, name, signalToNoiseRatio);
+        this(intensity, -1, mz, name, signalToNoiseRatio, null);
     }
 
     @Override
     public boolean equals(final Object obj) {
         return Util.equalsOnHashCode(this, obj);
+    }
+
+    @Override
+    public Fraction getFraction() {
+        return fraction;
     }
 
     @Override
@@ -80,6 +89,7 @@ public class PeakImpl implements Peak, Standard {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((fraction == null) ? 0 : fraction.hashCode());
         long temp;
         temp = Double.doubleToLongBits(intensity);
         result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -91,6 +101,10 @@ public class PeakImpl implements Peak, Standard {
         temp = Double.doubleToLongBits(signalToNoiseRatio);
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    public void setFraction(final Fraction fraction) {
+        this.fraction = fraction;
     }
 
     @Override

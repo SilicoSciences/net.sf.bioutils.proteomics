@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.FactoryPeak;
+import net.sf.bioutils.proteomics.Peak;
 
 public class PeakImplFactory implements FactoryPeak {
 

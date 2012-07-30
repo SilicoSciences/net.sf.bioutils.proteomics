@@ -2,9 +2,6 @@ package net.sf.bioutils.proteomics;
 
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Peak;
-import net.sf.bioutils.proteomics.Standard;
-
 /**
  * 
  * Extends {@code Fraction} by setter methods to provide modifiability.

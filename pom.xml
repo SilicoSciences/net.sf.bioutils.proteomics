@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.sf.bioutils</groupId>
 	<artifactId>bioutils-proteomics</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1-SNAPSHOT</version>
 	<name>BioUtils - Proteomics</name>
 	<description>A Collection of classes related to biological and bioinformatical topics related to proteomics</description>
 	<properties>

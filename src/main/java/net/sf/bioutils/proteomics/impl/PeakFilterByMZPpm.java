@@ -1,7 +1,7 @@
 package net.sf.bioutils.proteomics.impl;
 
 import net.sf.bioutils.proteomics.Peak;
-import net.sf.bioutils.proteomics.ProteomicsUtils;
+import net.sf.bioutils.proteomics.UtilPeak;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 public class PeakFilterByMZPpm<P extends Peak> implements Filter<P> {
@@ -18,7 +18,7 @@ public class PeakFilterByMZPpm<P extends Peak> implements Filter<P> {
 
     @Override
     public boolean filter(final P element) {
-        final double d = ProteomicsUtils.getPpmDelta(parentMass, Math.abs(parentMass - element.getMz()));
+        final double d = UtilPeak.getPpmDelta(parentMass, Math.abs(parentMass - element.getMz()));
         if (d <= massShift)
             return Boolean.TRUE;
         return Boolean.FALSE;

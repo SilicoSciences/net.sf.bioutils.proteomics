@@ -14,10 +14,6 @@ import org.junit.Test;
 
 public class TestPeakFilterByMZ {
 
-    private Filter<Peak> filter;
-
-    private PeakImpl p1;
-
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -25,6 +21,10 @@ public class TestPeakFilterByMZ {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
     }
+
+    private Filter<Peak> filter;
+
+    private PeakImpl p1;
 
     @Before
     public void setUp() throws Exception {
@@ -39,13 +39,6 @@ public class TestPeakFilterByMZ {
         filter = new PeakFilterByMZ(0.001);
         p1 = new PeakImpl(0.001, 1);
         assertTrue(filter.filter(p1));
-    }
-
-    @Test
-    public final void testVisit02() {
-        filter = new PeakFilterByMZ(0.001);
-        p1 = new PeakImpl(0.002, 1);
-        assertFalse(filter.filter(p1));
     }
 
     @Test(expected = NullPointerException.class)

@@ -113,7 +113,7 @@
 		<dependency>
 			<groupId>net.sf.jtables</groupId>
 			<artifactId>jtables</artifactId>
-			<version>2.0.3</version>
+			<version>2.1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -124,7 +124,7 @@
 		<dependency>
 			<groupId>net.sf.jranges</groupId>
 			<artifactId>jranges</artifactId>
-			<version>0.4.2</version>
+			<version>0.4.3</version>
 		</dependency>
 	</dependencies>
 </project>

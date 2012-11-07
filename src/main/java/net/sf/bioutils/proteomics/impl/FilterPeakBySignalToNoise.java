@@ -23,9 +23,9 @@ public class FilterPeakBySignalToNoise implements Filter<Peak> {
     public boolean filter(final Peak e) {
         switch (type) {
         case BELOW:
-            return e.getSignalToNoiseRatio() < snRatio;
+            return e.getIntensityToNoise() < snRatio;
         case ABOVE:
-            return e.getSignalToNoiseRatio() > snRatio;
+            return e.getIntensityToNoise() > snRatio;
         default:
             throw new RuntimeException("unknown type " + type);
         }

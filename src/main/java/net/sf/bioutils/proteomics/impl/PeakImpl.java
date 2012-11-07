@@ -20,29 +20,22 @@ public class PeakImpl implements Peak, Standard {
 
     private final String name;
 
-    private final double signalToNoiseRatio;
-
     public PeakImpl(final double mz, final double intensity) {
-        this(mz, intensity, -1, null, -1, null);
+        this(mz, intensity, -1, null, null);
     }
 
-    public PeakImpl(final double mz, final double intensity, final double signalToNoiseRatio) {
-        this(mz, intensity, -1, null, signalToNoiseRatio, null);
+    public PeakImpl(final double mz, final double intensity, final double intensityToNoise) {
+        this(mz, intensity, intensityToNoise, null, null);
     }
 
     public PeakImpl(final double mz, final double intensity, final double intensityToNoise, final String name,
-            final double signalToNoiseRatio, final Fraction fraction) {
+            final Fraction fraction) {
         super();
         this.intensity = intensity;
         this.intensityToNoise = intensityToNoise;
         this.mz = mz;
         this.name = name;
-        this.signalToNoiseRatio = signalToNoiseRatio;
         this.setFraction(fraction);
-    }
-
-    public PeakImpl(final double mz, final double intensity, final String name, final double signalToNoiseRatio) {
-        this(intensity, -1, mz, name, signalToNoiseRatio, null);
     }
 
     @Override
@@ -81,11 +74,6 @@ public class PeakImpl implements Peak, Standard {
     }
 
     @Override
-    public double getSignalToNoiseRatio() {
-        return signalToNoiseRatio;
-    }
-
-    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -98,11 +86,10 @@ public class PeakImpl implements Peak, Standard {
         temp = Double.doubleToLongBits(mz);
         result = prime * result + (int) (temp ^ (temp >>> 32));
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        temp = Double.doubleToLongBits(signalToNoiseRatio);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
+    @Override
     public void setFraction(final Fraction fraction) {
         this.fraction = fraction;
     }

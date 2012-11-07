@@ -15,39 +15,8 @@ limitations under the License.
 
 package net.sf.bioutils.proteomics;
 
-import net.sf.kerner.utils.Factory;
-import net.sf.kerner.utils.collections.list.FactoryList;
+public interface FactoryPeak {
 
-/**
- * A {@link Factory} to create instances of {@link Peak}.
- * <p>
- * <b>Example:</b><br>
- * </p>
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * 
- * @see Factory
- * @see Peak
- * @see FactoryList
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version Jul 30, 2012
- */
-public interface FactoryPeak extends Factory<Peak>, FactoryList<Peak> {
-
-    /**
-     * TODO description
-     * 
-     * @param mz
-     *            new peak's mass to charge ratio
-     * @param intensity
-     *            new peak's intensity
-     * @return a new {@link Peak}
-     */
-    Peak create(double mz, double intensity);
+    Peak create(double mz, double intensity, double snRatio);
 
 }

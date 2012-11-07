@@ -15,39 +15,8 @@ limitations under the License.
 
 package net.sf.bioutils.proteomics;
 
-import net.sf.kerner.utils.Factory;
-import net.sf.kerner.utils.collections.list.FactoryList;
+public interface FactoryStandard {
 
-/**
- * A {@link Factory} to create instances of {@link Standard}.
- * <p>
- * <b>Example:</b><br>
- * </p>
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * 
- * @see Factory
- * @see Standard
- * @see FactoryList
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version Jul 30, 2012
- */
-public interface FactoryStandard extends FactoryList<Standard> {
-
-    /**
-     * TODO description
-     * 
-     * @param mz
-     *            new standard's mass to charge ratio
-     * @param intensity
-     *            new standard's intensity
-     * @return a new {@link Standard}
-     */
     Standard create(double mz, double intensity);
 
 }

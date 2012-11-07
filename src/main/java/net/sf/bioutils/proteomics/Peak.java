@@ -14,6 +14,6 @@ public interface Peak {
 
     String getName();
 
-    double getSignalToNoiseRatio();
+    void setFraction(Fraction fraction);
 
 }

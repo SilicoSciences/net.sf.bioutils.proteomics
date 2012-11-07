@@ -30,8 +30,8 @@ import java.util.List;
  * 
  * </p>
  * 
- * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2012-07-30
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * @version 2012-10-19
  */
 public interface Fraction {
 
@@ -48,6 +48,8 @@ public interface Fraction {
      * @return this fraction's {@link Peak Peaks}
      */
     List<Peak> getPeaks();
+
+    Sample getSample();
 
     /**
      * Retrieve number of {@link Peak Peaks} in this fraction. </p> <b>Note:</> {@code null} peaks are not counted!
@@ -69,5 +71,7 @@ public interface Fraction {
      * @return {@code true}, if number of {@link Peak Peaks} in this fraction is {@code 0}; {@code false} otherwise
      */
     boolean isEmpty();
+
+    void setSample(Sample sample);
 
 }

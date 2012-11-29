@@ -20,22 +20,22 @@ public class PeakImpl implements Peak, Standard {
 
     private final String name;
 
-    public PeakImpl(final double mz, final double intensity) {
-        this(mz, intensity, -1, null, null);
+    PeakImpl(final double mz, final double intensity) {
+        this(null, null, mz, intensity, -1);
     }
 
-    public PeakImpl(final double mz, final double intensity, final double intensityToNoise) {
-        this(mz, intensity, intensityToNoise, null, null);
-    }
-
-    public PeakImpl(final double mz, final double intensity, final double intensityToNoise, final String name,
-            final Fraction fraction) {
+    public PeakImpl(final Fraction fraction, final String name, final double mz, final double intensity,
+            final double intensityToNoise) {
         super();
+        this.fraction = fraction;
         this.intensity = intensity;
         this.intensityToNoise = intensityToNoise;
         this.mz = mz;
         this.name = name;
-        this.setFraction(fraction);
+    }
+
+    public PeakImpl(final String name, final double mz, final double intensity, final double intensityToNoise) {
+        this(null, name, mz, intensity, intensityToNoise);
     }
 
     @Override
@@ -77,7 +77,6 @@ public class PeakImpl implements Peak, Standard {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((fraction == null) ? 0 : fraction.hashCode());
         long temp;
         temp = Double.doubleToLongBits(intensity);
         result = prime * result + (int) (temp ^ (temp >>> 32));

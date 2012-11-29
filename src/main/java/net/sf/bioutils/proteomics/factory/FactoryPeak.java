@@ -13,10 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.factory;
+
+import net.sf.bioutils.proteomics.Peak;
 
 public interface FactoryPeak {
 
-    Peak create(double mz, double intensity, double snRatio);
+    Peak create(String name, double mz, double intensity, double snRatio);
 
 }

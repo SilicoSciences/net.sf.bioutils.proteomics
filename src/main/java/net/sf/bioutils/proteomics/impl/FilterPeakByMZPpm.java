@@ -4,13 +4,13 @@ import net.sf.bioutils.proteomics.Peak;
 import net.sf.bioutils.proteomics.UtilPeak;
 import net.sf.kerner.utils.collections.filter.Filter;
 
-public class PeakFilterByMZPpm<P extends Peak> implements Filter<P> {
+public class FilterPeakByMZPpm<P extends Peak> implements Filter<P> {
 
     protected final double massShift;
 
     protected final double parentMass;
 
-    public PeakFilterByMZPpm(final double massShift, final double parentMass) {
+    public FilterPeakByMZPpm(final double massShift, final double parentMass) {
         super();
         this.massShift = massShift;
         this.parentMass = parentMass;

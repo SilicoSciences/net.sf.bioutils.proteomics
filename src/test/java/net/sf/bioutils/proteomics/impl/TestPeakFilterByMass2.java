@@ -19,7 +19,7 @@ import org.junit.Test;
  */
 public class TestPeakFilterByMass2 {
 
-    private PeakFilterByMZRange f;
+    private FilterPeakByMZRange f;
 
     private Peak p1;
 
@@ -43,14 +43,14 @@ public class TestPeakFilterByMass2 {
     @Test
     public final void testVisit01() {
         p1 = new PeakImpl(1, 1);
-        f = new PeakFilterByMZRange(new DummyDoubleRange(0.999, 1.001));
+        f = new FilterPeakByMZRange(new DummyDoubleRange(0.999, 1.001));
         assertTrue(f.filter(p1));
     }
 
     @Test
     public final void testVisit02() {
         p1 = new PeakImpl(1.0011, 1);
-        f = new PeakFilterByMZRange(new DummyDoubleRange(0.999, 1.001));
+        f = new FilterPeakByMZRange(new DummyDoubleRange(0.999, 1.001));
         assertFalse(f.filter(p1));
     }
 

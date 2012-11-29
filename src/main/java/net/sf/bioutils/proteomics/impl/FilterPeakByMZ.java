@@ -4,7 +4,7 @@ import net.sf.bioutils.proteomics.Peak;
 import net.sf.kerner.utils.collections.filter.Filter;
 import net.sf.kerner.utils.math.UtilMath;
 
-public class PeakFilterByMZ implements Filter<Peak> {
+public class FilterPeakByMZ implements Filter<Peak> {
 
     public static int DEFAULT_ACCURACY = 1;
 
@@ -12,11 +12,11 @@ public class PeakFilterByMZ implements Filter<Peak> {
 
     private final double mz;
 
-    public PeakFilterByMZ(final double mz) {
+    public FilterPeakByMZ(final double mz) {
         this(mz, DEFAULT_ACCURACY);
     }
 
-    public PeakFilterByMZ(final double mz, final int accuracy) {
+    public FilterPeakByMZ(final double mz, final int accuracy) {
         this.accuracy = accuracy;
         this.mz = mz;
     }

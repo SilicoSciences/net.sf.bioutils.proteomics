@@ -5,7 +5,7 @@ import net.sf.jranges.range.doublerange.DoubleRange;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 import net.sf.kerner.utils.collections.filter.Filter;
 
-public class PeakFilterByIntensity implements Filter<Peak> {
+public class FilterPeakByIntensity implements Filter<Peak> {
 
     public static enum TYPE {
         EXACT, MIN, MAX
@@ -13,11 +13,11 @@ public class PeakFilterByIntensity implements Filter<Peak> {
 
     private final DoubleRange range;
 
-    public PeakFilterByIntensity(final DoubleRange range) {
+    public FilterPeakByIntensity(final DoubleRange range) {
         this.range = range;
     }
 
-    public PeakFilterByIntensity(final double intensity, final TYPE type) {
+    public FilterPeakByIntensity(final double intensity, final TYPE type) {
         switch (type) {
         case EXACT:
             this.range = new DummyDoubleRange(intensity, intensity);

@@ -36,48 +36,48 @@ public class TestPeakFilterByMZ {
 
     @Test
     public final void testVisit01() {
-        filter = new PeakFilterByMZ(0.001);
+        filter = new FilterPeakByMZ(0.001);
         p1 = new PeakImpl(0.001, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test(expected = NullPointerException.class)
     public final void testVisit03() {
-        filter = new PeakFilterByMZ(0.001);
+        filter = new FilterPeakByMZ(0.001);
         filter.filter(null);
     }
 
     @Test
     public final void testVisit04() {
-        filter = new PeakFilterByMZRange(new DummyDoubleRange(0.001, 0.002));
+        filter = new FilterPeakByMZRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.001, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test
     public final void testVisit05() {
-        filter = new PeakFilterByMZRange(new DummyDoubleRange(0.001, 0.002));
+        filter = new FilterPeakByMZRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.002, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test
     public final void testVisit06() {
-        filter = new PeakFilterByMZRange(new DummyDoubleRange(0.001, 0.002));
+        filter = new FilterPeakByMZRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.0015, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test
     public final void testVisit07() {
-        filter = new PeakFilterByMZRange(new DummyDoubleRange(0.001, 0.002));
+        filter = new FilterPeakByMZRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.0009, 1);
         assertFalse(filter.filter(p1));
     }
 
     @Test
     public final void testVisit08() {
-        filter = new PeakFilterByMZRange(new DummyDoubleRange(0.001, 0.002));
+        filter = new FilterPeakByMZRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.0021, 1);
         assertFalse(filter.filter(p1));
     }

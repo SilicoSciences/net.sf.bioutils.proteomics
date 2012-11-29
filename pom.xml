@@ -1,36 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>7</version>
+	</parent>
 	<groupId>net.sf.bioutils</groupId>
 	<artifactId>bioutils-proteomics</artifactId>
 	<version>2.1.1-SNAPSHOT</version>
 	<name>BioUtils - Proteomics</name>
-	<description>A Collection of classes related to biological and bioinformatical topics related to proteomics</description>
+	<description>Lightweight framework for handling biological and bioinformatical data related to proteomics.</description>
 	<properties>
 		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	<scm>
-		<connection>scm:git:git://bioutils-proteo.git.sourceforge.net/gitroot/bioutils-proteo/bioutils-proteo
+		<url>git://git.code.sf.net/p/bioutils-proteo/code</url>
+		<connection>scm:git:git://git.code.sf.net/p/bioutils-proteo/code
 		</connection>
-		<developerConnection>scm:git:ssh://akerner@bioutils-proteo.git.sourceforge.net/gitroot/bioutils-proteo/bioutils-proteo
+		<developerConnection>scm:git:ssh://akerner@git.code.sf.net/p/bioutils-proteo/code
 		</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
-	<distributionManagement>
-		<repository>
-			<id>hoste1-public</id>
-			<url>http://83.169.17.70:42004/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>hoste1-public</id>
-			<url>http://83.169.17.70:42004/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
 	<developers>
 		<developer>
 			<id>kerner</id>
 			<name>Alexander Kerner</name>
-			<email>a.kerner@dkfz.de</email>
+			<email>alexanderkerner24@googlemail.com</email>
 			<roles>
 				<role>Project Manager</role>
 				<role>Architect</role>
@@ -105,20 +102,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
-				<version>2.3.2</version>
-			</plugin>
+				</plugin>
 		</plugins>
 	</build>
 	<dependencies>
 		<dependency>
-			<groupId>net.sf.jtables</groupId>
-			<artifactId>jtables</artifactId>
-			<version>2.1.3</version>
-		</dependency>
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -129,7 +120,12 @@
 		<dependency>
 			<groupId>net.sf.kerner-utils-collections</groupId>
 			<artifactId>kerner-utils-collections</artifactId>
-			<version>0.19.0</version>
+			<version>0.20.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.kerner-utils</groupId>
+			<artifactId>kerner-utils</artifactId>
+			<version>0.16.0</version>
 		</dependency>
 	</dependencies>
 </project>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.UtilPeak;
 import net.sf.bioutils.proteomics.impl.PeakImpl;
 
 import org.junit.After;

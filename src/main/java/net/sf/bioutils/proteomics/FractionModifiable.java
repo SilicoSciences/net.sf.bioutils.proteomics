@@ -3,12 +3,9 @@ package net.sf.bioutils.proteomics;
 import java.util.List;
 
 /**
- * 
  * Extends {@code Fraction} by setter methods to provide modifiability.
- * 
  * <p>
  * <b>Example:</b><br>
- * 
  * </p>
  * <p>
  * 
@@ -17,17 +14,19 @@ import java.util.List;
  * </pre>
  * 
  * </p>
+ * <p>
+ * last reviewed 2011-11-10
+ * </p>
  * 
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2012-06-04
- * 
+ * @version 2012-11-12
  */
 public interface FractionModifiable extends Fraction {
 
+    void addPeak(Peak peak);
+
     void setName(String name);
 
-    void setPeaks(List<? extends Peak> peaks);
-
-    void setStandards(List<? extends Standard> standards);
+    
 
 }

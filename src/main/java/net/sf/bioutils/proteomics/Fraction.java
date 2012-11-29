@@ -29,11 +29,16 @@ import java.util.List;
  * </pre>
  * 
  * </p>
+ * <p>
+ * last reviewed 2011-11-10
+ * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2012-10-19
+ * @version 2012-11-13
  */
 public interface Fraction {
+
+    int getIndex();
 
     /**
      * Retrieve name of this fraction.
@@ -52,7 +57,7 @@ public interface Fraction {
     Sample getSample();
 
     /**
-     * Retrieve number of {@link Peak Peaks} in this fraction. </p> <b>Note:</> {@code null} peaks are not counted!
+     * Retrieve number of {@link Peak Peaks} in this fraction.
      * 
      * @return number of {@link Peak Peaks} in this fraction
      */
@@ -72,6 +77,10 @@ public interface Fraction {
      */
     boolean isEmpty();
 
+    void setPeaks(List<? extends Peak> peaks);
+
     void setSample(Sample sample);
+
+    void setStandards(List<? extends Standard> standards);
 
 }

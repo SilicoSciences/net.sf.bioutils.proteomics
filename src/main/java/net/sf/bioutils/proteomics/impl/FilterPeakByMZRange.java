@@ -20,7 +20,7 @@ import net.sf.kerner.utils.collections.filter.Filter;
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
  * @version 2011-09-30
  */
-public class PeakFilterByMZRange implements Filter<Peak> {
+public class FilterPeakByMZRange implements Filter<Peak> {
 
     private final DoubleRange range;
 
@@ -30,7 +30,7 @@ public class PeakFilterByMZRange implements Filter<Peak> {
      * @param range
      *            m/z range in which a peak's m/z must be in in order for this {@code Filter} t accept this peak
      */
-    public PeakFilterByMZRange(final DoubleRange range) {
+    public FilterPeakByMZRange(final DoubleRange range) {
         this.range = range;
     }
 

@@ -1,13 +1,17 @@
 package net.sf.bioutils.proteomics;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
 import net.sf.bioutils.proteomics.impl.ComparatorPeakByIntensity;
 import net.sf.bioutils.proteomics.impl.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.impl.FilterPeakBySignalToNoise;
+import net.sf.bioutils.proteomics.impl.TransformerPeakToFractionNr;
+import net.sf.kerner.utils.Transformer;
 import net.sf.kerner.utils.collections.filter.Filter;
+import net.sf.kerner.utils.collections.impl.UtilCollection;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 
 public class UtilPeak {
@@ -76,7 +80,7 @@ public class UtilPeak {
         }
         if (copy.isEmpty())
             return null;
-        Collections.sort(copy, new ComparatorPeakByIntensity<T>());
+        Collections.sort(copy, new ComparatorPeakByIntensity());
         return copy.get(copy.size() - 1);
     }
 
@@ -146,6 +150,20 @@ public class UtilPeak {
     @Deprecated
     public static String ppmToString(final double ppm) {
         return String.format("%6.2f", ppm);
+    }
+
+    public static String toStringIndices(final Collection<? extends Peak> peaks) {
+        return UtilCollection.toString(new TransformerPeakToFractionNr().transformCollection(peaks));
+    }
+
+    public static String toStringNames(final Collection<? extends Peak> peaks) {
+        return UtilCollection.toString(peaks, new Transformer<Object, String>() {
+
+            @Override
+            public String transform(final Object element) {
+                return ((Peak) element).getName();
+            }
+        });
     }
 
     private UtilPeak() {

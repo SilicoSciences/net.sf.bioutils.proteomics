@@ -22,6 +22,11 @@
 		<tag>HEAD</tag>
 	</scm>
 	<distributionManagement>
+		<repository>
+			<id>sourceforge-bioutils-proteo</id>
+			<url>
+sftp://frs.sourceforge.net:/home/frs/project/b/bi/bioutils-proteo/releases</url>
+		</repository>
 		<site>
 			<id>sourceforge-kerner-utils</id>
 			<url>sftp://frs.sourceforge.net:/home/groups/b/bi/bioutils-proteo/htdocs</url>

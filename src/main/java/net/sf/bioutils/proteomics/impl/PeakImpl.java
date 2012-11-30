@@ -49,6 +49,11 @@ public class PeakImpl implements Peak, Standard {
     }
 
     @Override
+    public int getFractionIndex() {
+        return getFraction().getIndex();
+    }
+
+    @Override
     public double getIntensity() {
         return intensity;
     }

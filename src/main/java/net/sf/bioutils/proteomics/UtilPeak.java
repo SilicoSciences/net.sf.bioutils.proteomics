@@ -3,7 +3,10 @@ package net.sf.bioutils.proteomics;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import net.sf.bioutils.proteomics.impl.ComparatorPeakByIntensity;
 import net.sf.bioutils.proteomics.impl.ComparatorPeakByMZ;
@@ -11,6 +14,7 @@ import net.sf.bioutils.proteomics.impl.FilterPeakBySignalToNoise;
 import net.sf.bioutils.proteomics.impl.TransformerPeakToFractionNr;
 import net.sf.kerner.utils.Transformer;
 import net.sf.kerner.utils.collections.filter.Filter;
+import net.sf.kerner.utils.collections.impl.ComparatorInverter;
 import net.sf.kerner.utils.collections.impl.UtilCollection;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 
@@ -120,6 +124,35 @@ public class UtilPeak {
     public static double getPpmDeltaMz(final Peak p1, final Peak p2) {
         final double absDiff = Math.abs(p1.getMz() - p2.getMz());
         return getPpmDelta(p1.getMz(), absDiff);
+    }
+
+    public static TreeMap<Double, Peak> getSortedMapMassShiftAbsSmallestFirst(final double mass,
+            final Collection<? extends Peak> values) {
+        final TreeMap<Double, Peak> result = new TreeMap<Double, Peak>();
+
+        for (final Peak p : values) {
+            result.put(Math.abs(mass - p.getMz()), p);
+        }
+        return result;
+    }
+
+    public static TreeMap<Double, Peak> getSortedMapMassShiftAbsSmallestFirst(final Peak key,
+            final Collection<? extends Peak> values) {
+        return getSortedMapMassShiftAbsSmallestFirst(key.getMz(), values);
+    }
+
+    public static TreeSet<Peak> getSortedSet(final Collection<? extends Peak> peaks, final Comparator<Peak> comparator) {
+        final TreeSet<Peak> result = new TreeSet<Peak>(comparator);
+        result.addAll(peaks);
+        return result;
+    }
+
+    public static TreeSet<Peak> getSortedSetByMzLargestFirst(final Collection<? extends Peak> peaks) {
+        return getSortedSet(peaks, new ComparatorInverter<Peak>(new ComparatorPeakByMZ<Peak>()));
+    }
+
+    public static TreeSet<Peak> getSortedSetByMzSmallestFirst(final Collection<? extends Peak> peaks) {
+        return getSortedSet(peaks, new ComparatorPeakByMZ<Peak>());
     }
 
     @Deprecated

@@ -7,7 +7,7 @@ public class TransformerPeakToFractionNr extends AbstractTransformingListFactory
 
     @Override
     public Integer transform(final Peak element) {
-        return element.getFraction().getIndex();
+        return element.getFractionIndex();
     }
 
 }

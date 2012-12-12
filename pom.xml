@@ -120,12 +120,12 @@ sftp://frs.sourceforge.net:/home/frs/project/b/bi/bioutils-proteo/releases</url>
 		<dependency>
 			<groupId>net.sf.jranges</groupId>
 			<artifactId>jranges</artifactId>
-			<version>0.4.7</version>
+			<version>0.4.8</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sf.kerner-utils-collections</groupId>
 			<artifactId>kerner-utils-collections</artifactId>
-			<version>0.21.0</version>
+			<version>0.21.1</version>
 		</dependency>
 	</dependencies>
 </project>

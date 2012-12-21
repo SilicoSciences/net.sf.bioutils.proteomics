@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bioutils-proteo
+Bundle-SymbolicName: net.sf.bioutils-proteo
+Bundle-Version: 2.3.2.SNAPSHOT
+Export-Package: net.sf.bioutils.proteomics,
+ net.sf.bioutils.proteomics.factory,
+ net.sf.bioutils.proteomics.impl

@@ -6,10 +6,7 @@ Bundle-Version: 2.3.2.SNAPSHOT
 Export-Package: net.sf.bioutils.proteomics,
  net.sf.bioutils.proteomics.factory,
  net.sf.bioutils.proteomics.impl
-Import-Package: net.sf.bioutils.proteomics,
- net.sf.bioutils.proteomics.factory,
- net.sf.bioutils.proteomics.impl,
- net.sf.jranges.range,
+Import-Package: net.sf.jranges.range,
  net.sf.jranges.range.doublerange,
  net.sf.jranges.range.doublerange.impl,
  net.sf.jranges.range.integer,

@@ -2,7 +2,7 @@ package net.sf.bioutils.proteomics;
 
 import java.util.List;
 
-public interface Spectra extends Iterable<Peak> {
+public interface Spectrum extends Iterable<Peak> {
 
     String getName();
 

@@ -2,8 +2,8 @@ package net.sf.bioutils.proteomics;
 
 public interface PeakFractionated extends Peak {
 
-    Spectra getSpectra();
+    Spectrum getSpectra();
 
-    void setSpectra(Spectra spectra);
+    void setSpectra(Spectrum spectra);
 
 }

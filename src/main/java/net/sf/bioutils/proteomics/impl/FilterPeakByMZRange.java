@@ -5,7 +5,8 @@ import net.sf.jranges.range.doublerange.DoubleRange;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 /**
- * A {@link Filter} that checks weather a given {@link Peak}'s {@code m/z} is within a given {@link Range}.
+ * A {@link Filter} that checks weather a given {@link Peak}'s {@code m/z} is
+ * within a given {@link Range}.
  * <p>
  * <b>Example:</b><br>
  * </p>
@@ -22,25 +23,25 @@ import net.sf.kerner.utils.collections.filter.Filter;
  */
 public class FilterPeakByMZRange implements Filter<Peak> {
 
-    private final DoubleRange range;
+	private final DoubleRange range;
 
-    /**
-     * Create a new {@code PeakFilterByMass}.
-     * 
-     * @param range
-     *            m/z range in which a peak's m/z must be in in order for this {@code Filter} t accept this peak
-     */
-    public FilterPeakByMZRange(final DoubleRange range) {
-        this.range = range;
-    }
+	/**
+	 * Create a new {@code PeakFilterByMass}.
+	 * 
+	 * @param range
+	 *            m/z range in which a peak's m/z must be in in order for this
+	 *            {@code Filter} t accept this peak
+	 */
+	public FilterPeakByMZRange(final DoubleRange range) {
+		this.range = range;
+	}
 
-    @Override
-    public boolean filter(final Peak element) {
-        return range.includes(element.getMz());
-    }
+	public boolean filter(final Peak element) {
+		return range.includes(element.getMz());
+	}
 
-    @Override
-    public String toString() {
-        return "massRange=" + range;
-    }
+	@Override
+	public String toString() {
+		return "massRange=" + range;
+	}
 }

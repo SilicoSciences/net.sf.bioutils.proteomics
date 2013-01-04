@@ -39,12 +39,12 @@ import net.sf.kerner.utils.Transformer;
  * @param <P>
  *            type of {@link Peak}
  */
-public interface StringListToPeakTransformer<P extends Peak> extends Transformer<List<? extends String>, P> {
+public interface StringListToPeakTransformer<P extends Peak> extends
+		Transformer<List<? extends String>, P> {
 
-    /**
-     * @return newly parsed {@code Peak} or null, if parsing failed
-     */
-    @Override
-    public P transform(List<? extends String> element);
+	/**
+	 * @return newly parsed {@code Peak} or null, if parsing failed
+	 */
+	public P transform(List<? extends String> element);
 
 }

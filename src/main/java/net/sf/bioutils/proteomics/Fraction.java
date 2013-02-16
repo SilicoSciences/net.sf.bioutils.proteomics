@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2012 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -18,7 +18,8 @@ package net.sf.bioutils.proteomics;
 import java.util.List;
 
 /**
- * A {@code Fraction} is a collection of {@link Peak Peaks} eluting at the same time.
+ * A {@code Fraction} is a collection of {@link Peak Peaks} eluting at the same
+ * time.
  * <p>
  * <b>Example:</b><br>
  * </p>
@@ -34,21 +35,23 @@ import java.util.List;
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2012-11-13
+ * @version 2013-02-12
  */
 public interface Fraction {
+
+    Fraction clone();
 
     int getIndex();
 
     /**
-     * Retrieve name of this fraction.
+     * Get name of this fraction.
      * 
      * @return name of this fraction
      */
     String getName();
 
     /**
-     * Retrieve this fraction's {@link Peak Peaks}
+     * Get this fraction's {@link Peak Peaks}
      * 
      * @return this fraction's {@link Peak Peaks}
      */
@@ -57,25 +60,28 @@ public interface Fraction {
     Sample getSample();
 
     /**
-     * Retrieve number of {@link Peak Peaks} in this fraction.
+     * Get number of {@link Peak Peaks} in this fraction.
      * 
      * @return number of {@link Peak Peaks} in this fraction
      */
     int getSize();
 
     /**
-     * Retrieve this fraction's {@link Standard Standards}.
+     * Get this fraction's {@link Standard Standards}.
      * 
      * @return this fraction's {@link Standard Standards}
      */
     List<Standard> getStandards();
 
     /**
-     * Check, weather this fraction is empty {@code getSize() == 0}.
+     * Check weather this fraction is empty {@code getSize() == 0}.
      * 
-     * @return {@code true}, if number of {@link Peak Peaks} in this fraction is {@code 0}; {@code false} otherwise
+     * @return {@code true}, if number of {@link Peak Peaks} in this fraction is
+     *         {@code 0}; {@code false} otherwise
      */
     boolean isEmpty();
+
+    // TODO: move to FractionModifiable
 
     void setPeaks(List<? extends Peak> peaks);
 

@@ -5,8 +5,8 @@
 		<artifactId>oss-parent</artifactId>
 		<version>7</version>
 	</parent>
-	<groupId>net.sf.bioutils-proteo</groupId>
-	<artifactId>bioutils-proteomics</artifactId>
+	<groupId>net.sf.bioutils.proteomics</groupId>
+	<artifactId>proteomics</artifactId>
 	<version>2.3.2-SNAPSHOT</version>
 	<name>BioUtils - Proteomics</name>
 	<description>Lightweight framework for handling biological and bioinformatical data related to proteomics.</description>

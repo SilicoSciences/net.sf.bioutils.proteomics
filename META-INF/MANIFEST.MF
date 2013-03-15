@@ -3,10 +3,10 @@ Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Name: bioutils-proteo
 Bundle-SymbolicName: net.sf.bioutils.proteomics
-Bundle-Version: 2.4.0
-Export-Package: net.sf.bioutils.proteomics,
- net.sf.bioutils.proteomics.factory,
- net.sf.bioutils.proteomics.impl
+Bundle-Version: 2.4.1
+Export-Package: net.sf.bioutils.proteomics;version="2.4.1",
+ net.sf.bioutils.proteomics.factory;version="2.4.1",
+ net.sf.bioutils.proteomics.impl;version="2.4.1"
 Import-Package: net.sf.jranges.range,
  net.sf.jranges.range.doublerange,
  net.sf.jranges.range.doublerange.impl,

@@ -15,6 +15,7 @@
 
 package net.sf.bioutils.proteomics;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,9 +36,9 @@ import java.util.List;
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-02-12
+ * @version 2013-04-04
  */
-public interface Fraction {
+public interface Fraction extends Iterable<Peak> {
 
     Fraction clone();
 
@@ -82,6 +83,8 @@ public interface Fraction {
     boolean isEmpty();
 
     // TODO: move to FractionModifiable
+
+    public Iterator<Peak> iterator();
 
     void setPeaks(List<? extends Peak> peaks);
 

@@ -1,11 +1,36 @@
 package net.sf.bioutils.proteomics;
 
+/**
+ * 
+ * TODO description
+ * 
+ * </p> <b>Note:</b> masses are monoisotopic.
+ * 
+ * <p>
+ * <b>Example:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * TODO example
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: 0000-00-00
+ * </p>
+ * 
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * @version 0000-00-00
+ * 
+ */
 public enum Peptide {
 
-    A("Ala", 71.0788), C("Cys", 103.1448), D("Asp", 115.0886), E("Glu", 129.1155), F("Phe", 147.1766), G("Gly", 57.052), H(
-            "His", 137.1412), I("Ile", 113.1595), K("Lys", 128.1742), L("Leu", 113.1595), M("Met", 131.1986), N("Asn",
-            114.1039), P("Pro", 97.1167), Q("Gln", 128.1308), R("Arg", 156.1876), S("Ser", 87.0782), T("Thr", 101.1051), V(
-            "Val", 99.1326), W("Trp", 186.2133), Y("Tyr", 163.1760);
+    A("Ala", 71.03711), C("Cys", 103.00919), D("Asp", 115.02694), E("Glu", 129.04259), F("Phe", 147.06841), G("Gly",
+            57.02146), H("His", 137.05891), I("Ile", 113.08406), K("Lys", 128.09496), L("Leu", 113.08406), M("Met",
+            131.04049), N("Asn", 114.04293), P("Pro", 97.05276), Q("Gln", 128.05858), R("Arg", 156.10111), S("Ser",
+            87.03203), T("Thr", 101.04768), V("Val", 99.06841), W("Trp", 186.07931), Y("Tyr", 163.06333);
 
     public static Peptide parse(final String s) {
         if (s.length() == 1 || s.length() == 3) {
@@ -22,7 +47,7 @@ public enum Peptide {
         }
     }
 
-    private static Peptide parseSingleChar(final char c) {
+    public static Peptide parseSingleChar(final char c) {
         for (final Peptide p : values()) {
             if (p.getSingleCharIdent() == c) {
                 return p;
@@ -31,7 +56,7 @@ public enum Peptide {
         throw new IllegalArgumentException("unknown peptide " + c);
     }
 
-    private static Peptide parseTrippleChar(final String s) {
+    public static Peptide parseTrippleChar(final String s) {
         for (final Peptide p : values()) {
             if (p.getTrippeCharIdent().equals(s)) {
                 return p;

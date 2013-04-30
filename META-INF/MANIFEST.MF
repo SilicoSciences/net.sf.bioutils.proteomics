@@ -5,6 +5,7 @@ Bundle-Name: bioutils-proteo
 Bundle-SymbolicName: net.sf.bioutils.proteomics
 Bundle-Version: 2.4.4.qualifier
 Export-Package: net.sf.bioutils.proteomics;version="2.4.4.qualifier",
+ net.sf.bioutils.proteomics.digest;version="2.4.4.qualifier",
  net.sf.bioutils.proteomics.factory;version="2.4.4.qualifier",
  net.sf.bioutils.proteomics.impl;version="2.4.4.qualifier"
 Import-Package: net.sf.jranges.range,

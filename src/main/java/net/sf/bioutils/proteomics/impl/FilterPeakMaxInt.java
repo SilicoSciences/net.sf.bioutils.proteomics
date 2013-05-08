@@ -16,6 +16,7 @@ public class FilterPeakMaxInt implements Filter<Peak> {
     private final Set<Peak> set;
 
     public FilterPeakMaxInt(final Collection<? extends Peak> peaks, final int numElements) {
+
         if (peaks.size() <= numElements) {
             set = new HashSet<Peak>(peaks);
         } else {

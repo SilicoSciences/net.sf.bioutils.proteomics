@@ -24,7 +24,7 @@ package net.sf.bioutils.proteomics;
  * @see Annotator
  * 
  */
-public interface AnnotatableElement<T> {
+public interface AnnotatableElement {
 
     /**
      * 
@@ -33,8 +33,8 @@ public interface AnnotatableElement<T> {
      * @return {@link Annotation} which are assigned to this
      *         {@code AnnotatableElement}
      */
-    Annotation<T> getAnnotation();
+    AnnotationObject getAnnotation();
 
-    void setAnnotation(Annotation<T> annotation);
+    void setAnnotation(AnnotationObject annotation);
 
 }

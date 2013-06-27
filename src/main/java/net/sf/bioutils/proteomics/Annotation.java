@@ -1,13 +1,12 @@
 package net.sf.bioutils.proteomics;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Collection;
 
-import net.sf.kerner.utils.impl.KeyValue;
+import net.sf.kerner.utils.collections.map.collection.MapCollection;
 
 /**
- * A {@link Map} of additional meta-informations which are assigned to an {@link AnnotatableElement}.
+ * A {@link MapCollection} of additional meta-informations which are assigned to
+ * an {@link AnnotatableElement}.
  * <p>
  * <b>Example:</b><br>
  * </p>
@@ -23,39 +22,8 @@ import net.sf.kerner.utils.impl.KeyValue;
  * @version 2012-03-18
  * @see AnnotatableElement
  * @see Annotator
+ * @see MapCollection
  */
-public interface Annotation<T> {
-
-    void addAll(Annotation<T> annotation);
-
-    void add(KeyValue<T, Object> anotation);
-
-    void add(T key, Object value);
-
-    void addCustomAnnotation(KeyValue<Object, Object> anotation);
-
-    void addCustomAnnotation(Object key, Object value);
-
-    boolean containsCustomKey(Object key);
-
-    boolean containsKey(T key);
-
-    boolean containsValue(Object value);
-
-    List<Entry<T, Object>> entryList();
-
-    Object get(T key);
-
-    Object getCustom(Object key);
-
-    List<Object> getCustomKeys();
-
-    List<T> getKeys();
-
-    int getSize();
-
-    List<Object> getValues();
-
-    boolean isEmpty();
+public interface Annotation<K, V, L extends Collection<V>> extends MapCollection<K, V, L> {
 
 }

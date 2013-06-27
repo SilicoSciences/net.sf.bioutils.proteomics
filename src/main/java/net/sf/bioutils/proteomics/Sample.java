@@ -1,8 +1,16 @@
 package net.sf.bioutils.proteomics;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
-public interface Sample extends AnnotatableElement<Object>, Iterable<Fraction> {
+public interface Sample extends AnnotatableElement, Iterable<Fraction> {
+
+    void addAllSampleGroups(Collection<? extends SampleGroup> sampleGroups);
+
+    void addSampleGroup(SampleGroup sampleGroup);
+
+    void clearSampleGroups();
 
     Sample clone();
 
@@ -11,6 +19,8 @@ public interface Sample extends AnnotatableElement<Object>, Iterable<Fraction> {
     String getName();
 
     User getParent();
+
+    Set<SampleGroup> getSampleGroups();
 
     void setFractions(List<? extends Fraction> fraction);
 

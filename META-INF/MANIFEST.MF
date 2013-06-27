@@ -1,15 +1,15 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-Name: bioutils-proteo
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Name: BioUtilitis - Proteomics
 Bundle-SymbolicName: net.sf.bioutils.proteomics
 Bundle-Version: 2.5.1.qualifier
 Export-Package: net.sf.bioutils.proteomics;version="2.5.1.qualifier",
  net.sf.bioutils.proteomics.digest;version="2.5.1.qualifier",
  net.sf.bioutils.proteomics.factory;version="2.5.1.qualifier",
  net.sf.bioutils.proteomics.impl;version="2.5.1.qualifier"
-Import-Package: net.sf.jfasta;version="2.0.1.qualifier",
- net.sf.jfasta.impl;version="2.0.1.qualifier",
+Import-Package: net.sf.jfasta;version="2.0.0",
+ net.sf.jfasta.impl;version="2.0.0",
  net.sf.jranges.range,
  net.sf.jranges.range.doublerange,
  net.sf.jranges.range.doublerange.impl,

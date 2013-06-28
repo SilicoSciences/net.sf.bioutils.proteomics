@@ -13,7 +13,7 @@ import net.sf.kerner.utils.collections.impl.ComparatorInverter;
 
 public class FilterPeakMaxInt implements Filter<Peak> {
 
-    private final Set<Peak> set;
+    private Set<Peak> set;
 
     public FilterPeakMaxInt(final Collection<? extends Peak> peaks, final int numElements) {
 
@@ -28,6 +28,7 @@ public class FilterPeakMaxInt implements Filter<Peak> {
 
     }
 
+    @Override
     public boolean filter(final Peak e) {
         return set.contains(e);
     }

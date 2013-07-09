@@ -3,7 +3,7 @@ package net.sf.bioutils.proteomics;
 import java.util.Collection;
 import java.util.List;
 
-public interface PeptideSequence extends Iterable<Peptide> {
+public interface PeptideSequence extends Iterable<AminoAcid> {
 
     public static double MOL_WEIGHT_OXYGEN = 15.9994;
 
@@ -11,11 +11,11 @@ public interface PeptideSequence extends Iterable<Peptide> {
 
     List<Character> asCharacterList();
 
-    List<Peptide> asList();
+    List<AminoAcid> asList();
 
     List<String> asStringList();
 
-    boolean contains(Peptide p);
+    boolean contains(AminoAcid p);
 
     int getChargeState();
 

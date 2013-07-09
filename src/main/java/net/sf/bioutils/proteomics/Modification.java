@@ -2,13 +2,13 @@ package net.sf.bioutils.proteomics;
 
 public enum Modification {
 
-    CARBAMIDOMETHYL(Peptide.C, 160.030654);
+    CARBAMIDOMETHYL(AminoAcid.C, 160.030654);
 
-    private final Peptide parent;
+    private final AminoAcid parent;
 
     private final double molWeight;
 
-    private Modification(final Peptide parent, final double molWeight) {
+    private Modification(final AminoAcid parent, final double molWeight) {
         this.molWeight = molWeight;
         this.parent = parent;
     }
@@ -17,7 +17,7 @@ public enum Modification {
         return molWeight;
     }
 
-    public Peptide getParent() {
+    public AminoAcid getParent() {
         return parent;
     }
 

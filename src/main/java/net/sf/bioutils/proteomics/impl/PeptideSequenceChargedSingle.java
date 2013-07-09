@@ -8,42 +8,42 @@ import java.util.Iterator;
 import java.util.List;
 
 import net.sf.bioutils.proteomics.Modification;
-import net.sf.bioutils.proteomics.Peptide;
+import net.sf.bioutils.proteomics.AminoAcid;
 import net.sf.bioutils.proteomics.PeptideSEquenceModifiable;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 import net.sf.kerner.utils.impl.util.Util;
 
 public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
 
-    private final List<Peptide> peptides = new ArrayList<Peptide>();
+    private final List<AminoAcid> peptides = new ArrayList<AminoAcid>();
 
     private Collection<Modification> mods = new HashSet<Modification>();
 
     private transient double cacheMolWeight = -1;
 
-    public PeptideSequenceChargedSingle(final List<Peptide> peptides) {
+    public PeptideSequenceChargedSingle(final List<AminoAcid> peptides) {
         this.peptides.addAll(peptides);
     }
 
     public PeptideSequenceChargedSingle(final String string) {
         for (final char c : string.toCharArray()) {
-            peptides.add(Peptide.parseSingleChar(c));
+            peptides.add(AminoAcid.parseSingleChar(c));
         }
     }
 
-    public synchronized void append(final Peptide peptide) {
+    public synchronized void append(final AminoAcid peptide) {
         peptides.add(peptide);
     }
 
     public synchronized List<Character> asCharacterList() {
         final List<Character> result = UtilList.newList();
-        for (final Peptide p : peptides) {
+        for (final AminoAcid p : peptides) {
             result.add(p.getSingleCharIdent());
         }
         return result;
     }
 
-    public synchronized List<Peptide> asList() {
+    public synchronized List<AminoAcid> asList() {
         return Collections.unmodifiableList(peptides);
     }
 
@@ -53,8 +53,8 @@ public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
 
     private void calculateMolWeight() {
         double result = 0;
-        for (final Peptide p : peptides) {
-            if (p.equals(Peptide.C)) {
+        for (final AminoAcid p : peptides) {
+            if (p.equals(AminoAcid.C)) {
                 final int i = 0;
             }
             result += getMolWeight(p);
@@ -62,7 +62,7 @@ public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
         cacheMolWeight = result + getMolWeightCTerminal() + getMolWeightNTerminal();
     }
 
-    public boolean contains(final Peptide p) {
+    public boolean contains(final AminoAcid p) {
         return asList().contains(p);
     }
 
@@ -86,7 +86,7 @@ public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
         return cacheMolWeight;
     }
 
-    private double getMolWeight(final Peptide p) {
+    private double getMolWeight(final AminoAcid p) {
         for (final Modification m : mods) {
             if (m.getParent().equals(p)) {
                 return m.getMolWeight();
@@ -110,11 +110,11 @@ public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
         return peptides.hashCode();
     }
 
-    public synchronized void insert(final Peptide peptide, final int index) {
+    public synchronized void insert(final AminoAcid peptide, final int index) {
         peptides.add(index, peptide);
     }
 
-    public synchronized Iterator<Peptide> iterator() {
+    public synchronized Iterator<AminoAcid> iterator() {
         return asList().iterator();
     }
 
@@ -126,7 +126,7 @@ public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
     @Override
     public synchronized String toString() {
         final StringBuilder sb = new StringBuilder();
-        for (final Peptide p : peptides) {
+        for (final AminoAcid p : peptides) {
             sb.append(p);
         }
         sb.append(":");

@@ -12,14 +12,14 @@ public class UtilProteomics {
 
     private final static Logger log = LoggerFactory.getLogger(UtilProteomics.class);
 
-    private final static Map<Character, Peptide> molMassesChar = new HashMap<Character, Peptide>();
+    private final static Map<Character, AminoAcid> molMassesChar = new HashMap<Character, AminoAcid>();
 
-    private final static Map<String, Peptide> molMassesString = new HashMap<String, Peptide>();
+    private final static Map<String, AminoAcid> molMassesString = new HashMap<String, AminoAcid>();
 
     private final static double terminiWeight = 18.0152;
 
     static {
-        for (final Peptide p : Peptide.values()) {
+        for (final AminoAcid p : AminoAcid.values()) {
             molMassesChar.put(p.getSingleCharIdent(), p);
             molMassesString.put(p.getTrippeCharIdent(), p);
         }
@@ -39,7 +39,7 @@ public class UtilProteomics {
         }
         double result = 0;
         for (final char c : sequence.toCharArray()) {
-            final Peptide p = molMassesChar.get(c);
+            final AminoAcid p = molMassesChar.get(c);
             if (p == null) {
                 if (log.isWarnEnabled()) {
                     log.warn("ignoring AS " + c);

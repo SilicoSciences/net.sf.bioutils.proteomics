@@ -1,8 +1,21 @@
+/**********************************************************************
+ Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ ***********************************************************************/
+
 package net.sf.bioutils.proteomics;
 
 /**
- * 
- * TODO description
  * 
  * </p> <b>Note:</b> masses are monoisotopic.
  * 
@@ -25,14 +38,14 @@ package net.sf.bioutils.proteomics;
  * @version 0000-00-00
  * 
  */
-public enum Peptide {
+public enum AminoAcid {
 
     A("Ala", 71.03711), C("Cys", 103.00919), D("Asp", 115.02694), E("Glu", 129.04259), F("Phe", 147.06841), G("Gly",
             57.02146), H("His", 137.05891), I("Ile", 113.08406), K("Lys", 128.09496), L("Leu", 113.08406), M("Met",
             131.04049), N("Asn", 114.04293), P("Pro", 97.05276), Q("Gln", 128.05858), R("Arg", 156.10111), S("Ser",
             87.03203), T("Thr", 101.04768), V("Val", 99.06841), W("Trp", 186.07931), Y("Tyr", 163.06333);
 
-    public static Peptide parse(final String s) {
+    public static AminoAcid parse(final String s) {
         if (s.length() == 1 || s.length() == 3) {
             final String s2 = s.toUpperCase();
             if (s2.length() == 1) {
@@ -47,8 +60,8 @@ public enum Peptide {
         }
     }
 
-    public static Peptide parseSingleChar(final char c) {
-        for (final Peptide p : values()) {
+    public static AminoAcid parseSingleChar(final char c) {
+        for (final AminoAcid p : values()) {
             if (p.getSingleCharIdent() == c) {
                 return p;
             }
@@ -56,8 +69,8 @@ public enum Peptide {
         throw new IllegalArgumentException("unknown peptide " + c);
     }
 
-    public static Peptide parseTrippleChar(final String s) {
-        for (final Peptide p : values()) {
+    public static AminoAcid parseTrippleChar(final String s) {
+        for (final AminoAcid p : values()) {
             if (p.getTrippeCharIdent().equals(s)) {
                 return p;
             }
@@ -69,7 +82,7 @@ public enum Peptide {
 
     private final String trippleCharIdent;
 
-    private Peptide(final String trippleCharIdent, final double molWeight) {
+    private AminoAcid(final String trippleCharIdent, final double molWeight) {
         this.molWeight = molWeight;
         this.trippleCharIdent = trippleCharIdent;
     }

@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.Peptide;
+import net.sf.bioutils.proteomics.AminoAcid;
 import net.sf.bioutils.proteomics.PeptideSequence;
 import net.sf.bioutils.proteomics.impl.PeptideSequenceChargedSingle;
 import net.sf.jranges.range.integer.impl.DummyIntegerRange;
@@ -62,12 +62,12 @@ public class DigesterTrypsin extends DigesterAbstract {
         result.add(peptides.asList().size() - 1);
 
         for (int i = 0; i < peptides.asList().size(); i++) {
-            final Peptide nextP = peptides.asList().get(i);
-            Peptide next2P = null;
+            final AminoAcid nextP = peptides.asList().get(i);
+            AminoAcid next2P = null;
             if (peptides.asList().size() > i + 1) {
                 next2P = peptides.asList().get(i + 1);
             }
-            if ((nextP.equals(Peptide.R) || nextP.equals(Peptide.K)) && ((next2P == null || !next2P.equals(Peptide.P)))) {
+            if ((nextP.equals(AminoAcid.R) || nextP.equals(AminoAcid.K)) && ((next2P == null || !next2P.equals(AminoAcid.P)))) {
                 result.add(i);
             }
         }

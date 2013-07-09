@@ -26,6 +26,11 @@
 			<url>scp://shell.sourceforge.net/home/project-web/bioutils-proteo/htdocs</url>
 		</site>
 	</distributionManagement>
+	<url>https://sourceforge.net/projects/bioutils-proteo/</url>
+	<issueManagement>
+		<system>JIRA</system>
+		<url>http://akerner.de:8090/browse/BIOUTILSPROTEO</url>
+	</issueManagement>
 	<developers>
 		<developer>
 			<id>kerner</id>
@@ -37,6 +42,12 @@
 			</roles>
 		</developer>
 	</developers>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+		</license>
+	</licenses>
 	<build>
 		<plugins>
 			<plugin>

@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2012 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -15,9 +15,14 @@
 package net.sf.bioutils.proteomics;
 
 /**
- * TODO description
+ * 
+ * A {@link Standard} is a {@link Peak} that is used to normalize one or more
+ * other {@link Peak Peak's} intensities or masses. </p> Its typically spiked
+ * into a sample during sample preparation or processing.
+ * 
  * <p>
  * <b>Example:</b><br>
+ * 
  * </p>
  * <p>
  * 
@@ -26,9 +31,13 @@ package net.sf.bioutils.proteomics;
  * </pre>
  * 
  * </p>
+ * <p>
+ * last reviewed: 2013-07-08
+ * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version Jul 30, 2012
+ * @version 2013-07-08
+ * 
  */
 public interface Standard extends Peak {
 

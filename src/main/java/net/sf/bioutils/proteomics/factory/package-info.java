@@ -1,5 +1,11 @@
 /**
- * This package contains factory interfaces.
+ * This package contains factory interfaces to build instances of:
+ * <ul>
+ * <li>{@link Sample}</li>
+ * <li>{@link Fraction}</li>
+ * <li>{@link Peak}</li>
+ * <li>{@link Standard}</li>
+ * </ul>
  * </p>
  * Building a sample should be performed in the following order:
  * <ol>
@@ -21,6 +27,7 @@
  * @see Sample
  * @see Fraction
  * @see Peak
+ * @see Standard
  */
 package net.sf.bioutils.proteomics.factory;
 

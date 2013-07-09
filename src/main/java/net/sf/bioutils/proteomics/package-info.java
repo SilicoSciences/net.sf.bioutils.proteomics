@@ -1,5 +1,5 @@
 /**********************************************************************
-Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
+Copyright (c) 2009-2013 Alexander Kerner. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -13,43 +13,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
-
-import java.util.List;
-
-import net.sf.kerner.utils.Transformer;
-
 /**
- * {@link Transformer} to parse a single {@link Peak} from a {@link List} of
- * Strings.
- * 
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * 
- * <p>
- * last reviewed: 2013-07-08
- * </p>
- * 
+ * This package contains all types which build the very base of this component and all software which builds upon it.
+ *
+ *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
  * 
- * 
- * @see Transformer
- * @see Peak
- * @param <P>
- *            type of {@link Peak}
+ *
  */
-public interface StringListToPeakTransformer<P extends Peak> extends Transformer<List<? extends String>, P> {
-
-    /**
-     * @return newly parsed {@code Peak} or null, if parsing failed
-     */
-    @Override
-    public P transform(List<? extends String> element);
-
-}
+package net.sf.bioutils.proteomics;

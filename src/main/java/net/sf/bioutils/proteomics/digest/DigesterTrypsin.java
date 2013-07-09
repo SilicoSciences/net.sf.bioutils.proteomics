@@ -17,7 +17,7 @@ import net.sf.jranges.range.integer.impl.DummyIntegerRange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DigesterTrypsin implements Digester {
+public class DigesterTrypsin extends DigesterAbstract {
 
     private final static Logger log = LoggerFactory.getLogger(DigesterTrypsin.class);
 
@@ -36,6 +36,7 @@ public class DigesterTrypsin implements Digester {
         }
     }
 
+    @Override
     public List<PeptideSequence> digest(final PeptideSequence peptides, final int numMissCleav) {
 
         final Set<PeptideSequence> result = new LinkedHashSet<PeptideSequence>();

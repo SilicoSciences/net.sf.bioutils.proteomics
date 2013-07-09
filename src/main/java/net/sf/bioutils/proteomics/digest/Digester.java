@@ -2,10 +2,10 @@ package net.sf.bioutils.proteomics.digest;
 
 import java.util.List;
 
-import net.sf.bioutils.proteomics.PeptideSequence;
+import net.sf.bioutils.proteomics.Peptide;
 
 public interface Digester {
 
-    List<PeptideSequence> digest(final PeptideSequence peptides, final int numMissCleav);
+    List<Peptide> digest(final Peptide peptides, final int numMissCleav);
 
 }

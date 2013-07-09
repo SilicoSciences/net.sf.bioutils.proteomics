@@ -10,7 +10,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import net.sf.bioutils.proteomics.AminoAcid;
-import net.sf.bioutils.proteomics.PeptideSequence;
+import net.sf.bioutils.proteomics.Peptide;
 import net.sf.bioutils.proteomics.impl.PeptideSequenceChargedSingle;
 import net.sf.jranges.range.integer.impl.DummyIntegerRange;
 
@@ -21,7 +21,7 @@ public class DigesterTrypsin extends DigesterAbstract {
 
     private final static Logger log = LoggerFactory.getLogger(DigesterTrypsin.class);
 
-    private void addToResult(final Collection<PeptideSequence> result, final PeptideSequence peptides,
+    private void addToResult(final Collection<Peptide> result, final Peptide peptides,
             final int indexLow, final int indexHigh) {
         // TODO: use factory
         if (indexLow < indexHigh && indexHigh <= peptides.asList().size()) {
@@ -37,9 +37,9 @@ public class DigesterTrypsin extends DigesterAbstract {
     }
 
     @Override
-    public List<PeptideSequence> digest(final PeptideSequence peptides, final int numMissCleav) {
+    public List<Peptide> digest(final Peptide peptides, final int numMissCleav) {
 
-        final Set<PeptideSequence> result = new LinkedHashSet<PeptideSequence>();
+        final Set<Peptide> result = new LinkedHashSet<Peptide>();
         final SortedSet<Integer> cleavSites = getCleavageSites(peptides);
         for (int i = 0; i <= numMissCleav; i++) {
             int lastOne = 0;
@@ -52,10 +52,10 @@ public class DigesterTrypsin extends DigesterAbstract {
             addToResult(result, peptides, lastOne, peptides.asList().size());
         }
 
-        return new ArrayList<PeptideSequence>(result);
+        return new ArrayList<Peptide>(result);
     }
 
-    public SortedSet<Integer> getCleavageSites(final PeptideSequence peptides) {
+    public SortedSet<Integer> getCleavageSites(final Peptide peptides) {
         final TreeSet<Integer> result = new TreeSet<Integer>();
 
         // last index

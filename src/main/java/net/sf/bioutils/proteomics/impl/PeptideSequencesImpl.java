@@ -4,32 +4,32 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.PeptideSequence;
+import net.sf.bioutils.proteomics.Peptide;
 import net.sf.bioutils.proteomics.PeptideSequences;
 import net.sf.kerner.utils.collections.list.TransformerList;
 import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 
 public class PeptideSequencesImpl implements PeptideSequences {
 
-    public final static TransformerList<PeptideSequence, Double> TRANSFORMER_TO_MASS_LIST = new AbstractTransformingListFactory<PeptideSequence, Double>() {
+    public final static TransformerList<Peptide, Double> TRANSFORMER_TO_MASS_LIST = new AbstractTransformingListFactory<Peptide, Double>() {
 
-        public Double transform(final PeptideSequence element) {
+        public Double transform(final Peptide element) {
             return element.getMolWeight();
         }
     };
 
-    private final Collection<PeptideSequence> delegate;
+    private final Collection<Peptide> delegate;
 
-    public PeptideSequencesImpl(final Collection<PeptideSequence> collection) {
+    public PeptideSequencesImpl(final Collection<Peptide> collection) {
         super();
         delegate = collection;
     }
 
-    public boolean add(final PeptideSequence e) {
+    public boolean add(final Peptide e) {
         return delegate.add(e);
     }
 
-    public boolean addAll(final Collection<? extends PeptideSequence> c) {
+    public boolean addAll(final Collection<? extends Peptide> c) {
         return delegate.addAll(c);
     }
 
@@ -63,7 +63,7 @@ public class PeptideSequencesImpl implements PeptideSequences {
         return delegate.isEmpty();
     }
 
-    public Iterator<PeptideSequence> iterator() {
+    public Iterator<Peptide> iterator() {
         return delegate.iterator();
     }
 

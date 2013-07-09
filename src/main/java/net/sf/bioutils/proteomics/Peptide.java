@@ -3,7 +3,7 @@ package net.sf.bioutils.proteomics;
 import java.util.Collection;
 import java.util.List;
 
-public interface PeptideSequence extends Iterable<AminoAcid> {
+public interface Peptide extends Iterable<AminoAcid> {
 
     public static double MOL_WEIGHT_OXYGEN = 15.9994;
 

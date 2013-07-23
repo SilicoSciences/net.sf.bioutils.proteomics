@@ -40,12 +40,44 @@ package net.sf.bioutils.proteomics;
  */
 public enum AminoAcid {
 
-    A("Ala", 71.03711), C("Cys", 103.00919), D("Asp", 115.02694), E("Glu", 129.04259), F("Phe", 147.06841), G("Gly",
-            57.02146), H("His", 137.05891), I("Ile", 113.08406), K("Lys", 128.09496), L("Leu", 113.08406), M("Met",
-            131.04049), N("Asn", 114.04293), P("Pro", 97.05276), Q("Gln", 128.05858), R("Arg", 156.10111), S("Ser",
-            87.03203), T("Thr", 101.04768), V("Val", 99.06841), W("Trp", 186.07931), Y("Tyr", 163.06333);
+    /**
+     * <a href="http://en.wikipedia.org/wiki/Alanine">en.wikipedia.org/wiki/
+     * Alanine</a>
+     */
+    A("Ala", 71.03711),
 
-    public static AminoAcid parse(final String s) {
+    /**
+     * <a href="http://en.wikipedia.org/wiki/Cysteine">en.wikipedia.org/wiki/
+     * Cysteine</a>
+     */
+    C("Cys", 103.00919),
+
+    /**
+     * <a
+     * href="http://en.wikipedia.org/wiki/Aspartic_acid">en.wikipedia.org/wiki/
+     * Aspartic acid</a>
+     */
+    D("Asp", 115.02694),
+
+    /**
+     * <a href="http://en.wikipedia.org/wiki/Glutamic_acid">http://en.wikipedia.
+     * org/wiki/Glutamic_acid</a>
+     */
+    E("Glu", 129.04259),
+
+    /**
+     * <a href="http://en.wikipedia.org/wiki/Phenylalanine">http://en.wikipedia.
+     * org/wiki/Phenylalanine</a>
+     */
+    F("Phe", 147.06841),
+
+    G("Gly", 57.02146), H("His", 137.05891), I("Ile", 113.08406), K("Lys", 128.09496), L("Leu", 113.08406), M("Met",
+            131.04049), N("Asn", 114.04293), P("Pro", 97.05276), Q("Gln", 128.05858), R("Arg", 156.10111), S("Ser",
+            87.03203), T("Thr", 101.04768), V("Val", 99.06841), W("Trp", 186.07931), Y("Tyr", 163.06333), U("Sec",
+            150.953639), O("Pyl", 237.143012), B("Asx", N.getMolWeight()), Z("Glx", Q.getMolWeight()), J("Xle", L
+            .getMolWeight()), X("Xaa", 0);
+
+    public static AminoAcid parse(final String s) throws ExceptionUnknownAminoAcid {
         if (s.length() == 1 || s.length() == 3) {
             final String s2 = s.toUpperCase();
             if (s2.length() == 1) {
@@ -66,7 +98,7 @@ public enum AminoAcid {
                 return p;
             }
         }
-        throw new IllegalArgumentException("unknown peptide " + c);
+        throw new ExceptionUnknownAminoAcid("unknown peptide " + c);
     }
 
     public static AminoAcid parseTrippleChar(final String s) {

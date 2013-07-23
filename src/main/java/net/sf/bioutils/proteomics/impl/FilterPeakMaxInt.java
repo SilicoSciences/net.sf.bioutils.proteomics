@@ -23,7 +23,11 @@ public class FilterPeakMaxInt implements Filter<Peak> {
             final TreeSet<Peak> sett = new TreeSet<Peak>(new ComparatorInverter<Peak>(new ComparatorPeakByIntensity()));
             sett.addAll(peaks);
             final List<Peak> list = new ArrayList<Peak>(sett);
-            set = new HashSet<Peak>(list.subList(0, numElements));
+            try {
+                set = new HashSet<Peak>(list.subList(0, numElements));
+            } catch (final Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }

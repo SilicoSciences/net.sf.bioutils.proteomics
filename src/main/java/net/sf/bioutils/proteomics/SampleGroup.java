@@ -10,4 +10,6 @@ public interface SampleGroup {
 
     Set<Sample> getSamples();
 
+    void removeSample(Sample ssample);
+
 }

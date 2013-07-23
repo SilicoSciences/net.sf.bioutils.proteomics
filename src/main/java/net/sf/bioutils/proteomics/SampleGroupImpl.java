@@ -17,7 +17,7 @@ public class SampleGroupImpl implements SampleGroup {
     }
 
     @Override
-    public void addSample(final Sample sample) {
+    public synchronized void addSample(final Sample sample) {
         samples.add(sample);
     }
 
@@ -29,6 +29,11 @@ public class SampleGroupImpl implements SampleGroup {
     @Override
     public synchronized Set<Sample> getSamples() {
         return Collections.unmodifiableSet(samples);
+    }
+
+    @Override
+    public synchronized void removeSample(final Sample sample) {
+        samples.remove(sample);
     }
 
     public synchronized void setName(final String name) {

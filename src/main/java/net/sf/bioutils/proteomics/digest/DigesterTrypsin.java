@@ -3,9 +3,7 @@ package net.sf.bioutils.proteomics.digest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -21,10 +19,10 @@ public class DigesterTrypsin extends DigesterAbstract {
 
     private final static Logger log = LoggerFactory.getLogger(DigesterTrypsin.class);
 
-    private void addToResult(final Collection<Peptide> result, final Peptide peptides,
-            final int indexLow, final int indexHigh) {
+    private void addToResult(final Collection<Peptide> result, final Peptide peptides, final int indexLow,
+            final int indexHigh) {
         // TODO: use factory
-        if (indexLow < indexHigh && indexHigh <= peptides.asList().size()) {
+        if (indexLow <= indexHigh && indexHigh <= peptides.asList().size()) {
             final PeptideSequenceChargedSingle seq = new PeptideSequenceChargedSingle(peptides.asList().subList(
                     indexLow, indexHigh));
             seq.setModifications(peptides.getModifications());
@@ -39,7 +37,9 @@ public class DigesterTrypsin extends DigesterAbstract {
     @Override
     public List<Peptide> digest(final Peptide peptides, final int numMissCleav) {
 
-        final Set<Peptide> result = new LinkedHashSet<Peptide>();
+        final int len1 = peptides.asList().size();
+
+        final List<Peptide> result = new ArrayList<Peptide>();
         final SortedSet<Integer> cleavSites = getCleavageSites(peptides);
         for (int i = 0; i <= numMissCleav; i++) {
             int lastOne = 0;
@@ -50,6 +50,15 @@ public class DigesterTrypsin extends DigesterAbstract {
                 lastOne = next + 1;
             }
             addToResult(result, peptides, lastOne, peptides.asList().size());
+        }
+
+        int len2 = 0;
+        for (final Peptide p : result) {
+            len2 += p.asList().size();
+        }
+
+        if (len1 != len2) {
+            throw new RuntimeException("len1=" + len1 + ", len2=" + len2 + ", pep=" + peptides);
         }
 
         return new ArrayList<Peptide>(result);
@@ -67,7 +76,8 @@ public class DigesterTrypsin extends DigesterAbstract {
             if (peptides.asList().size() > i + 1) {
                 next2P = peptides.asList().get(i + 1);
             }
-            if ((nextP.equals(AminoAcid.R) || nextP.equals(AminoAcid.K)) && ((next2P == null || !next2P.equals(AminoAcid.P)))) {
+            if ((nextP.equals(AminoAcid.R) || nextP.equals(AminoAcid.K))
+                    && ((next2P == null || !next2P.equals(AminoAcid.P)))) {
                 result.add(i);
             }
         }

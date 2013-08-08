@@ -28,13 +28,15 @@ package net.sf.bioutils.proteomics;
  * 
  * </p>
  * <p>
- * last reviewed 2011-11-30
+ * last reviewed 2013-08-08
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2012-11-30
+ * @version 2013-08-08
  */
 public interface Peak {
+
+    Peak clone();
 
     Fraction getFraction();
 

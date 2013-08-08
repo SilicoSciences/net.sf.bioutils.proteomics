@@ -39,34 +39,46 @@ public class PeakImpl implements Peak, Standard {
     }
 
     @Override
+    public PeakImpl clone() {
+        return new PeakImpl(null, getName(), getMz(), getIntensity(), getIntensityToNoise());
+    }
+
+    @Override
     public boolean equals(final Object obj) {
         return Util.equalsOnHashCode(this, obj);
     }
 
+    @Override
     public Fraction getFraction() {
         return fraction;
     }
 
+    @Override
     public int getFractionIndex() {
         return getFraction().getIndex();
     }
 
+    @Override
     public double getIntensity() {
         return intensity;
     }
 
+    @Override
     public double getIntensityToNoise() {
         return intensityToNoise;
     }
 
+    @Override
     public double getMz() {
         return mz;
     }
 
+    @Override
     public double getMz(final MassUnit unit) {
         return DEFAULT_UNIT.convert(mz, unit);
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -86,6 +98,7 @@ public class PeakImpl implements Peak, Standard {
         return result;
     }
 
+    @Override
     public void setFraction(final Fraction fraction) {
         this.fraction = fraction;
     }

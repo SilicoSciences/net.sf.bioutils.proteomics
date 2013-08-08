@@ -5,12 +5,36 @@ import java.util.Comparator;
 import net.sf.bioutils.proteomics.Peak;
 import net.sf.kerner.utils.collections.impl.ComparatorNull;
 
-public class ComparatorPeakByMZ<P extends Peak> extends ComparatorNull<P> implements Comparator<P> {
+/**
+ * 
+ * TODO description
+ * 
+ * <p>
+ * <b>Example:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * TODO example
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: 2013-08-08
+ * </p>
+ * 
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * @version 2013-08-08
+ * 
+ */
+public class ComparatorPeakByMZ extends ComparatorNull<Peak> implements Comparator<Peak> {
 
-	public int compareNonNull(P o1, P o2) {
+    @Override
+    public int compareNonNull(final Peak o1, final Peak o2) {
 
-		return Double.compare(o1.getMz(), o2.getMz());
+        return Double.compare(o1.getMz(), o2.getMz());
 
-	}
+    }
 
 }

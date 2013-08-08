@@ -23,6 +23,7 @@ public class UtilPeak {
     public static <P extends Peak> List<P> filter(final List<P> peaks, final Filter<Peak> filter) {
         // TODO What kind of stupid workaround is this..
         return UtilList.filterList(peaks, new Filter<P>() {
+            @Override
             public boolean filter(final P e) {
                 return filter.filter(e);
             }
@@ -94,7 +95,7 @@ public class UtilPeak {
         }
         if (copy.isEmpty())
             return null;
-        Collections.sort(copy, new ComparatorPeakByMZ<T>());
+        Collections.sort(copy, new ComparatorPeakByMZ());
         return copy.get(copy.size() - 1);
     }
 
@@ -147,11 +148,11 @@ public class UtilPeak {
     }
 
     public static TreeSet<Peak> getSortedSetByMzLargestFirst(final Collection<? extends Peak> peaks) {
-        return getSortedSet(peaks, new ComparatorInverter<Peak>(new ComparatorPeakByMZ<Peak>()));
+        return getSortedSet(peaks, new ComparatorInverter<Peak>(new ComparatorPeakByMZ()));
     }
 
     public static TreeSet<Peak> getSortedSetByMzSmallestFirst(final Collection<? extends Peak> peaks) {
-        return getSortedSet(peaks, new ComparatorPeakByMZ<Peak>());
+        return getSortedSet(peaks, new ComparatorPeakByMZ());
     }
 
     @Deprecated
@@ -189,9 +190,10 @@ public class UtilPeak {
     }
 
     public static String toStringNames(final Collection<? extends Peak> peaks) {
-        return UtilCollection.toString(peaks, new Transformer<Object, String>() {
-            public String transform(final Object element) {
-                return ((Peak) element).getName();
+        return UtilCollection.toString(new ArrayList<Peak>(peaks), new Transformer<Peak, String>() {
+            @Override
+            public String transform(final Peak element) {
+                return element.getName();
             }
         });
     }

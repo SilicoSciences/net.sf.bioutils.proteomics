@@ -18,20 +18,19 @@ package net.sf.bioutils.proteomics;
  * 
  * </p>
  * 
- * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2012-03-17
+ * <p>
+ * last reviewed: 2013-08-07
+ * </p>
  * 
- * @see Annotator
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * @version 2013-08-07
  * 
  */
 public interface AnnotatableElement {
 
     /**
      * 
-     * TODO description
-     * 
-     * @return {@link Annotation} which are assigned to this
-     *         {@code AnnotatableElement}
+     * @return annotations which are assigned to this {@code AnnotatableElement}
      */
     AnnotationObject getAnnotation();
 

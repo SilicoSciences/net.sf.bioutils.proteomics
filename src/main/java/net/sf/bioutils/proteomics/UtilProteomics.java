@@ -66,6 +66,21 @@ public class UtilProteomics {
         return result + terminiWeight;
     }
 
+    public static boolean isAnnotatedMSMS(final Sample sample) {
+        for (final Fraction f : sample) {
+            for (final Peak p : f.getPeaks()) {
+                if (p instanceof PeakFractionated) {
+                    final PeakFractionated pf = (PeakFractionated) p;
+                    if (pf.getSpectrum() != null && !pf.getSpectrum().getPeaks().isEmpty()) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
     private UtilProteomics() {
 
     }

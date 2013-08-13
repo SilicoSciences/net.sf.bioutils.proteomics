@@ -1,7 +1,7 @@
 package net.sf.bioutils.proteomics.peptides;
 
 
-public interface PeptideSEquenceModifiable extends Peptide {
+public interface PeptideSequenceModifiable extends Peptide {
 
     void append(AminoAcid peptide);
 

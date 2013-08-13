@@ -10,7 +10,7 @@ import java.util.List;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 import net.sf.kerner.utils.impl.util.Util;
 
-public class PeptideSequenceChargedSingle implements PeptideSEquenceModifiable {
+public class PeptideSequenceChargedSingle implements PeptideSequenceModifiable {
 
     private final List<AminoAcid> peptides = new ArrayList<AminoAcid>();
 

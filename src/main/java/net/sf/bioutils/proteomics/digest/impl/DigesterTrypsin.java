@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics.digest;
+package net.sf.bioutils.proteomics.digest.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +9,7 @@ import java.util.TreeSet;
 
 import net.sf.bioutils.proteomics.AminoAcid;
 import net.sf.bioutils.proteomics.Peptide;
+import net.sf.bioutils.proteomics.digest.DigesterAbstract;
 import net.sf.bioutils.proteomics.impl.PeptideSequenceChargedSingle;
 import net.sf.jranges.range.integer.impl.DummyIntegerRange;
 

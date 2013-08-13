@@ -21,4 +21,4 @@
  * @version 0000-00-00
  *
  */
-package net.sf.bioutils.proteomics.fractionation.impl;
+package net.sf.bioutils.proteomics.fragmentation;

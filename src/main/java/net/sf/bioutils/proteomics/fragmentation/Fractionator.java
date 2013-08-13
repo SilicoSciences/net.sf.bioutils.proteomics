@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics.fractionation;
+package net.sf.bioutils.proteomics.fragmentation;
 
 import java.util.List;
 

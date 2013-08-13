@@ -62,9 +62,6 @@ public class PeptideSequenceChargedSingle implements PeptideSequenceModifiable {
     private void calculateMolWeight() {
         double result = 0;
         for (final AminoAcid p : peptides) {
-            if (p.equals(AminoAcid.C)) {
-                final int i = 0;
-            }
             result += getMolWeight(p);
         }
         cacheMolWeight = result + getMolWeightCTerminal() + getMolWeightNTerminal();

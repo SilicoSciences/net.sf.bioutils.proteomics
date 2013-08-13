@@ -5,8 +5,9 @@ import java.util.List;
 
 import net.sf.bioutils.proteomics.fragmentation.Fragmentator;
 import net.sf.bioutils.proteomics.peptides.AminoAcid;
+import net.sf.bioutils.proteomics.peptides.BIonChargedSingle;
 import net.sf.bioutils.proteomics.peptides.Peptide;
-import net.sf.bioutils.proteomics.peptides.PeptideSequenceChargedSingle;
+import net.sf.bioutils.proteomics.peptides.YIonChargedSingle;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 
 public class FragmentatorImpl implements Fragmentator {
@@ -20,15 +21,15 @@ public class FragmentatorImpl implements Fragmentator {
         final List<Peptide> bIons = UtilList.newList();
         final List<Peptide> yIons = UtilList.newList();
 
-        for (int i = 1; i <= peptide.asList().size(); i++) {
-            bIons.add(new PeptideSequenceChargedSingle("b" + i, peptide.asList().subList(0, i)));
+        for (int i = 1; i <= peptide.asAminoAcidList().size(); i++) {
+            bIons.add(new BIonChargedSingle("b" + i, peptide.asAminoAcidList().subList(0, i)));
         }
 
-        final List<AminoAcid> copy = UtilList.newList(peptide.asList());
+        final List<AminoAcid> copy = UtilList.newList(peptide.asAminoAcidList());
         Collections.reverse(copy);
 
         for (int i = 1; i <= copy.size(); i++) {
-            yIons.add(new PeptideSequenceChargedSingle("y" + i, copy.subList(0, i)));
+            yIons.add(new YIonChargedSingle("y" + i, copy.subList(0, i)));
         }
 
         return UtilList.append(bIons, yIons);

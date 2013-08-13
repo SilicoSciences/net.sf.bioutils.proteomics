@@ -4,7 +4,7 @@ import java.util.List;
 
 import net.sf.bioutils.proteomics.peptides.Peptide;
 
-public interface Fractionator {
+public interface Fragmentator {
 
     List<Peptide> fractionate(final Peptide peptide);
 

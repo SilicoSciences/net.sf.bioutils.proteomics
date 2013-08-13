@@ -3,15 +3,15 @@ package net.sf.bioutils.proteomics.fragmentation.impl;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.fragmentation.Fractionator;
+import net.sf.bioutils.proteomics.fragmentation.Fragmentator;
 import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.bioutils.proteomics.peptides.Peptide;
 import net.sf.bioutils.proteomics.peptides.PeptideSequenceChargedSingle;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 
-public class FractionatorIml implements Fractionator {
+public class FragmentatorImpl implements Fragmentator {
 
-    public FractionatorIml() {
+    public FragmentatorImpl() {
 
     }
 

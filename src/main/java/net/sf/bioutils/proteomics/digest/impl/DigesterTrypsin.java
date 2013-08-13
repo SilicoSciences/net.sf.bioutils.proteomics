@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.AminoAcid;
-import net.sf.bioutils.proteomics.Peptide;
 import net.sf.bioutils.proteomics.digest.DigesterAbstract;
-import net.sf.bioutils.proteomics.impl.PeptideSequenceChargedSingle;
+import net.sf.bioutils.proteomics.peptides.AminoAcid;
+import net.sf.bioutils.proteomics.peptides.Peptide;
+import net.sf.bioutils.proteomics.peptides.PeptideSequenceChargedSingle;
 import net.sf.jranges.range.integer.impl.DummyIntegerRange;
 
 import org.slf4j.Logger;

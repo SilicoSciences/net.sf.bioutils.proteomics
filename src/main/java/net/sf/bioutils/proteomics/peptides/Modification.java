@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peptides;
 
 public enum Modification {
 

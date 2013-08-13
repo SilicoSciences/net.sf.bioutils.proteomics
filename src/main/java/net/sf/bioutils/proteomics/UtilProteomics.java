@@ -3,6 +3,7 @@ package net.sf.bioutils.proteomics;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.kerner.utils.impl.util.UtilString;
 
 import org.slf4j.Logger;

@@ -1,11 +1,9 @@
-package net.sf.bioutils.proteomics.impl;
+package net.sf.bioutils.proteomics.peptides;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Peptide;
-import net.sf.bioutils.proteomics.PeptideSequences;
 import net.sf.kerner.utils.collections.list.TransformerList;
 import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 

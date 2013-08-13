@@ -13,7 +13,9 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peptides;
+
+import net.sf.bioutils.proteomics.ExceptionUnknownAminoAcid;
 
 /**
  * 

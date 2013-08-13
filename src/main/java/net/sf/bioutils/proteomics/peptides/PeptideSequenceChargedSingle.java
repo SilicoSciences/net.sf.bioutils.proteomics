@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics.impl;
+package net.sf.bioutils.proteomics.peptides;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,9 +7,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.AminoAcid;
-import net.sf.bioutils.proteomics.Modification;
-import net.sf.bioutils.proteomics.PeptideSEquenceModifiable;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 import net.sf.kerner.utils.impl.util.Util;
 

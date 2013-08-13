@@ -3,10 +3,10 @@ package net.sf.bioutils.proteomics.fractionation.impl;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.AminoAcid;
-import net.sf.bioutils.proteomics.Peptide;
 import net.sf.bioutils.proteomics.fractionation.Fractionator;
-import net.sf.bioutils.proteomics.impl.PeptideSequenceChargedSingle;
+import net.sf.bioutils.proteomics.peptides.AminoAcid;
+import net.sf.bioutils.proteomics.peptides.Peptide;
+import net.sf.bioutils.proteomics.peptides.PeptideSequenceChargedSingle;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 
 public class FractionatorIml implements Fractionator {

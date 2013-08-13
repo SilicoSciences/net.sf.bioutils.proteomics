@@ -1,4 +1,5 @@
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peptides;
+
 
 public interface PeptideSEquenceModifiable extends Peptide {
 

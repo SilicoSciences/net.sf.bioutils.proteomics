@@ -24,9 +24,11 @@ public interface Peptide extends Iterable<AminoAcid> {
 
     public static double MOL_WEIGHT_HYDROGEN = 1.0078;
 
+    List<AminoAcid> asAminoAcidList();
+
     List<Character> asCharacterList();
 
-    List<AminoAcid> asList();
+    String asString();
 
     List<String> asStringList();
 

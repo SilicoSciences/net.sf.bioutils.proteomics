@@ -23,9 +23,9 @@ public class DigesterTrypsin extends DigesterAbstract {
     private void addToResult(final Collection<Peptide> result, final Peptide peptides, final int indexLow,
             final int indexHigh) {
         // TODO: use factory
-        if (indexLow <= indexHigh && indexHigh <= peptides.asList().size()) {
-            final PeptideSequenceChargedSingle seq = new PeptideSequenceChargedSingle(peptides.asList().subList(
-                    indexLow, indexHigh));
+        if (indexLow <= indexHigh && indexHigh <= peptides.asAminoAcidList().size()) {
+            final PeptideSequenceChargedSingle seq = new PeptideSequenceChargedSingle(peptides.asAminoAcidList()
+                    .subList(indexLow, indexHigh));
             seq.setModifications(peptides.getModifications());
             result.add(seq);
         } else {
@@ -38,7 +38,7 @@ public class DigesterTrypsin extends DigesterAbstract {
     @Override
     public List<Peptide> digest(final Peptide peptides, final int numMissCleav) {
 
-        final int len1 = peptides.asList().size();
+        final int len1 = peptides.asAminoAcidList().size();
 
         final List<Peptide> result = new ArrayList<Peptide>();
         final SortedSet<Integer> cleavSites = getCleavageSites(peptides);
@@ -50,12 +50,12 @@ public class DigesterTrypsin extends DigesterAbstract {
                 addToResult(result, peptides, lastOne, getMissCleavIndex(next, i, cleavSites) + 1);
                 lastOne = next + 1;
             }
-            addToResult(result, peptides, lastOne, peptides.asList().size());
+            addToResult(result, peptides, lastOne, peptides.asAminoAcidList().size());
         }
 
         int len2 = 0;
         for (final Peptide p : result) {
-            len2 += p.asList().size();
+            len2 += p.asAminoAcidList().size();
         }
 
         if (len1 != len2) {
@@ -69,13 +69,13 @@ public class DigesterTrypsin extends DigesterAbstract {
         final TreeSet<Integer> result = new TreeSet<Integer>();
 
         // last index
-        result.add(peptides.asList().size() - 1);
+        result.add(peptides.asAminoAcidList().size() - 1);
 
-        for (int i = 0; i < peptides.asList().size(); i++) {
-            final AminoAcid nextP = peptides.asList().get(i);
+        for (int i = 0; i < peptides.asAminoAcidList().size(); i++) {
+            final AminoAcid nextP = peptides.asAminoAcidList().get(i);
             AminoAcid next2P = null;
-            if (peptides.asList().size() > i + 1) {
-                next2P = peptides.asList().get(i + 1);
+            if (peptides.asAminoAcidList().size() > i + 1) {
+                next2P = peptides.asAminoAcidList().get(i + 1);
             }
             if ((nextP.equals(AminoAcid.R) || nextP.equals(AminoAcid.K))
                     && ((next2P == null || !next2P.equals(AminoAcid.P)))) {

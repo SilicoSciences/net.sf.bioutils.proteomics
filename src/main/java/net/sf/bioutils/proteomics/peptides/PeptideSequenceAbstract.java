@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import net.sf.kerner.utils.collections.list.impl.UtilList;
@@ -35,6 +36,11 @@ public abstract class PeptideSequenceAbstract implements Peptide {
     }
 
     @Override
+    public synchronized List<AminoAcid> asAminoAcidList() {
+        return Collections.unmodifiableList(peptides);
+    }
+
+    @Override
     public synchronized List<Character> asCharacterList() {
         final List<Character> result = UtilList.newList();
         for (final AminoAcid p : peptides) {
@@ -44,8 +50,12 @@ public abstract class PeptideSequenceAbstract implements Peptide {
     }
 
     @Override
-    public synchronized List<AminoAcid> asList() {
-        return Collections.unmodifiableList(peptides);
+    public synchronized String asString() {
+        final StringBuilder sb = new StringBuilder();
+        for (final AminoAcid p : peptides) {
+            sb.append(p);
+        }
+        return sb.toString();
     }
 
     @Override
@@ -55,7 +65,7 @@ public abstract class PeptideSequenceAbstract implements Peptide {
 
     @Override
     public synchronized boolean contains(final AminoAcid p) {
-        return asList().contains(p);
+        return asAminoAcidList().contains(p);
     }
 
     @Override
@@ -65,6 +75,9 @@ public abstract class PeptideSequenceAbstract implements Peptide {
 
     @Override
     public synchronized Collection<Modification> getModifications() {
+        if (mods == null) {
+            mods = new LinkedHashSet<Modification>();
+        }
         return Collections.unmodifiableCollection(mods);
     }
 
@@ -78,7 +91,7 @@ public abstract class PeptideSequenceAbstract implements Peptide {
     }
 
     protected synchronized double getMolWeight(final AminoAcid p) {
-        for (final Modification m : mods) {
+        for (final Modification m : getModifications()) {
             if (m.getParent().equals(p)) {
                 return m.getMolWeight();
             }
@@ -107,7 +120,7 @@ public abstract class PeptideSequenceAbstract implements Peptide {
 
     @Override
     public synchronized Iterator<AminoAcid> iterator() {
-        return asList().iterator();
+        return asAminoAcidList().iterator();
     }
 
     @Override

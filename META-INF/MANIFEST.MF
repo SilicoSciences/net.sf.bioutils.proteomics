@@ -7,6 +7,8 @@ Bundle-Version: 2.6.1.qualifier
 Export-Package: net.sf.bioutils.proteomics;version="2.6.1.qualifier",
  net.sf.bioutils.proteomics.digest;version="2.6.1.qualifier",
  net.sf.bioutils.proteomics.factory;version="2.6.1.qualifier",
+ net.sf.bioutils.proteomics.fractionation,
+ net.sf.bioutils.proteomics.fractionation.impl,
  net.sf.bioutils.proteomics.impl;version="2.6.1.qualifier",
  net.sf.bioutils.proteomics.impl.comparator,
  net.sf.bioutils.proteomics.impl.transformer,

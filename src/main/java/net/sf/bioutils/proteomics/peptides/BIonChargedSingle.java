@@ -17,8 +17,13 @@ public class BIonChargedSingle extends PeptideSequenceChargedSingle {
     }
 
     @Override
-    public synchronized double getMolWeightNTerminal() {
+    public synchronized double getMolWeightCTerminal() {
         return 0;
+    }
+
+    @Override
+    public synchronized double getMolWeightNTerminal() {
+        return MOL_WEIGHT_HYDROGEN;
     }
 
 }

@@ -1,5 +1,6 @@
 package net.sf.bioutils.proteomics.impl;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import net.sf.bioutils.proteomics.Peak;
@@ -13,6 +14,11 @@ public class FilterPeakByFracNr implements Filter<Peak> {
         this.fracNr = fracNr;
     }
 
+    public FilterPeakByFracNr(final Number fracNr) {
+        this.fracNr = Arrays.asList(fracNr);
+    }
+
+    @Override
     public boolean filter(final Peak element) {
         for (final Number n : fracNr) {
             if (element.getFractionIndex() == n.intValue()) {

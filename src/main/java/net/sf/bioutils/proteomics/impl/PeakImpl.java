@@ -3,6 +3,7 @@ package net.sf.bioutils.proteomics.impl;
 import net.sf.bioutils.proteomics.Fraction;
 import net.sf.bioutils.proteomics.MassUnit;
 import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.Sample;
 import net.sf.bioutils.proteomics.Standard;
 import net.sf.kerner.utils.impl.util.Util;
 
@@ -81,6 +82,11 @@ public class PeakImpl implements Peak, Standard {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public Sample getSample() {
+        return getFraction().getSample();
     }
 
     @Override

@@ -27,6 +27,7 @@ public class FilterPeakMaxInt implements Filter<Peak> {
                 set = new HashSet<Peak>(list.subList(0, numElements));
             } catch (final Exception e) {
                 e.printStackTrace();
+                set = new HashSet<Peak>(peaks);
             }
         }
 

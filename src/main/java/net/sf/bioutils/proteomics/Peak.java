@@ -58,6 +58,14 @@ public interface Peak {
 
     String getName();
 
+    /**
+     * Shortcut for {@link Peak.getFraction().getSample()}. </p> Can be helpful
+     * for implementations of {@code Peak} which do not have a {@link Fraction}.
+     * 
+     * @return {@link Sample} which is assigned to this {@code peak}
+     */
+    Sample getSample();
+
     void setFraction(Fraction fraction);
 
 }

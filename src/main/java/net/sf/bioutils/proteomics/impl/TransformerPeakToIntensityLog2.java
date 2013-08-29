@@ -7,7 +7,8 @@ public class TransformerPeakToIntensityLog2 extends TransformerPeakToIntensity {
 
     @Override
     public Double transform(final Peak element) {
-        return UtilMath.log2(super.transform(element));
+        final Double result = UtilMath.log2(super.transform(element));
+        return result;
     }
 
 }

@@ -18,9 +18,11 @@ public interface Sample extends AnnotatableElement, Iterable<Fraction> {
 
     String getName();
 
-    User getUser();
+    Sample getParent();
 
     Set<SampleGroup> getSampleGroups();
+
+    User getUser();
 
     void setFractions(List<? extends Fraction> fraction);
 

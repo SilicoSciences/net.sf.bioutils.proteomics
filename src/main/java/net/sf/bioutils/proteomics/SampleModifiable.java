@@ -59,6 +59,6 @@ public interface SampleModifiable extends Sample {
      * @param user
      *            new {@link User} for this {@code Sample}
      */
-    void setParent(User user);
+    void setUser(User user);
 
 }

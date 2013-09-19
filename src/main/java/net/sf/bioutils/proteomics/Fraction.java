@@ -36,7 +36,7 @@ import java.util.List;
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-04-04
+ * @version 2013-09-19
  */
 public interface Fraction extends Iterable<Peak> {
 
@@ -61,6 +61,14 @@ public interface Fraction extends Iterable<Peak> {
     Sample getSample();
 
     /**
+     * Shortcut for {@link getSample().getName()}. </p> Can be helpful for
+     * implementations of {@code Fraction} which do not have a {@link Sample}.
+     * 
+     * @return {@link Sample} which is assigned to this {@code peak}
+     */
+    String getSampleName();
+
+    /**
      * Get number of {@link Peak Peaks} in this fraction.
      * 
      * @return number of {@link Peak Peaks} in this fraction
@@ -82,8 +90,7 @@ public interface Fraction extends Iterable<Peak> {
      */
     boolean isEmpty();
 
-    // TODO: move to FractionModifiable
-
+    @Override
     public Iterator<Peak> iterator();
 
     void setPeaks(List<? extends Peak> peaks);

@@ -32,7 +32,7 @@ package net.sf.bioutils.proteomics;
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-08-08
+ * @version 2013-09-19
  */
 public interface Peak {
 
@@ -65,6 +65,15 @@ public interface Peak {
      * @return {@link Sample} which is assigned to this {@code peak}
      */
     Sample getSample();
+
+    /**
+     * Shortcut for {@link Peak.getFraction().getSample().getName()}. </p> Can
+     * be helpful for implementations of {@code Peak} which do not have a
+     * {@link Fraction} or {@link Sample}.
+     * 
+     * @return {@link Sample} which is assigned to this {@code peak}
+     */
+    String getSampleName();
 
     void setFraction(Fraction fraction);
 

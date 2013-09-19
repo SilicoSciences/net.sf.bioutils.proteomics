@@ -14,4 +14,8 @@ public interface FactoryFraction extends Factory<Fraction> {
 
     Fraction create(String name, List<Peak> peaks, ArrayList<Standard> standards);
 
+    String getName();
+
+    void setName(String name);
+
 }

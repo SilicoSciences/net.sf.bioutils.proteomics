@@ -5,16 +5,22 @@ Bundle-Name: BioUtilitis - Proteomics
 Bundle-SymbolicName: net.sf.bioutils.proteomics
 Bundle-Version: 2.6.1.qualifier
 Export-Package: net.sf.bioutils.proteomics;version="2.6.1.qualifier",
+ net.sf.bioutils.proteomics.annotation,
  net.sf.bioutils.proteomics.digest;version="2.6.1.qualifier",
  net.sf.bioutils.proteomics.digest.impl,
- net.sf.bioutils.proteomics.factory;version="2.6.1.qualifier",
+ net.sf.bioutils.proteomics.fraction,
  net.sf.bioutils.proteomics.fragmentation,
  net.sf.bioutils.proteomics.fragmentation.impl,
  net.sf.bioutils.proteomics.impl;version="2.6.1.qualifier",
  net.sf.bioutils.proteomics.impl.comparator,
  net.sf.bioutils.proteomics.impl.transformer,
  net.sf.bioutils.proteomics.impl.view,
- net.sf.bioutils.proteomics.peptides
+ net.sf.bioutils.proteomics.peak,
+ net.sf.bioutils.proteomics.peak.impl,
+ net.sf.bioutils.proteomics.peptides,
+ net.sf.bioutils.proteomics.sample,
+ net.sf.bioutils.proteomics.sample.impl,
+ net.sf.bioutils.proteomics.standard
 Import-Package: net.sf.jfasta;version="2.0.0",
  net.sf.jfasta.impl;version="2.0.0",
  net.sf.jranges.range,

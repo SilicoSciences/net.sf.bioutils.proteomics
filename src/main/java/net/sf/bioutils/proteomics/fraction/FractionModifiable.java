@@ -13,9 +13,13 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.fraction;
 
 import java.util.List;
+
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.sample.Sample;
+import net.sf.bioutils.proteomics.standard.Standard;
 
 /**
  * Extends {@code Fraction} by adding modifiability.
@@ -30,11 +34,10 @@ import java.util.List;
  * 
  * </p>
  * <p>
- * last reviewed 2013-03-27
+ * last reviewed 2013-09-23
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-03-27
  */
 public interface FractionModifiable extends Fraction {
 
@@ -46,10 +49,13 @@ public interface FractionModifiable extends Fraction {
 
     void setName(String name);
 
+    @Override
     void setPeaks(List<? extends Peak> peaks);
 
+    @Override
     void setSample(Sample sample);
 
+    @Override
     void setStandards(List<? extends Standard> standards);
 
 }

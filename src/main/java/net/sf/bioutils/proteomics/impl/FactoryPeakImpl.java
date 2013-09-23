@@ -1,7 +1,8 @@
 package net.sf.bioutils.proteomics.impl;
 
-import net.sf.bioutils.proteomics.Peak;
-import net.sf.bioutils.proteomics.factory.FactoryPeak;
+import net.sf.bioutils.proteomics.peak.FactoryPeak;
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 
 public class FactoryPeakImpl implements FactoryPeak {
 

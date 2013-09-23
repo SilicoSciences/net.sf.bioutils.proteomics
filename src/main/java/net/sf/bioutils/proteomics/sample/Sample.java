@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,17 +13,21 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.sample;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
-import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.User;
+import net.sf.bioutils.proteomics.annotation.AnnotatableElement;
+import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.kerner.utils.Cloneable;
 
 /**
  * 
- * A {@code Spectrum} is a {@link Collection} of {@link Peak Peaks} which result
- * from fractionation of another {@link Peak}.
+ * TODO description
  * 
  * <p>
  * <b>Example:</b><br>
@@ -37,32 +41,32 @@ import net.sf.bioutils.proteomics.peak.Peak;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 2013-09-23
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
  * 
  */
-public interface Spectrum extends Iterable<Peak> {
+public interface Sample extends AnnotatableElement, Iterable<Fraction>, Cloneable<Sample> {
 
-    /**
-     * 
-     * @return this {@code Spectrum's} name, if available, or {@code null}
-     *         otherwise
-     */
+    void addAllSampleGroups(Collection<? extends SampleGroup> sampleGroups);
+
+    void addSampleGroup(SampleGroup sampleGroup);
+
+    void clearSampleGroups();
+
+    List<Fraction> getFractions();
+
     String getName();
 
-    /**
-     * 
-     * @return mass of parent ion which was fractionated
-     */
-    double getParentMass();
+    Sample getParent();
 
-    /**
-     * 
-     * @return {@link Peak Peaks} representing this {@code Spectrum}
-     */
-    List<Peak> getPeaks();
+    Properties getProperties();
+
+    Set<SampleGroup> getSampleGroups();
+
+    User getUser();
+
+    void setFractions(List<? extends Fraction> fraction);
 
 }

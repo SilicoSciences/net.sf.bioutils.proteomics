@@ -1,6 +1,6 @@
 package net.sf.bioutils.proteomics.impl;
 
-import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.collections.Equalator;
 import net.sf.kerner.utils.math.UtilMath;
 

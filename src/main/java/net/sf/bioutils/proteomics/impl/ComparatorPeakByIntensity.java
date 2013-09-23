@@ -2,7 +2,7 @@ package net.sf.bioutils.proteomics.impl;
 
 import java.util.Comparator;
 
-import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.collections.impl.ComparatorNull;
 
 public class ComparatorPeakByIntensity extends ComparatorNull<Peak> implements Comparator<Peak> {

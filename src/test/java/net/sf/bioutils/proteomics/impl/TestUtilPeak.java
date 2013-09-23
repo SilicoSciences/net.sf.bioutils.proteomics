@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Peak;
-import net.sf.bioutils.proteomics.UtilPeak;
-import net.sf.bioutils.proteomics.impl.PeakImpl;
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.peak.UtilPeak;
+import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -39,7 +39,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findClosestToIntensity(java.lang.Iterable, double)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findClosestToIntensity(java.lang.Iterable, double)} .
      */
     @Test
     public final void testFindClosestToIntensity() {
@@ -48,7 +48,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findClosestToIntensity(java.lang.Iterable, double)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findClosestToIntensity(java.lang.Iterable, double)} .
      */
     @Test
     public final void testFindClosestToIntensity01() {
@@ -57,7 +57,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findClosestToIntensity(java.lang.Iterable, double)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findClosestToIntensity(java.lang.Iterable, double)} .
      */
     @Test
     public final void testFindClosestToIntensity02() {
@@ -66,7 +66,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findClosestToMZ(java.lang.Iterable, double)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findClosestToMZ(java.lang.Iterable, double)} .
      */
     @Test
     public final void testFindClosestToMZ() {
@@ -75,7 +75,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findClosestToMZ(java.lang.Iterable, double)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findClosestToMZ(java.lang.Iterable, double)} .
      */
     @Test
     public final void testFindClosestToMZ01() {
@@ -84,7 +84,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findClosestToMZ(java.lang.Iterable, double)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findClosestToMZ(java.lang.Iterable, double)} .
      */
     @Test
     public final void testFindClosestToMZ02() {
@@ -93,7 +93,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findHighestIntensity(java.lang.Iterable)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findHighestIntensity(java.lang.Iterable)} .
      */
     @Test
     public final void testFindHighestIntensity() {
@@ -102,7 +102,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findHighestIntensity(java.lang.Iterable)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findHighestIntensity(java.lang.Iterable)} .
      */
     @Test
     public final void testFindHighestIntensity01() {
@@ -111,7 +111,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findHighestMZ(java.lang.Iterable)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findHighestMZ(java.lang.Iterable)} .
      */
     @Test
     public final void testFindHighestMZ() {
@@ -120,7 +120,7 @@ public class TestUtilPeak {
     }
 
     /**
-     * Test method for {@link net.sf.bioutils.proteomics.UtilPeak#findHighestMZ(java.lang.Iterable)} .
+     * Test method for {@link net.sf.bioutils.proteomics.peak.UtilPeak#findHighestMZ(java.lang.Iterable)} .
      */
     @Test
     public final void testFindHighestMZ01() {

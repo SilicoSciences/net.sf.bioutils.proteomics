@@ -13,10 +13,15 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.fraction;
 
 import java.util.Iterator;
 import java.util.List;
+
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.sample.Sample;
+import net.sf.bioutils.proteomics.standard.Standard;
+import net.sf.kerner.utils.Cloneable;
 
 /**
  * A {@code Fraction} is a collection of {@link Peak Peaks} eluting at the same
@@ -32,32 +37,40 @@ import java.util.List;
  * 
  * </p>
  * <p>
- * last reviewed 2011-11-10
+ * last reviewed 2013-09-23
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-09-19
+ * 
  */
-public interface Fraction extends Iterable<Peak> {
+public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
 
-    Fraction clone();
-
+    /**
+     * Returns the index of this fraction in {@link Sample#getFractions()}.
+     * 
+     * @return this fraction's index
+     */
     int getIndex();
 
     /**
-     * Get name of this fraction.
+     * Returns the name of this fraction.
      * 
      * @return name of this fraction
      */
     String getName();
 
     /**
-     * Get this fraction's {@link Peak Peaks}
+     * Returns this fraction's {@link Peak Peaks}
      * 
      * @return this fraction's {@link Peak Peaks}
      */
     List<Peak> getPeaks();
 
+    /**
+     * Returns the {@link Sample} which this fraction is in.
+     * 
+     * @return this fraction's sample
+     */
     Sample getSample();
 
     /**

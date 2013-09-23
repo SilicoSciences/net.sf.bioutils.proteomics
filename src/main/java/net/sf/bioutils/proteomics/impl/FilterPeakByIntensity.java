@@ -1,6 +1,6 @@
 package net.sf.bioutils.proteomics.impl;
 
-import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.jranges.range.doublerange.DoubleRange;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 import net.sf.kerner.utils.collections.filter.Filter;

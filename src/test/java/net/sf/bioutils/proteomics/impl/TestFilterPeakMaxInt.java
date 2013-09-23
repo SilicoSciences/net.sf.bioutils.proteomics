@@ -5,7 +5,8 @@ import static org.junit.Assert.assertArrayEquals;
 import java.util.Collection;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 import net.sf.kerner.utils.collections.impl.UtilCollection;
 
 import org.junit.After;

@@ -13,7 +13,11 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peak;
+
+import net.sf.bioutils.proteomics.MassUnit;
+import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.sample.Sample;
 
 /**
  * TODO description

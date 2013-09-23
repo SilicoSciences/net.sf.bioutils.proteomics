@@ -1,7 +1,8 @@
 package net.sf.bioutils.proteomics.impl;
 
 import static org.junit.Assert.assertEquals;
-import net.sf.bioutils.proteomics.Peak;
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 
 import org.junit.After;
 import org.junit.AfterClass;

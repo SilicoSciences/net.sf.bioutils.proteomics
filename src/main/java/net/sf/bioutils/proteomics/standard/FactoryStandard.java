@@ -13,12 +13,37 @@ See the License for the specific language governing permissions and
 limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics.factory;
+package net.sf.bioutils.proteomics.standard;
 
-import net.sf.bioutils.proteomics.Standard;
+import net.sf.bioutils.proteomics.peak.FactoryPeak;
 
-public interface FactoryStandard {
+/**
+ * 
+ * TODO description
+ * 
+ * <p>
+ * <b>Example:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * TODO example
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: @version 2013-09-19
+ * </p>
+ * 
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * 
+ */
+public interface FactoryStandard extends FactoryPeak {
 
     Standard create(double mz, double intensity);
+
+    @Override
+    public Standard create(String name, double mz, double intensity, double snRatio);
 
 }

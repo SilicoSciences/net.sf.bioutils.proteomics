@@ -1,6 +1,6 @@
 package net.sf.bioutils.proteomics.impl;
 
-import net.sf.bioutils.proteomics.Sample;
+import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 public class FilterSampleByName implements Filter<Sample> {

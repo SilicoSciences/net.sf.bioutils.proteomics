@@ -13,17 +13,14 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.sample;
 
-import java.util.Collection;
-import java.util.List;
-
-import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.User;
+import net.sf.bioutils.proteomics.fraction.Fraction;
 
 /**
  * 
- * A {@code Spectrum} is a {@link Collection} of {@link Peak Peaks} which result
- * from fractionation of another {@link Peak}.
+ * {@code SampleModifiable} extends {@link Sample} by modifiability.
  * 
  * <p>
  * <b>Example:</b><br>
@@ -37,32 +34,34 @@ import net.sf.bioutils.proteomics.peak.Peak;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 2013-09-23
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
+ * 
  * 
  */
-public interface Spectrum extends Iterable<Peak> {
+public interface SampleModifiable extends Sample {
 
     /**
      * 
-     * @return this {@code Spectrum's} name, if available, or {@code null}
-     *         otherwise
+     * @param fraction
+     *            {@link Fraction} to add to this {@code Sample}
      */
-    String getName();
+    void addFraction(Fraction fraction);
 
     /**
      * 
-     * @return mass of parent ion which was fractionated
+     * @param name
+     *            new name for this {@code Sample}
      */
-    double getParentMass();
+    void setName(String name);
 
     /**
      * 
-     * @return {@link Peak Peaks} representing this {@code Spectrum}
+     * @param user
+     *            new {@link User} for this {@code Sample}
      */
-    List<Peak> getPeaks();
+    void setUser(User user);
 
 }

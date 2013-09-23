@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,17 +13,15 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
-
-import java.util.Collection;
-import java.util.List;
+package net.sf.bioutils.proteomics.standard;
 
 import net.sf.bioutils.proteomics.peak.Peak;
 
 /**
  * 
- * A {@code Spectrum} is a {@link Collection} of {@link Peak Peaks} which result
- * from fractionation of another {@link Peak}.
+ * A {@link Standard} is a {@link Peak} that is used to normalize one or more
+ * other {@link Peak Peak's} intensities or masses. </p> Its typically spiked
+ * into a sample during sample preparation or processing.
  * 
  * <p>
  * <b>Example:</b><br>
@@ -44,25 +42,6 @@ import net.sf.bioutils.proteomics.peak.Peak;
  * @version 2013-07-08
  * 
  */
-public interface Spectrum extends Iterable<Peak> {
-
-    /**
-     * 
-     * @return this {@code Spectrum's} name, if available, or {@code null}
-     *         otherwise
-     */
-    String getName();
-
-    /**
-     * 
-     * @return mass of parent ion which was fractionated
-     */
-    double getParentMass();
-
-    /**
-     * 
-     * @return {@link Peak Peaks} representing this {@code Spectrum}
-     */
-    List<Peak> getPeaks();
+public interface Standard extends Peak {
 
 }

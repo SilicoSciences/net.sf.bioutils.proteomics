@@ -13,10 +13,31 @@ See the License for the specific language governing permissions and
 limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics.factory;
+package net.sf.bioutils.proteomics.peak;
 
-import net.sf.bioutils.proteomics.Peak;
 
+/**
+ * 
+ * TODO description
+ * 
+ * <p>
+ * <b>Example:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * TODO example
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: @version 2013-09-19
+ * </p>
+ * 
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * 
+ */
 public interface FactoryPeak {
 
     Peak create(String name, double mz, double intensity, double snRatio);

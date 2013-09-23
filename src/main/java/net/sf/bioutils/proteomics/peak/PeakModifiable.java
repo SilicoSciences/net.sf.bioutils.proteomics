@@ -13,13 +13,11 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peak;
 
 /**
  * 
- * A {@link Standard} is a {@link Peak} that is used to normalize one or more
- * other {@link Peak Peak's} intensities or masses. </p> Its typically spiked
- * into a sample during sample preparation or processing.
+ * TODO description
  * 
  * <p>
  * <b>Example:</b><br>
@@ -33,13 +31,16 @@ package net.sf.bioutils.proteomics;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 0000-00-00
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
  * 
  */
-public interface Standard extends Peak {
+public interface PeakModifiable extends Peak {
+
+    void setIntensity(double intensity);
+
+    void setName(String name);
 
 }

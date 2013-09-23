@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,17 +13,17 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peak.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.kerner.utils.impl.util.Util;
 
 /**
  * 
- * A {@code Spectrum} is a {@link Collection} of {@link Peak Peaks} which result
- * from fractionation of another {@link Peak}.
+ * TODO description
  * 
  * <p>
  * <b>Example:</b><br>
@@ -37,32 +37,43 @@ import net.sf.bioutils.proteomics.peak.Peak;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 0000-00-00
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
  * 
  */
-public interface Spectrum extends Iterable<Peak> {
+public class Peaks extends ArrayList<Peak> {
 
-    /**
-     * 
-     * @return this {@code Spectrum's} name, if available, or {@code null}
-     *         otherwise
-     */
-    String getName();
+    private static final long serialVersionUID = 4837095714315079608L;
 
-    /**
-     * 
-     * @return mass of parent ion which was fractionated
-     */
-    double getParentMass();
+    private int cacheHash;
 
-    /**
-     * 
-     * @return {@link Peak Peaks} representing this {@code Spectrum}
-     */
-    List<Peak> getPeaks();
+    public Peaks() {
+        super();
+    }
+
+    public Peaks(final Collection<? extends Peak> c) {
+        super(c);
+    }
+
+    public Peaks(final int initialCapacity) {
+        super(initialCapacity);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        return Util.equalsOnHashCode(this, o);
+    }
+
+    @Override
+    public synchronized int hashCode() {
+        int result = cacheHash;
+        if (result == 0) {
+            result = super.hashCode();
+            cacheHash = result;
+        }
+        return result;
+    }
 
 }

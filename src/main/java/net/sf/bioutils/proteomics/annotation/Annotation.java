@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,17 +13,15 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.annotation;
 
 import java.util.Collection;
-import java.util.List;
 
-import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.kerner.utils.collections.map.collection.MapCollection;
 
 /**
- * 
- * A {@code Spectrum} is a {@link Collection} of {@link Peak Peaks} which result
- * from fractionation of another {@link Peak}.
+ * A {@link MapCollection} of additional meta-informations which are assigned to
+ * an {@link AnnotatableElement}.
  * 
  * <p>
  * <b>Example:</b><br>
@@ -37,32 +35,16 @@ import net.sf.bioutils.proteomics.peak.Peak;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 2013-08-07
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
+ * @version 2013-08-07
  * 
+ * @param <K>
+ * @param <V>
+ * @param <L>
  */
-public interface Spectrum extends Iterable<Peak> {
-
-    /**
-     * 
-     * @return this {@code Spectrum's} name, if available, or {@code null}
-     *         otherwise
-     */
-    String getName();
-
-    /**
-     * 
-     * @return mass of parent ion which was fractionated
-     */
-    double getParentMass();
-
-    /**
-     * 
-     * @return {@link Peak Peaks} representing this {@code Spectrum}
-     */
-    List<Peak> getPeaks();
+public interface Annotation<K, V, L extends Collection<V>> extends MapCollection<K, V, L> {
 
 }

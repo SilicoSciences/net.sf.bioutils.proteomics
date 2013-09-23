@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,11 +13,13 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.sample;
+
+import java.util.Set;
 
 /**
  * 
- * {@code SampleModifiable} extends {@link Sample} by modifiability.
+ * TODO description
  * 
  * <p>
  * <b>Example:</b><br>
@@ -31,34 +33,20 @@ package net.sf.bioutils.proteomics;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 2013-09-23
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
  * 
  */
-public interface SampleModifiable extends Sample {
+public interface SampleGroup {
 
-    /**
-     * 
-     * @param fraction
-     *            {@link Fraction} to add to this {@code Sample}
-     */
-    void adddFraction(Fraction fraction);
+    void addSample(Sample sample);
 
-    /**
-     * 
-     * @param name
-     *            new name for this {@code Sample}
-     */
-    void setName(String name);
+    String getName();
 
-    /**
-     * 
-     * @param user
-     *            new {@link User} for this {@code Sample}
-     */
-    void setUser(User user);
+    Set<Sample> getSamples();
+
+    void removeSample(Sample ssample);
 
 }

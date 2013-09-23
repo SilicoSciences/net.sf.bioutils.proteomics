@@ -1,11 +1,10 @@
-package net.sf.bioutils.proteomics.factory;
+package net.sf.bioutils.proteomics.fraction;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Fraction;
-import net.sf.bioutils.proteomics.Peak;
-import net.sf.bioutils.proteomics.Standard;
+import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.standard.Standard;
 import net.sf.kerner.utils.Factory;
 
 public interface FactoryFraction extends Factory<Fraction> {

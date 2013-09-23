@@ -1,4 +1,4 @@
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.peak;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,18 +20,11 @@ import net.sf.kerner.utils.collections.list.impl.UtilList;
 
 public class UtilPeak {
 
-    public static <P extends Peak> List<P> filter(final List<P> peaks, final Filter<Peak> filter) {
-        // TODO What kind of stupid workaround is this..
-        return UtilList.filterList(peaks, new Filter<P>() {
-            @Override
-            public boolean filter(final P e) {
-                return filter.filter(e);
-            }
-        });
+    public static List<Peak> filter(final List<? extends Peak> peaks, final Filter<Peak> filter) {
+        return UtilList.filterList(peaks, filter);
     }
 
-    public static <P extends Peak> List<P> filterBySignalToNoise(final List<P> peaks, final double snRatio,
-            final boolean above) {
+    public static List<Peak> filterBySignalToNoise(final List<Peak> peaks, final double snRatio, final boolean above) {
         FilterPeakBySignalToNoise.Type type = FilterPeakBySignalToNoise.Type.BELOW;
         if (above) {
             type = FilterPeakBySignalToNoise.Type.ABOVE;

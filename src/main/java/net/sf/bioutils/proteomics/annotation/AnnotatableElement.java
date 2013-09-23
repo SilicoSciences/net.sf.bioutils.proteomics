@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -13,17 +13,14 @@
  limitations under the License.
  ***********************************************************************/
 
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.annotation;
 
-import java.util.Collection;
-import java.util.List;
-
-import net.sf.bioutils.proteomics.peak.Peak;
 
 /**
  * 
- * A {@code Spectrum} is a {@link Collection} of {@link Peak Peaks} which result
- * from fractionation of another {@link Peak}.
+ * An object to which meta-information can be attached. </p> This information is
+ * stored in an {@link Annotation} object. </p> The progress of assigning
+ * annotations is performed by an {@link Annotator}.
  * 
  * <p>
  * <b>Example:</b><br>
@@ -36,33 +33,23 @@ import net.sf.bioutils.proteomics.peak.Peak;
  * </pre>
  * 
  * </p>
+ * 
  * <p>
- * last reviewed: 2013-07-08
+ * last reviewed: 2013-08-07
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-07-08
+ * 
  * 
  */
-public interface Spectrum extends Iterable<Peak> {
+public interface AnnotatableElement {
 
     /**
      * 
-     * @return this {@code Spectrum's} name, if available, or {@code null}
-     *         otherwise
+     * @return annotations which are assigned to this {@code AnnotatableElement}
      */
-    String getName();
+    AnnotationObject getAnnotation();
 
-    /**
-     * 
-     * @return mass of parent ion which was fractionated
-     */
-    double getParentMass();
-
-    /**
-     * 
-     * @return {@link Peak Peaks} representing this {@code Spectrum}
-     */
-    List<Peak> getPeaks();
+    void setAnnotation(AnnotationObject annotation);
 
 }

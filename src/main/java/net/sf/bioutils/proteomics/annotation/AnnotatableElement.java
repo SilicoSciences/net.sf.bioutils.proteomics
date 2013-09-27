@@ -15,12 +15,10 @@
 
 package net.sf.bioutils.proteomics.annotation;
 
-
 /**
  * 
  * An object to which meta-information can be attached. </p> This information is
- * stored in an {@link Annotation} object. </p> The progress of assigning
- * annotations is performed by an {@link Annotator}.
+ * stored in an {@link Annotation} object.
  * 
  * <p>
  * <b>Example:</b><br>
@@ -35,7 +33,7 @@ package net.sf.bioutils.proteomics.annotation;
  * </p>
  * 
  * <p>
- * last reviewed: 2013-08-07
+ * last reviewed: 2013-09-27
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>

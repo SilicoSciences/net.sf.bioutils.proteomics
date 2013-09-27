@@ -35,15 +35,11 @@ import net.sf.kerner.utils.collections.map.collection.MapCollection;
  * 
  * </p>
  * <p>
- * last reviewed: 2013-08-07
+ * last reviewed: 2013-09-27
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-08-07
  * 
- * @param <K>
- * @param <V>
- * @param <L>
  */
 public interface Annotation<K, V, L extends Collection<V>> extends MapCollection<K, V, L> {
 

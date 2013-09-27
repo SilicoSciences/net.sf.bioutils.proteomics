@@ -7,6 +7,7 @@ import java.util.List;
 
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
+import net.sf.bioutils.proteomics.provider.ProviderIntensity;
 import net.sf.kerner.utils.collections.impl.UtilCollection;
 
 import org.junit.After;
@@ -58,7 +59,7 @@ public class TestFilterPeakMaxInt {
         final Collection<? extends Peak> peaks = UtilCollection.newCollection(new PeakImpl(-1, 1), new PeakImpl(-1, 2),
                 new PeakImpl(-1, 3));
         filter = new FilterPeakMaxInt(peaks, 2);
-        final List<Peak> col = UtilCollection.filterCollectionReturn(peaks, filter);
+        final List<ProviderIntensity> col = UtilCollection.filterCollectionReturn(peaks, filter);
         // filters just by intensity. returned collection is NOT sorted by
         // intensity.
         assertArrayEquals(new PeakImpl[] { new PeakImpl(-1, 2), new PeakImpl(-1, 3) }, col.toArray());

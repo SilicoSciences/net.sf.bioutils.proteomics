@@ -7,42 +7,43 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.impl.comparator.ComparatorIntensity;
+import net.sf.bioutils.proteomics.provider.ProviderIntensity;
 import net.sf.kerner.utils.collections.filter.Filter;
 import net.sf.kerner.utils.collections.impl.ComparatorInverter;
 
-public class FilterPeakMaxInt implements Filter<Peak> {
+public class FilterPeakMaxInt implements Filter<ProviderIntensity> {
 
-    private Set<Peak> set;
+    private Set<ProviderIntensity> set;
 
     private final int numElements;
 
     private volatile int cnt;
 
-    public FilterPeakMaxInt(final Collection<? extends Peak> peaks, final int numElements) {
+    public FilterPeakMaxInt(final Collection<? extends ProviderIntensity> peaks, final int numElements) {
         this.numElements = numElements;
         if (peaks == null || peaks.isEmpty()) {
             // filter only on numElements
         } else {
             if (peaks.size() <= numElements) {
-                set = new HashSet<Peak>(peaks);
+                set = new HashSet<ProviderIntensity>(peaks);
             } else {
-                final TreeSet<Peak> sett = new TreeSet<Peak>(new ComparatorInverter<Peak>(
-                        new ComparatorPeakByIntensity()));
+                final TreeSet<ProviderIntensity> sett = new TreeSet<ProviderIntensity>(
+                        new ComparatorInverter<ProviderIntensity>(new ComparatorIntensity()));
                 sett.addAll(peaks);
-                final List<Peak> list = new ArrayList<Peak>(sett);
+                final List<ProviderIntensity> list = new ArrayList<ProviderIntensity>(sett);
                 try {
-                    set = new HashSet<Peak>(list.subList(0, numElements));
+                    set = new HashSet<ProviderIntensity>(list.subList(0, numElements));
                 } catch (final Exception e) {
                     e.printStackTrace();
-                    set = new HashSet<Peak>(peaks);
+                    set = new HashSet<ProviderIntensity>(peaks);
                 }
             }
         }
     }
 
     @Override
-    public boolean filter(final Peak e) {
+    public boolean filter(final ProviderIntensity e) {
         if (set == null) {
             if (cnt < numElements) {
                 cnt++;

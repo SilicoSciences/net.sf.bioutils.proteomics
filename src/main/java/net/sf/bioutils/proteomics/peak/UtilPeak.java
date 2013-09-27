@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.impl.ComparatorPeakByIntensity;
 import net.sf.bioutils.proteomics.impl.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.impl.FilterPeakBySignalToNoise;
 import net.sf.bioutils.proteomics.impl.TransformerPeakToFractionNr;
+import net.sf.bioutils.proteomics.impl.comparator.ComparatorIntensity;
 import net.sf.kerner.utils.Transformer;
 import net.sf.kerner.utils.collections.filter.Filter;
 import net.sf.kerner.utils.collections.impl.ComparatorInverter;
@@ -77,7 +77,7 @@ public class UtilPeak {
         }
         if (copy.isEmpty())
             return null;
-        Collections.sort(copy, new ComparatorPeakByIntensity());
+        Collections.sort(copy, new ComparatorIntensity());
         return copy.get(copy.size() - 1);
     }
 

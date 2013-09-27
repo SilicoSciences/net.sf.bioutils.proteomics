@@ -1,6 +1,7 @@
 package net.sf.bioutils.proteomics.impl;
 
 import static org.junit.Assert.assertEquals;
+import net.sf.bioutils.proteomics.impl.comparator.ComparatorIntensity;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 
@@ -20,13 +21,13 @@ public class TestComparatorPeakByIntensity {
     public static void tearDownAfterClass() throws Exception {
     }
 
-    private ComparatorPeakByIntensity c;
+    private ComparatorIntensity c;
 
     private Peak p1, p2;
 
     @Before
     public void setUp() throws Exception {
-        c = new ComparatorPeakByIntensity();
+        c = new ComparatorIntensity();
     }
 
     @After

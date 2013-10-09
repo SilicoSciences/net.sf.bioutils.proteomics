@@ -15,8 +15,9 @@
 
 package net.sf.bioutils.proteomics.fraction;
 
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
 
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.sample.Sample;
@@ -37,7 +38,7 @@ import net.sf.kerner.utils.Cloneable;
  * 
  * </p>
  * <p>
- * last reviewed 2013-09-23
+ * last reviewed 2013-09-27
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -60,16 +61,16 @@ public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
     String getName();
 
     /**
-     * Returns this fraction's {@link Peak Peaks}
+     * Returns this fraction's {@link Peak peaks}
      * 
-     * @return this fraction's {@link Peak Peaks}
+     * @return this fraction's {@link Peak peaks}
      */
-    List<Peak> getPeaks();
+    Set<Peak> getPeaks();
 
     /**
      * Returns the {@link Sample} which this fraction is in.
      * 
-     * @return this fraction's sample
+     * @return this fraction's {@link Sample}
      */
     Sample getSample();
 
@@ -77,28 +78,28 @@ public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
      * Shortcut for {@link getSample().getName()}. </p> Can be helpful for
      * implementations of {@code Fraction} which do not have a {@link Sample}.
      * 
-     * @return {@link Sample} which is assigned to this {@code peak}
+     * @return {@link Sample} which is assigned to this {@code Fraction}
      */
     String getSampleName();
 
     /**
-     * Get number of {@link Peak Peaks} in this fraction.
+     * Get number of {@link Peak peaks} in this fraction.
      * 
-     * @return number of {@link Peak Peaks} in this fraction
+     * @return number of {@link Peak peaks} in this fraction
      */
     int getSize();
 
     /**
-     * Get this fraction's {@link Standard Standards}.
+     * Returns this fraction's {@link Standard standards}.
      * 
-     * @return this fraction's {@link Standard Standards}
+     * @return this fraction's {@link Standard standards}
      */
-    List<Standard> getStandards();
+    Set<Standard> getStandards();
 
     /**
-     * Check weather this fraction is empty {@code getSize() == 0}.
+     * Checks weather this fraction is empty {@code getSize() == 0}.
      * 
-     * @return {@code true}, if number of {@link Peak Peaks} in this fraction is
+     * @return {@code true}, if number of {@link Peak peaks} in this fraction is
      *         {@code 0}; {@code false} otherwise
      */
     boolean isEmpty();
@@ -106,10 +107,10 @@ public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
     @Override
     public Iterator<Peak> iterator();
 
-    void setPeaks(List<? extends Peak> peaks);
+    void setPeaks(Collection<? extends Peak> peaks);
 
     void setSample(Sample sample);
 
-    void setStandards(List<? extends Standard> standards);
+    void setStandards(Collection<? extends Standard> standards);
 
 }

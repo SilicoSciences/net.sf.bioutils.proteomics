@@ -17,7 +17,9 @@ package net.sf.bioutils.proteomics.peak;
 
 import net.sf.bioutils.proteomics.MassUnit;
 import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.provider.ProviderFractionIndex;
 import net.sf.bioutils.proteomics.provider.ProviderIntensity;
+import net.sf.bioutils.proteomics.provider.ProviderMz;
 import net.sf.bioutils.proteomics.sample.Sample;
 
 /**
@@ -39,7 +41,7 @@ import net.sf.bioutils.proteomics.sample.Sample;
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  * @version 2013-09-19
  */
-public interface Peak extends ProviderIntensity {
+public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionIndex {
 
     Peak clone();
 
@@ -51,6 +53,7 @@ public interface Peak extends ProviderIntensity {
      * 
      * @return index of {@link Fraction} which contains this {@code peak}
      */
+    @Override
     int getFractionIndex();
 
     @Override
@@ -58,6 +61,7 @@ public interface Peak extends ProviderIntensity {
 
     double getIntensityToNoise();
 
+    @Override
     double getMz();
 
     double getMz(MassUnit unit);

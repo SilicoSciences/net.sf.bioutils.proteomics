@@ -15,10 +15,7 @@
 
 package net.sf.bioutils.proteomics.fraction;
 
-import java.util.List;
-
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
 
 /**
@@ -34,7 +31,7 @@ import net.sf.bioutils.proteomics.standard.Standard;
  * 
  * </p>
  * <p>
- * last reviewed 2013-09-23
+ * last reviewed 2013-09-27
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -48,14 +45,5 @@ public interface FractionModifiable extends Fraction {
     void removePeak(Peak peak);
 
     void setName(String name);
-
-    @Override
-    void setPeaks(List<? extends Peak> peaks);
-
-    @Override
-    void setSample(Sample sample);
-
-    @Override
-    void setStandards(List<? extends Standard> standards);
 
 }

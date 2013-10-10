@@ -6,6 +6,6 @@ public interface PeakFractionated extends Peak {
 
     Spectrum getSpectrum();
 
-    void setSpectra(Spectrum spectra);
+    void setSpectrum(Spectrum spectra);
 
 }

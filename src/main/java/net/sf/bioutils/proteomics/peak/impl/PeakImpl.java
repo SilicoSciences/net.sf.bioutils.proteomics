@@ -15,7 +15,6 @@
 
 package net.sf.bioutils.proteomics.peak.impl;
 
-import net.sf.bioutils.proteomics.MassUnit;
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.sample.Sample;
@@ -45,8 +44,6 @@ import net.sf.kerner.utils.impl.util.Util;
  * 
  */
 public class PeakImpl implements Peak, Standard {
-
-    public final static MassUnit DEFAULT_UNIT = MassUnit.DALTON;
 
     private Fraction fraction = null;
 
@@ -109,11 +106,6 @@ public class PeakImpl implements Peak, Standard {
     @Override
     public double getMz() {
         return mz;
-    }
-
-    @Override
-    public double getMz(final MassUnit unit) {
-        return DEFAULT_UNIT.convert(mz, unit);
     }
 
     @Override

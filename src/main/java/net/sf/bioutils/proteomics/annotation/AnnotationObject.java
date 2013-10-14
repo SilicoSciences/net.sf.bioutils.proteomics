@@ -15,7 +15,7 @@
 
 package net.sf.bioutils.proteomics.annotation;
 
-import java.util.Set;
+import java.util.LinkedHashSet;
 
 /**
  * 
@@ -39,6 +39,6 @@ import java.util.Set;
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  * 
  */
-public interface AnnotationObject extends Annotation<Object, Object, Set<Object>> {
+public interface AnnotationObject extends Annotation<Object, Object, LinkedHashSet<Object>> {
 
 }

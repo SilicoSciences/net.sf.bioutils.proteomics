@@ -14,7 +14,7 @@ public class FilterPeakToString implements Filter<Peak> {
     @Override
     public boolean filter(final Peak e) {
         final String toString = e.toString();
-        final boolean matches = toString.matches(".*(?i)" + text + ".*");
+        final boolean matches = toString.replaceAll("\n", " ").matches(".*(?i)" + text + ".*");
         return matches;
     }
 

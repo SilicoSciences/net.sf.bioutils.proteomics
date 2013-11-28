@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.kerner.utils.impl.util.Util;
 
 /**
  * 
@@ -59,11 +58,6 @@ public class Peaks extends ArrayList<Peak> {
 
     public Peaks(final int initialCapacity) {
         super(initialCapacity);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return Util.equalsOnHashCode(this, o);
     }
 
     @Override

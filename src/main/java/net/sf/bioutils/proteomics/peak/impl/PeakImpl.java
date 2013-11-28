@@ -19,7 +19,6 @@ import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
-import net.sf.kerner.utils.impl.util.Util;
 
 /**
  * 
@@ -80,7 +79,18 @@ public class PeakImpl implements Peak, Standard {
 
     @Override
     public boolean equals(final Object obj) {
-        return Util.equalsOnHashCode(this, obj);
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        final PeakImpl other = (PeakImpl) obj;
+        if (Double.doubleToLongBits(intensity) != Double.doubleToLongBits(other.intensity))
+            return false;
+        if (Double.doubleToLongBits(mz) != Double.doubleToLongBits(other.mz))
+            return false;
+        return true;
     }
 
     @Override
@@ -130,11 +140,8 @@ public class PeakImpl implements Peak, Standard {
         long temp;
         temp = Double.doubleToLongBits(intensity);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(intensityToNoise);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(mz);
         result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
         return result;
     }
 

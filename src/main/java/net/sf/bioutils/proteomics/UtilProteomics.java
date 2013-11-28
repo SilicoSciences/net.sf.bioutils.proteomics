@@ -7,7 +7,7 @@ import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.bioutils.proteomics.sample.Sample;
-import net.sf.kerner.utils.impl.util.UtilString;
+import net.sf.kerner.utils.UtilString;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

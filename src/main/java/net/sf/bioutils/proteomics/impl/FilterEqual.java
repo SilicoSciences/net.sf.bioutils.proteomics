@@ -2,8 +2,8 @@ package net.sf.bioutils.proteomics.impl;
 
 import java.util.Collection;
 
-import net.sf.kerner.utils.collections.Equalator;
 import net.sf.kerner.utils.collections.filter.Filter;
+import net.sf.kerner.utils.equal.Equalator;
 
 public class FilterEqual<T> implements Filter<T> {
 

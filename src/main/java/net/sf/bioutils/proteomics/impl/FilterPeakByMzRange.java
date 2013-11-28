@@ -1,12 +1,12 @@
 package net.sf.bioutils.proteomics.impl;
 
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.jranges.range.integer.IntegerRange;
+import net.sf.jranges.range.doublerange.DoubleRange;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 /**
- * A {@link Filter} that checks weather a given {@link Peak}'s fraction number
- * is within given {@link Range}.
+ * A {@link Filter} that checks weather a given {@link Peak}'s {@code m/z} is
+ * within given {@link Range}.
  * <p>
  * <b>Example:</b><br>
  * </p>
@@ -21,9 +21,9 @@ import net.sf.kerner.utils.collections.filter.Filter;
  * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
  * @version 2013-10-18
  */
-public class FilterPeakByFractionIndexRange implements Filter<Peak> {
+public class FilterPeakByMzRange implements Filter<Peak> {
 
-    private final IntegerRange range;
+    private final DoubleRange range;
 
     /**
      * Create a new {@code FilterPeakByMZRange}.
@@ -32,17 +32,17 @@ public class FilterPeakByFractionIndexRange implements Filter<Peak> {
      *            m/z range in which a peak's m/z must be in in order for this
      *            {@code Filter} t accept this peak
      */
-    public FilterPeakByFractionIndexRange(final IntegerRange range) {
+    public FilterPeakByMzRange(final DoubleRange range) {
         this.range = range;
     }
 
     @Override
     public boolean filter(final Peak element) {
-        return range.includes(element.getFractionIndex());
+        return range.includes(element.getMz());
     }
 
     @Override
     public String toString() {
-        return "fracNrRange=" + range;
+        return "massRange=" + range;
     }
 }

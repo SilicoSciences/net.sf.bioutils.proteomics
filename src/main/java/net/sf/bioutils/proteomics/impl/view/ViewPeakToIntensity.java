@@ -1,7 +1,7 @@
 package net.sf.bioutils.proteomics.impl.view;
 
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.kerner.utils.impl.KeyValue;
+import net.sf.kerner.utils.pair.KeyValue;
 
 public class ViewPeakToIntensity extends KeyValue<Peak, Double> implements Comparable<ViewPeakToIntensity> {
 

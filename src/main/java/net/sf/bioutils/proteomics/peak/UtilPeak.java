@@ -12,11 +12,11 @@ import net.sf.bioutils.proteomics.impl.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.impl.FilterPeakBySignalToNoise;
 import net.sf.bioutils.proteomics.impl.TransformerPeakToFractionNr;
 import net.sf.bioutils.proteomics.impl.comparator.ComparatorIntensity;
-import net.sf.kerner.utils.Transformer;
 import net.sf.kerner.utils.collections.filter.Filter;
 import net.sf.kerner.utils.collections.impl.ComparatorInverter;
 import net.sf.kerner.utils.collections.impl.UtilCollection;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.transformer.Transformer;
 
 public class UtilPeak {
 
@@ -103,20 +103,32 @@ public class UtilPeak {
         return ppmDelta * parent / 1.0E+6;
     }
 
+    public static double getDeltaMass(final double p1, final double p2, final boolean ppm) {
+        double result;
+        result = Math.abs(p1 - p2);
+        if (ppm) {
+            result = getDeltaPpm(p1, result);
+        }
+        return result;
+    }
+
     /**
      * Converts an absolute delta to according PPM delta.
      * 
-     * @param parent
-     * @param absDelta
      * @return converted delta
      */
-    public static double getPpmDelta(final double parent, final double absDelta) {
+    public static double getDeltaPpm(final double parent, final double absDelta) {
         return 1.0E+6 * absDelta / parent;
     }
 
+    /**
+     * @deprecated use {@link #getDeltaMass(double, boolean)
+     * 
+     */
+    @Deprecated
     public static double getPpmDeltaMz(final Peak p1, final Peak p2) {
         final double absDiff = Math.abs(p1.getMz() - p2.getMz());
-        return getPpmDelta(p1.getMz(), absDiff);
+        return getDeltaPpm(p1.getMz(), absDiff);
     }
 
     public static TreeMap<Double, Peak> getSortedMapMassShiftAbsSmallestFirst(final double mass,

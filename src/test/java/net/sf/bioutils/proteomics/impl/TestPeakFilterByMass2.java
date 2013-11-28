@@ -20,10 +20,6 @@ import org.junit.Test;
  */
 public class TestPeakFilterByMass2 {
 
-    private FilterPeakByMZRange f;
-
-    private Peak p1;
-
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
     }
@@ -31,6 +27,10 @@ public class TestPeakFilterByMass2 {
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
     }
+
+    private FilterPeakByMzRange f;
+
+    private Peak p1;
 
     @Before
     public void setUp() throws Exception {
@@ -44,14 +44,14 @@ public class TestPeakFilterByMass2 {
     @Test
     public final void testVisit01() {
         p1 = new PeakImpl(1, 1);
-        f = new FilterPeakByMZRange(new DummyDoubleRange(0.999, 1.001));
+        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
         assertTrue(f.filter(p1));
     }
 
     @Test
     public final void testVisit02() {
         p1 = new PeakImpl(1.0011, 1);
-        f = new FilterPeakByMZRange(new DummyDoubleRange(0.999, 1.001));
+        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
         assertFalse(f.filter(p1));
     }
 

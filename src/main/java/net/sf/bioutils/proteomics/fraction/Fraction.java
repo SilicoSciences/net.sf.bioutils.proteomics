@@ -17,6 +17,7 @@ package net.sf.bioutils.proteomics.fraction;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import net.sf.bioutils.proteomics.peak.Peak;
@@ -47,6 +48,19 @@ import net.sf.kerner.utils.Cloneable;
 public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
 
     /**
+     * Duplicates this {@code Fraction}.
+     * <ul>
+     * <li>{@link Peak peaks} are copied</li>
+     * <li>{@link Standard standards} are copied</li>
+     * <li>{@link Annotation annotation} is copied</li>
+     * <li>{@link Sample sample} is not copied</li>
+     * </ul>
+     * 
+     */
+    @Override
+    public Fraction clone();
+
+    /**
      * Returns the index of this fraction in {@link Sample#getFractions()}.
      * 
      * @return this fraction's index
@@ -65,7 +79,7 @@ public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
      * 
      * @return this fraction's {@link Peak peaks}
      */
-    Set<Peak> getPeaks();
+    List<Peak> getPeaks();
 
     /**
      * Returns the {@link Sample} which this fraction is in.

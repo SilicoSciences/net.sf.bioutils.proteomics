@@ -23,6 +23,7 @@ import java.util.Set;
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.annotation.AnnotatableElement;
 import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.Cloneable;
 
 /**
@@ -55,15 +56,21 @@ public interface Sample extends AnnotatableElement, Iterable<Fraction>, Cloneabl
 
     void clearSampleGroups();
 
+    Sample clone(String newName);
+
     List<Fraction> getFractions();
 
     String getName();
 
-    Sample getParent();
-
     Properties getProperties();
 
     Set<SampleGroup> getSampleGroups();
+
+    /**
+     * 
+     * @return the number of {@link Peak peaks} in this {@code Sample}.
+     */
+    int getSize();
 
     User getUser();
 

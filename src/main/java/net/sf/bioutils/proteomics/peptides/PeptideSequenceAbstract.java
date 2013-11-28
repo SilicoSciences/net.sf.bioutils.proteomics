@@ -9,7 +9,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 import net.sf.kerner.utils.collections.list.impl.UtilList;
-import net.sf.kerner.utils.impl.util.Util;
 
 public abstract class PeptideSequenceAbstract implements Peptide {
 
@@ -69,8 +68,20 @@ public abstract class PeptideSequenceAbstract implements Peptide {
     }
 
     @Override
-    public synchronized boolean equals(final Object obj) {
-        return Util.equalsOnHashCode(this, obj);
+    public boolean equals(final Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof PeptideSequenceAbstract))
+            return false;
+        final PeptideSequenceAbstract other = (PeptideSequenceAbstract) obj;
+        if (peptides == null) {
+            if (other.peptides != null)
+                return false;
+        } else if (!peptides.equals(other.peptides))
+            return false;
+        return true;
     }
 
     @Override
@@ -114,8 +125,11 @@ public abstract class PeptideSequenceAbstract implements Peptide {
     }
 
     @Override
-    public synchronized int hashCode() {
-        return peptides.hashCode();
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((peptides == null) ? 0 : peptides.hashCode());
+        return result;
     }
 
     @Override
@@ -134,7 +148,7 @@ public abstract class PeptideSequenceAbstract implements Peptide {
 
     @Override
     public synchronized String toString() {
-        final StringBuilder sb = new StringBuilder(getName() + ": ");
+        final StringBuilder sb = new StringBuilder();
         for (final AminoAcid p : peptides) {
             sb.append(p);
         }

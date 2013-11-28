@@ -19,6 +19,7 @@ import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.provider.ProviderFractionIndex;
 import net.sf.bioutils.proteomics.provider.ProviderIntensity;
 import net.sf.bioutils.proteomics.provider.ProviderMz;
+import net.sf.bioutils.proteomics.provider.ProviderSample;
 import net.sf.bioutils.proteomics.sample.Sample;
 
 /**
@@ -40,7 +41,7 @@ import net.sf.bioutils.proteomics.sample.Sample;
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  * 
  */
-public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionIndex {
+public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionIndex, ProviderSample {
 
     Peak clone();
 

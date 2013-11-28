@@ -59,9 +59,19 @@ public class DigesterTrypsin extends DigesterAbstract {
         }
 
         if (len1 != len2) {
-            throw new RuntimeException("len1=" + len1 + ", len2=" + len2 + ", pep=" + peptides);
+            // throw new RuntimeException("len1=" + len1 + ", len2=" + len2 +
+            // ", pep=" + peptides);
         }
 
+        for (final Iterator<Peptide> it = result.iterator(); it.hasNext();) {
+            final Peptide peptide = it.next();
+            if (peptide.getMolWeight() < 750 || peptide.getMolWeight() > 4000) {
+                it.remove();
+            } else {
+                // nothing
+            }
+
+        }
         return new ArrayList<Peptide>(result);
     }
 
@@ -91,9 +101,10 @@ public class DigesterTrypsin extends DigesterAbstract {
         if (copy.size() > indexOf + numMissCLeav) {
             return copy.get(indexOf + numMissCLeav);
         } else {
-            if (log.isDebugEnabled()) {
-                log.debug("skip invalid miss cleav index " + indexOf + numMissCLeav);
-            }
+            // if (log.isDebugEnabled()) {
+            // log.debug("skip invalid miss cleav index " + indexOf +
+            // numMissCLeav);
+            // }
             return currentIndex;
         }
     }

@@ -24,10 +24,8 @@ public interface FactorySample extends Factory<Sample> {
 
     Sample create(String name);
 
-    Sample create(String name, Sample parent);
+    Sample create(String name, User user);
 
-    Sample create(String name, User user, Sample parent);
-
-    Sample create(String name, User user, Sample parent, Collection<? extends SampleGroup> groups);
+    Sample create(String name, User user, Collection<? extends SampleGroup> groups);
 
 }

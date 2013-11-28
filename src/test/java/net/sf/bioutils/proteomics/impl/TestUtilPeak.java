@@ -140,12 +140,12 @@ public class TestUtilPeak {
 
     @Test
     public final void testToPpm01() {
-        assertEquals(30, UtilPeak.getPpmDelta(1000, 0.03), 0);
+        assertEquals(30, UtilPeak.getDeltaPpm(1000, 0.03), 0);
     }
 
     @Test
     public final void testToPpm02() {
-        assertEquals(30, UtilPeak.getPpmDelta(3000, 0.09), 0);
+        assertEquals(30, UtilPeak.getDeltaPpm(3000, 0.09), 0);
     }
 
 }

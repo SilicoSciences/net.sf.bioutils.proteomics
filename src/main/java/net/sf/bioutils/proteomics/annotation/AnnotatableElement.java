@@ -15,6 +15,8 @@
 
 package net.sf.bioutils.proteomics.annotation;
 
+import java.util.Collection;
+
 /**
  * 
  * An object to which meta-information can be attached. </p> This information is
@@ -46,8 +48,8 @@ public interface AnnotatableElement {
      * 
      * @return annotations which are assigned to this {@code AnnotatableElement}
      */
-    AnnotationObject getAnnotation();
+    Collection<AnnotationSerializable> getAnnotation();
 
-    void setAnnotation(AnnotationObject annotation);
+    void setAnnotation(Collection<AnnotationSerializable> annotation);
 
 }

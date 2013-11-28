@@ -21,34 +21,11 @@ import java.util.Properties;
 import java.util.Set;
 
 import net.sf.bioutils.proteomics.User;
-import net.sf.bioutils.proteomics.annotation.AnnotatableElement;
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.Cloneable;
 
-/**
- * 
- * TODO description
- * 
- * <p>
- * <b>Example:</b><br>
- * 
- * </p>
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * <p>
- * last reviewed: 2013-09-23
- * </p>
- * 
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
- */
-public interface Sample extends AnnotatableElement, Iterable<Fraction>, Cloneable<Sample> {
+public interface Sample extends Iterable<Fraction>, Cloneable<Sample> {
 
     void addAllSampleGroups(Collection<? extends SampleGroup> sampleGroups);
 

@@ -1,6 +1,7 @@
 package net.sf.bioutils.proteomics.impl;
 
 import static org.junit.Assert.assertEquals;
+import net.sf.bioutils.proteomics.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 

@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2014 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -20,28 +20,6 @@ import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
 
-/**
- * 
- * TODO description
- * 
- * <p>
- * <b>Example:</b><br>
- * 
- * </p>
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * <p>
- * last reviewed: 0000-00-00
- * </p>
- * 
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
- */
 public class PeakImpl implements Peak, Standard {
 
     private Fraction fraction = null;
@@ -58,8 +36,8 @@ public class PeakImpl implements Peak, Standard {
         this(null, null, mz, intensity, -1);
     }
 
-    public PeakImpl(final Fraction fraction, final String name, final double mz, final double intensity,
-            final double intensityToNoise) {
+    public PeakImpl(final Fraction fraction, final String name, final double mz,
+            final double intensity, final double intensityToNoise) {
         super();
         this.fraction = fraction;
         this.intensity = intensity;
@@ -68,7 +46,8 @@ public class PeakImpl implements Peak, Standard {
         this.name = name;
     }
 
-    public PeakImpl(final String name, final double mz, final double intensity, final double intensityToNoise) {
+    public PeakImpl(final String name, final double mz, final double intensity,
+            final double intensityToNoise) {
         this(null, name, mz, intensity, intensityToNoise);
     }
 
@@ -83,10 +62,13 @@ public class PeakImpl implements Peak, Standard {
             return true;
         if (obj == null)
             return false;
-        if (getClass() != obj.getClass())
+        if (!(obj instanceof PeakImpl))
             return false;
         final PeakImpl other = (PeakImpl) obj;
-        if (Double.doubleToLongBits(intensity) != Double.doubleToLongBits(other.intensity))
+        if (fraction == null) {
+            if (other.fraction != null)
+                return false;
+        } else if (!fraction.equals(other.fraction))
             return false;
         if (Double.doubleToLongBits(mz) != Double.doubleToLongBits(other.mz))
             return false;
@@ -137,9 +119,8 @@ public class PeakImpl implements Peak, Standard {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((fraction == null) ? 0 : fraction.hashCode());
         long temp;
-        temp = Double.doubleToLongBits(intensity);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(mz);
         result = prime * result + (int) (temp ^ (temp >>> 32));
         return result;

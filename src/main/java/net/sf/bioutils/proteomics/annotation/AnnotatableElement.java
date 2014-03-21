@@ -33,18 +33,29 @@ import java.util.Collection;
  * </pre>
  * 
  * </p>
- * 
  * <p>
- * last reviewed: 2013-09-27
+ * <b>Threading:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * Not thread save.
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: 0000-00-00
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
  * 
  */
 public interface AnnotatableElement {
 
     /**
+     * 
+     * Returns annotations which are assigned to this {@code AnnotatableElement}
      * 
      * @return annotations which are assigned to this {@code AnnotatableElement}
      */

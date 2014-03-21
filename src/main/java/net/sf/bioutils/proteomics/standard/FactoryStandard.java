@@ -1,5 +1,5 @@
 /**********************************************************************
-Copyright (c) 2012 Alexander Kerner. All rights reserved.
+Copyright (c) 2012-2014 Alexander Kerner. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -17,33 +17,9 @@ package net.sf.bioutils.proteomics.standard;
 
 import net.sf.bioutils.proteomics.peak.FactoryPeak;
 
-/**
- * 
- * TODO description
- * 
- * <p>
- * <b>Example:</b><br>
- * 
- * </p>
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * <p>
- * last reviewed: @version 2013-09-19
- * </p>
- * 
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
- */
 public interface FactoryStandard extends FactoryPeak {
 
-    Standard create(double mz, double intensity);
-
     @Override
-    public Standard create(String name, double mz, double intensity, double snRatio);
+    public Standard create(String name, double mz, double intensity, double intensityToNoise);
 
 }

@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2013-2014 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -15,8 +15,11 @@
 
 package net.sf.bioutils.proteomics.sample;
 
+import java.util.Collection;
+
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.peak.Peak;
 
 /**
  * 
@@ -49,6 +52,14 @@ public interface SampleModifiable extends Sample {
      *            {@link Fraction} to add to this {@code Sample}
      */
     void addFraction(Fraction fraction);
+
+    void addPeak(Peak peak);
+
+    void addPeaks(Collection<? extends Peak> peak);
+
+    void removePeak(Peak peak);
+
+    void removePeaks(Collection<? extends Peak> peak);
 
     /**
      * 

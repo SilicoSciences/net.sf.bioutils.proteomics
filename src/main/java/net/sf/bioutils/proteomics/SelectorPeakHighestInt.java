@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import net.sf.bioutils.proteomics.impl.comparator.ComparatorPeakByIntensity;
+import net.sf.bioutils.proteomics.comparator.ComparatorPeakByIntensity;
 import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.kerner.utils.collections.ComparatorInverter;
 import net.sf.kerner.utils.collections.Selector;
-import net.sf.kerner.utils.collections.impl.ComparatorInverter;
 
 public class SelectorPeakHighestInt implements Selector<Peak> {
 

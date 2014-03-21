@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2013-2014 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -19,9 +19,12 @@ import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.standard.Standard;
 
 /**
- * Extends {@code Fraction} by adding modifiability.
+ * 
+ * Extends {@link Fraction} by adding modifiability.
+ * 
  * <p>
  * <b>Example:</b><br>
+ * 
  * </p>
  * <p>
  * 
@@ -31,10 +34,22 @@ import net.sf.bioutils.proteomics.standard.Standard;
  * 
  * </p>
  * <p>
- * last reviewed 2013-09-27
+ * <b>Threading:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * Not thread save.
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: 0000-00-00
  * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * 
  */
 public interface FractionModifiable extends Fraction {
 
@@ -42,7 +57,7 @@ public interface FractionModifiable extends Fraction {
 
     void addStandard(Standard standard);
 
-    void removePeak(Peak peak);
+    boolean removePeak(Peak peak);
 
     void setName(String name);
 

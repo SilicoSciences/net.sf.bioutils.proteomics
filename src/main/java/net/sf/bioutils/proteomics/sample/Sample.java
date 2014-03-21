@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2012-2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2012-2014 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -15,10 +15,8 @@
 
 package net.sf.bioutils.proteomics.sample;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.fraction.Fraction;
@@ -27,21 +25,34 @@ import net.sf.kerner.utils.Cloneable;
 
 public interface Sample extends Iterable<Fraction>, Cloneable<Sample> {
 
-    void addAllSampleGroups(Collection<? extends SampleGroup> sampleGroups);
+    /**
+     * Returns a new instance of this {@code Sample}, which is identical (name,
+     * user, fractions, properties) to this one.
+     */
+    @Override
+    Sample clone();
 
-    void addSampleGroup(SampleGroup sampleGroup);
-
-    void clearSampleGroups();
-
+    /**
+     * 
+     * Clones sample, using new given name.
+     * 
+     * @see #clone()
+     */
     Sample clone(String newName);
+
+    /**
+     * 
+     * Clones sample, dismissing fractions.
+     * 
+     * @see #clone()
+     */
+    Sample cloneWOFractions();
 
     List<Fraction> getFractions();
 
     String getName();
 
     Properties getProperties();
-
-    Set<SampleGroup> getSampleGroups();
 
     /**
      * 
@@ -52,5 +63,7 @@ public interface Sample extends Iterable<Fraction>, Cloneable<Sample> {
     User getUser();
 
     void setFractions(List<? extends Fraction> fraction);
+
+    void setProperties(Properties properties);
 
 }

@@ -18,6 +18,7 @@ package net.sf.bioutils.proteomics.annotation;
 import java.util.Map;
 
 /**
+ * 
  * A collection of additional meta-informations which are assigned to an
  * {@link AnnotatableElement}.
  * 
@@ -32,9 +33,25 @@ import java.util.Map;
  * </pre>
  * 
  * </p>
+ * <p>
+ * <b>Threading:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * Not thread save.
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: 0000-00-00
+ * </p>
  * 
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * @version 2013-11-28
+ * 
+ * @param <K>
+ * @param <V>
  */
 public interface Annotation<K, V> extends Map<K, V> {
 

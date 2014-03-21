@@ -20,12 +20,20 @@ public class DigesterTrypsin extends DigesterAbstract {
 
     private final static Logger log = LoggerFactory.getLogger(DigesterTrypsin.class);
 
-    private void addToResult(final Collection<Peptide> result, final Peptide peptides, final int indexLow,
-            final int indexHigh) {
+    public final static double DEFAULT_MOL_WEIGHT_MIN = 750;
+
+    public final static double DEFAULT_MOL_WEIGHT_MAX = 4000;
+
+    private double molWeightMin = DEFAULT_MOL_WEIGHT_MIN;
+
+    private double molWeightMax = DEFAULT_MOL_WEIGHT_MAX;
+
+    private void addToResult(final Collection<Peptide> result, final Peptide peptides,
+            final int indexLow, final int indexHigh) {
         // TODO: use factory
         if (indexLow <= indexHigh && indexHigh <= peptides.asAminoAcidList().size()) {
-            final PeptideSequenceChargedSingle seq = new PeptideSequenceChargedSingle(peptides.asAminoAcidList()
-                    .subList(indexLow, indexHigh));
+            final PeptideSequenceChargedSingle seq = new PeptideSequenceChargedSingle(peptides
+                    .asAminoAcidList().subList(indexLow, indexHigh));
             seq.setModifications(peptides.getModifications());
             result.add(seq);
         } else {
@@ -36,7 +44,7 @@ public class DigesterTrypsin extends DigesterAbstract {
     }
 
     @Override
-    public List<Peptide> digest(final Peptide peptides, final int numMissCleav) {
+    public synchronized List<Peptide> digest(final Peptide peptides, final int numMissCleav) {
 
         final int len1 = peptides.asAminoAcidList().size();
 
@@ -65,7 +73,8 @@ public class DigesterTrypsin extends DigesterAbstract {
 
         for (final Iterator<Peptide> it = result.iterator(); it.hasNext();) {
             final Peptide peptide = it.next();
-            if (peptide.getMolWeight() < 750 || peptide.getMolWeight() > 4000) {
+            if (peptide.getMolWeight() < getMolWeightMin()
+                    || peptide.getMolWeight() > getMolWeightMax()) {
                 it.remove();
             } else {
                 // nothing
@@ -75,7 +84,7 @@ public class DigesterTrypsin extends DigesterAbstract {
         return new ArrayList<Peptide>(result);
     }
 
-    public SortedSet<Integer> getCleavageSites(final Peptide peptides) {
+    public synchronized SortedSet<Integer> getCleavageSites(final Peptide peptides) {
         final TreeSet<Integer> result = new TreeSet<Integer>();
 
         // last index
@@ -95,7 +104,8 @@ public class DigesterTrypsin extends DigesterAbstract {
         return result;
     }
 
-    private int getMissCleavIndex(final int currentIndex, final int numMissCLeav, final SortedSet<Integer> cleavSites) {
+    private int getMissCleavIndex(final int currentIndex, final int numMissCLeav,
+            final SortedSet<Integer> cleavSites) {
         final List<Integer> copy = new ArrayList<Integer>(cleavSites);
         final int indexOf = copy.indexOf(currentIndex);
         if (copy.size() > indexOf + numMissCLeav) {
@@ -107,5 +117,21 @@ public class DigesterTrypsin extends DigesterAbstract {
             // }
             return currentIndex;
         }
+    }
+
+    public synchronized double getMolWeightMax() {
+        return molWeightMax;
+    }
+
+    public synchronized double getMolWeightMin() {
+        return molWeightMin;
+    }
+
+    public synchronized void setMolWeightMax(final double molWeightMax) {
+        this.molWeightMax = molWeightMax;
+    }
+
+    public synchronized void setMolWeightMin(final double molWeightMin) {
+        this.molWeightMin = molWeightMin;
     }
 }

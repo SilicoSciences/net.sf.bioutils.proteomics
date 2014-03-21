@@ -2,6 +2,7 @@ package net.sf.bioutils.proteomics.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import net.sf.bioutils.proteomics.FilterPeakByMzRange;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;

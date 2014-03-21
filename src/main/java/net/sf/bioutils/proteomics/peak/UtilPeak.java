@@ -8,47 +8,72 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.impl.ComparatorPeakByMZ;
-import net.sf.bioutils.proteomics.impl.FilterPeakBySignalToNoise;
-import net.sf.bioutils.proteomics.impl.TransformerPeakToFractionNr;
-import net.sf.bioutils.proteomics.impl.comparator.ComparatorIntensity;
+import net.sf.bioutils.proteomics.ComparatorPeakByMZ;
+import net.sf.bioutils.proteomics.TransformerPeakToFractionNr;
+import net.sf.bioutils.proteomics.comparator.ComparatorPeakByIntensity;
+import net.sf.kerner.utils.collections.ComparatorInverter;
+import net.sf.kerner.utils.collections.FactoryCollection;
+import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.filter.Filter;
-import net.sf.kerner.utils.collections.impl.ComparatorInverter;
-import net.sf.kerner.utils.collections.impl.UtilCollection;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.set.impl.FactoryLinkedHashSet;
 import net.sf.kerner.utils.transformer.Transformer;
 
+/**
+ * 
+ * TODO description
+ * 
+ * <p>
+ * <b>Example:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * TODO example
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * <b>Threading:</b><br>
+ * 
+ * </p>
+ * <p>
+ * 
+ * <pre>
+ * Not thread save.
+ * </pre>
+ * 
+ * </p>
+ * <p>
+ * last reviewed: 2014-02-18
+ * </p>
+ * 
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ * 
+ */
 public class UtilPeak {
+
+    public static List<Peak> cast(final Collection<?> peaks) {
+        return UtilList.cast(peaks);
+    }
+
+    public static <T extends Peak> Collection<T> clone(final Collection<? extends T> peaks) {
+        return clone(peaks, new FactoryLinkedHashSet<T>());
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T extends Peak> Collection<T> clone(final Collection<? extends T> peaks,
+            final FactoryCollection<T> factory) {
+        final Collection<T> result = factory.createCollection();
+        for (final T t : peaks) {
+            result.add((T) t.clone());
+        }
+        return result;
+    }
 
     public static List<Peak> filter(final List<? extends Peak> peaks, final Filter<Peak> filter) {
         return UtilList.filterList(peaks, filter);
-    }
-
-    public static List<Peak> filterBySignalToNoise(final List<Peak> peaks, final double snRatio, final boolean above) {
-        FilterPeakBySignalToNoise.Type type = FilterPeakBySignalToNoise.Type.BELOW;
-        if (above) {
-            type = FilterPeakBySignalToNoise.Type.ABOVE;
-        }
-        return filter(peaks, new FilterPeakBySignalToNoise(snRatio, type));
-    }
-
-    public static <T extends Peak> T findClosestToIntensity(final Iterable<T> peaks, final int intensity) {
-        T result = null;
-        for (final T p : peaks) {
-            if (result == null)
-                result = p;
-            else {
-                final double intDiffNew = Math.abs(intensity - p.getIntensity());
-
-                // TODO cache this
-                final double intDiffOld = Math.abs(intensity - result.getIntensity());
-
-                if (intDiffNew < intDiffOld) {
-                    result = p;
-                }
-            }
-        }
-        return result;
     }
 
     public static <T extends Peak> T findClosestToMZ(final Iterable<T> peaks, final double mass) {
@@ -70,26 +95,26 @@ public class UtilPeak {
         return result;
     }
 
-    public static <T extends Peak> T findHighestIntensity(final Iterable<T> peaks) {
-        final List<T> copy = new ArrayList<T>();
-        for (final T p : peaks) {
-            copy.add(p);
-        }
-        if (copy.isEmpty())
-            return null;
-        Collections.sort(copy, new ComparatorIntensity());
-        return copy.get(copy.size() - 1);
+    /**
+     * 
+     * @param peaks
+     *            {@link Peak Peaks} to find peak with the highest intensity
+     *            from
+     * @return {@link Peak} that has the highest intensity of all given
+     *         {@code peaks}
+     */
+    public static <T extends Peak> T findHighestIntensity(final Collection<? extends T> peaks) {
+        return Collections.max(peaks, new ComparatorPeakByIntensity());
     }
 
-    public static <T extends Peak> T findHighestMZ(final Iterable<T> peaks) {
-        final List<T> copy = new ArrayList<T>();
-        for (final T p : peaks) {
-            copy.add(p);
-        }
-        if (copy.isEmpty())
-            return null;
-        Collections.sort(copy, new ComparatorPeakByMZ());
-        return copy.get(copy.size() - 1);
+    /**
+     * 
+     * @param peaks
+     *            {@link Peak Peaks} to find peak with the highest mz from
+     * @return {@link Peak} that has the highest mz of all given {@code peaks}
+     */
+    public static <T extends Peak> T findHighestMZ(final Collection<? extends T> peaks) {
+        return Collections.max(peaks, new ComparatorPeakByMZ());
     }
 
     /**
@@ -146,7 +171,8 @@ public class UtilPeak {
         return getSortedMapMassShiftAbsSmallestFirst(key.getMz(), values);
     }
 
-    public static TreeSet<Peak> getSortedSet(final Collection<? extends Peak> peaks, final Comparator<Peak> comparator) {
+    public static TreeSet<Peak> getSortedSet(final Collection<? extends Peak> peaks,
+            final Comparator<Peak> comparator) {
         final TreeSet<Peak> result = new TreeSet<Peak>(comparator);
         result.addAll(peaks);
         return result;
@@ -171,11 +197,6 @@ public class UtilPeak {
     }
 
     @Deprecated
-    public static String intensityToString(final Peak peak) {
-        return intensityToString(peak.getIntensity());
-    }
-
-    @Deprecated
     public static String mzToString(final double mz) {
         return String.format("%4.4f", mz);
     }
@@ -191,7 +212,8 @@ public class UtilPeak {
     }
 
     public static String toStringIndices(final Collection<? extends Peak> peaks) {
-        return UtilCollection.toString(new TransformerPeakToFractionNr().transformCollection(peaks));
+        return UtilCollection
+                .toString(new TransformerPeakToFractionNr().transformCollection(peaks));
     }
 
     public static String toStringNames(final Collection<? extends Peak> peaks) {

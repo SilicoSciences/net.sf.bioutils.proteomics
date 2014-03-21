@@ -1,5 +1,5 @@
 /**********************************************************************
- Copyright (c) 2013 Alexander Kerner. All rights reserved.
+ Copyright (c) 2013-2014 Alexander Kerner. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
  You may obtain a copy of the License at
@@ -22,25 +22,6 @@ import net.sf.bioutils.proteomics.provider.ProviderMz;
 import net.sf.bioutils.proteomics.provider.ProviderSample;
 import net.sf.bioutils.proteomics.sample.Sample;
 
-/**
- * TODO description
- * <p>
- * <b>Example:</b><br>
- * </p>
- * <p>
- * 
- * <pre>
- * TODO example
- * </pre>
- * 
- * </p>
- * <p>
- * last reviewed 2013-10-10
- * </p>
- * 
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
- */
 public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionIndex, ProviderSample {
 
     Peak clone();
@@ -56,8 +37,6 @@ public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionInd
     @Override
     int getFractionIndex();
 
-    double getIntensityToNoise();
-
     String getName();
 
     /**
@@ -66,6 +45,7 @@ public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionInd
      * 
      * @return {@link Sample} which is assigned to this {@code peak}
      */
+    @Override
     Sample getSample();
 
     /**

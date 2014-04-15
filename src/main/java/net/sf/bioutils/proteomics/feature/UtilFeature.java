@@ -83,7 +83,7 @@ public class UtilFeature {
         if (peak instanceof Feature) {
             final Feature f = (Feature) peak;
             synchronized (f) {
-                return f.getLastIndex() - f.getFirstIndex() + 1;
+                return f.getIndexLast() - f.getIndexFirst() + 1;
             }
         }
         return 1;

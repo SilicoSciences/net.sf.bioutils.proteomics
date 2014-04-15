@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,15 +19,30 @@ import net.sf.bioutils.proteomics.ComposableElement;
 import net.sf.bioutils.proteomics.peak.Peak;
 
 /**
+ *
  * A {@code Feature} is a {@link ComposableElement} of {@link Peak Peaks}. It
  * represents one single peptide that was detected. One peptide is composed of
  * multiple signals (peaks). </p>
+ *
+ *
  * <p>
- * last reviewed 2011-11-10
+ * <b>Example:</b><br>
+ *
  * </p>
- * 
- * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2012-11-09
+ * <p>
+ *
+ * <pre>
+ * TODO example
+ * </pre>
+ *
+ * </p>
+ * <p>
+ * last reviewed: 2014-04-09
+ * </p>
+ *
+ *
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ *
  */
 public interface Feature extends ComposableElement<Peak>, Peak, Iterable<Peak> {
 
@@ -38,26 +53,26 @@ public interface Feature extends ComposableElement<Peak>, Peak, Iterable<Peak> {
      * Implementation dependent. Typically, it will be the number of the
      * fraction which contains the {@link Peak} that contributes to this
      * {@code Feature} and has the highest intensity.
-     * 
+     *
      * @return fraction number this {@code Feature} is associated with
      */
-    int getCenterIndex();
+    int getIndexCenter();
 
     /**
      * First fraction this {@code Feature} occurs in. This is also the number of
      * the first fraction which contains a {@link Peak} contributing to this
      * {@code Feature}
-     * 
+     *
      * @return index of first {@link Peak} contributing to this {@code Feature}
      */
-    int getFirstIndex();
+    int getIndexFirst();
 
     /**
      * Last fraction this {@code Feature} occurs in. This is also the number of
      * the last fraction which contains a {@link Peak} contributing to this
      * {@code Feature}
-     * 
+     *
      * @return index of last {@link Peak} contributing to this {@code Feature}
      */
-    int getLastIndex();
+    int getIndexLast();
 }

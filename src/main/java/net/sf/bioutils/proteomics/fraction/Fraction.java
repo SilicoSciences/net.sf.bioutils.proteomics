@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,87 +32,89 @@ import net.sf.kerner.utils.Cloneable;
  * <b>Example:</b><br>
  * </p>
  * <p>
- * 
+ *
  * <pre>
  * TODO example
  * </pre>
- * 
+ *
  * </p>
  * <p>
- * last reviewed 2013-09-27
+ * last reviewed 2014-04-09
  * </p>
- * 
+ *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
+ *
  */
 public interface Fraction extends Iterable<Peak>, Cloneable<Fraction> {
 
     /**
-     * Duplicates this {@code Fraction}.
-     * <ul>
-     * <li>{@link Peak peaks} are copied</li>
-     * <li>{@link Standard standards} are copied</li>
-     * <li>{@link Annotation annotation} is copied</li>
-     * <li>{@link Sample sample} is not copied</li>
-     * </ul>
-     * 
+     * Creates a clone of this {@code Fraction}. {@link Sample} of the new
+     * {@code Fraction} instance will be {@code null}.
      */
     @Override
     public Fraction clone();
 
     /**
+     *
+     * Clones this {@code Fraction}, dismissing peaks.
+     *
+     * @see #clone()
+     */
+    Fraction cloneWOPeaks();
+
+    /**
      * Returns the index of this fraction in {@link Sample#getFractions()}.
-     * 
+     *
      * @return this fraction's index
      */
     int getIndex();
 
     /**
      * Returns the name of this fraction.
-     * 
+     *
      * @return name of this fraction
      */
     String getName();
 
     /**
      * Returns this fraction's {@link Peak peaks}
-     * 
+     *
      * @return this fraction's {@link Peak peaks}
      */
     List<Peak> getPeaks();
 
     /**
      * Returns the {@link Sample} which this fraction is in.
-     * 
+     *
      * @return this fraction's {@link Sample}
      */
     Sample getSample();
 
     /**
-     * Shortcut for {@link getSample().getName()}. </p> Can be helpful for
+     * Shortcut for {@link getSample().getName()}. </br> Can be helpful for
      * implementations of {@code Fraction} which do not have a {@link Sample}.
-     * 
+     *
      * @return {@link Sample} which is assigned to this {@code Fraction}
      */
     String getSampleName();
 
     /**
      * Get number of {@link Peak peaks} in this fraction.
-     * 
+     *
      * @return number of {@link Peak peaks} in this fraction
      */
     int getSize();
 
     /**
      * Returns this fraction's {@link Standard standards}.
-     * 
+     *
      * @return this fraction's {@link Standard standards}
      */
     Set<Standard> getStandards();
 
     /**
      * Checks weather this fraction is empty {@code getSize() == 0}.
-     * 
+     *
      * @return {@code true}, if number of {@link Peak peaks} in this fraction is
      *         {@code 0}; {@code false} otherwise
      */

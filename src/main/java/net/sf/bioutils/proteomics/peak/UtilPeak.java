@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright (c) 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,64 +27,48 @@ import net.sf.bioutils.proteomics.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.TransformerPeakToFractionNr;
 import net.sf.bioutils.proteomics.comparator.ComparatorPeakByIntensity;
 import net.sf.kerner.utils.collections.ComparatorInverter;
-import net.sf.kerner.utils.collections.FactoryCollection;
 import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.filter.Filter;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
-import net.sf.kerner.utils.collections.set.impl.FactoryLinkedHashSet;
 import net.sf.kerner.utils.transformer.Transformer;
 
 /**
- * 
+ *
  * TODO description
- * 
+ *
  * <p>
  * <b>Example:</b><br>
- * 
+ *
  * </p>
  * <p>
- * 
+ *
  * <pre>
  * TODO example
  * </pre>
- * 
+ *
  * </p>
  * <p>
  * <b>Threading:</b><br>
- * 
+ *
  * </p>
  * <p>
- * 
+ *
  * <pre>
  * Not thread save.
  * </pre>
- * 
+ *
  * </p>
  * <p>
  * last reviewed: 2014-02-18
  * </p>
- * 
+ *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- * 
+ *
  */
 public class UtilPeak {
 
     public static List<Peak> cast(final Collection<?> peaks) {
         return UtilList.cast(peaks);
-    }
-
-    public static <T extends Peak> Collection<T> clone(final Collection<? extends T> peaks) {
-        return clone(peaks, new FactoryLinkedHashSet<T>());
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T extends Peak> Collection<T> clone(final Collection<? extends T> peaks,
-            final FactoryCollection<T> factory) {
-        final Collection<T> result = factory.createCollection();
-        for (final T t : peaks) {
-            result.add((T) t.clone());
-        }
-        return result;
     }
 
     public static List<Peak> filter(final List<? extends Peak> peaks, final Filter<Peak> filter) {
@@ -111,7 +95,7 @@ public class UtilPeak {
     }
 
     /**
-     * 
+     *
      * @param peaks
      *            {@link Peak Peaks} to find peak with the highest intensity
      *            from
@@ -123,7 +107,7 @@ public class UtilPeak {
     }
 
     /**
-     * 
+     *
      * @param peaks
      *            {@link Peak Peaks} to find peak with the highest mz from
      * @return {@link Peak} that has the highest mz of all given {@code peaks}
@@ -134,7 +118,7 @@ public class UtilPeak {
 
     /**
      * Converts an PPM delta to according absolute delta.
-     * 
+     *
      * @param parent
      * @param ppmDelta
      * @return converted delta
@@ -154,7 +138,7 @@ public class UtilPeak {
 
     /**
      * Converts an absolute delta to according PPM delta.
-     * 
+     *
      * @return converted delta
      */
     public static double getDeltaPpm(final double parent, final double absDelta) {
@@ -163,7 +147,7 @@ public class UtilPeak {
 
     /**
      * @deprecated use {@link #getDeltaMass(double, boolean)
-     * 
+     *
      */
     @Deprecated
     public static double getPpmDeltaMz(final Peak p1, final Peak p2) {

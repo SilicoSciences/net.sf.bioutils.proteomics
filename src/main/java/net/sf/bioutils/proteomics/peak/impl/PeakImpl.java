@@ -22,7 +22,7 @@ import net.sf.bioutils.proteomics.standard.Standard;
 
 public class PeakImpl implements Peak, Standard {
 
-    private Fraction fraction = null;
+    private Fraction fraction;
 
     private final double intensity;
 
@@ -117,7 +117,7 @@ public class PeakImpl implements Peak, Standard {
     }
 
     @Override
-    public int hashCode() {
+    public synchronized int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((fraction == null) ? 0 : fraction.hashCode());

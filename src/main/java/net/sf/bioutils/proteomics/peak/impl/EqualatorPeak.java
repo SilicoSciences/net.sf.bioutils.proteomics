@@ -19,7 +19,7 @@ import net.sf.bioutils.proteomics.feature.Feature;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.equal.Equalator;
 import net.sf.kerner.utils.equal.UtilEqual;
-import net.sf.kerner.utils.pair.ObjectPair;
+import net.sf.kerner.utils.pair.Pair;
 
 /**
  * 
@@ -81,7 +81,7 @@ public class EqualatorPeak implements Equalator<Peak> {
     }
 
     @Override
-    public Boolean transform(final ObjectPair<Peak, Object> element) {
+    public Boolean transform(final Pair<Peak, Object> element) {
         return Boolean.valueOf(areEqual(element.getFirst(), element.getSecond()));
     }
 

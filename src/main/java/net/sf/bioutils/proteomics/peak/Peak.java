@@ -25,7 +25,13 @@ import net.sf.kerner.utils.Cloneable;
 
 /**
  *
- * TODO description
+ * A {@code Peak} represents a MS signal which has at least two properties:
+ * <ol>
+ * <li>a mass-to-charge-ratio</li>
+ * <li>and a signal intensity</li>
+ * </ol>
+ * A {@code Peak} is usually also associated to a {@link Sample} and, if it was
+ * detected during a MALDI-MS experiment, also a {@link Fraction}.
  *
  * <p>
  * <b>Example:</b><br>

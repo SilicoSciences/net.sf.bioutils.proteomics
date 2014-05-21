@@ -23,9 +23,6 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.ComparatorPeakByMZ;
-import net.sf.bioutils.proteomics.TransformerPeakToFractionNr;
-import net.sf.bioutils.proteomics.comparator.ComparatorPeakByIntensity;
 import net.sf.kerner.utils.collections.ComparatorInverter;
 import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.filter.Filter;

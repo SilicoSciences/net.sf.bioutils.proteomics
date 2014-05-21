@@ -20,11 +20,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.ComparatorPeakByMZ;
-import net.sf.bioutils.proteomics.PeakFractionated;
 import net.sf.bioutils.proteomics.Spectrum;
 import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.peak.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.peak.PeakFractionated;
 import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 

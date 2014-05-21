@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -47,7 +47,7 @@ public class PeptideSearcher {
 
     public static class Result {
         public static enum Type {
-            DEGEN, PROTEOTYYPIC, NOT_FOUND
+            DEGEN, PROTEOTYPIC, NOT_FOUND
         }
 
         public static Result buildDegen(final List<String> headers) {
@@ -67,7 +67,7 @@ public class PeptideSearcher {
         public static Result buildProteotypic(final List<String> headers) {
             final Result r = new Result();
             r.headers = headers;
-            r.type = Result.Type.PROTEOTYYPIC;
+            r.type = Result.Type.PROTEOTYPIC;
             return r;
         }
 
@@ -85,41 +85,6 @@ public class PeptideSearcher {
     public final static int DEFAULT_CACHE_SIZE = 1000;
 
     private final static Logger log = LoggerFactory.getLogger(PeptideSearcher.class);
-
-    private final static HeaderDialectUniprot HEADERD_DIALECT_UNIPROT = new HeaderDialectUniprot();
-
-    public static boolean areSameByID(final Collection<String> headers, final DatabaseID databaseID) {
-        boolean result = true;
-        String idOld = null;
-        for (final String header : headers) {
-            HEADERD_DIALECT_UNIPROT.setHeaderString(header);
-            final String id = getIDStringFromHeader(header, databaseID);
-            if (idOld == null || idOld.equals(id)) {
-                idOld = id;
-            } else if (idOld != null && !idOld.equals(id)) {
-                result = false;
-                break;
-            }
-        }
-        return result;
-    }
-
-    private static String getIDStringFromHeader(final String fastaHeader,
-            final DatabaseID databaseId) {
-        HEADERD_DIALECT_UNIPROT.setHeaderString(fastaHeader);
-        switch (databaseId) {
-            case ACCESSION:
-                return HEADERD_DIALECT_UNIPROT.getAccessionNumber();
-            case GENE:
-                return HEADERD_DIALECT_UNIPROT.getGeneName();
-            case PROTEIN:
-                return HEADERD_DIALECT_UNIPROT.getProteinName();
-            case SPECIES:
-                return HEADERD_DIALECT_UNIPROT.getSpeciesName();
-            default:
-                throw new RuntimeException("Unkown ID " + databaseId);
-        }
-    }
 
     private static List<String> getList(final FASTAElementIterator it, final String seq)
             throws IOException {
@@ -145,6 +110,8 @@ public class PeptideSearcher {
         return result;
     }
 
+    private final HeaderDialectUniprot headerDialect = new HeaderDialectUniprot();
+
     private int cacheSize = DEFAULT_CACHE_SIZE;
 
     private Cache<String, List<String>> cache;
@@ -164,11 +131,6 @@ public class PeptideSearcher {
         cacheFASTAFileMap = new HashMap<File, FASTAFile>();
     }
 
-    // private synchronized String getIDStringFromHeader(final String
-    // fastaHeader) {
-    // return getIDStringFromHeader(fastaHeader, databaseId);
-    // }
-
     public PeptideSearcher(final DatabaseID databaseId, final boolean speciesSpec,
             final Cache<String, List<String>> cache, final Map<File, FASTAFile> cacheFASTAFileMap) {
         this.cache = cache;
@@ -183,6 +145,27 @@ public class PeptideSearcher {
 
     public synchronized boolean areSameByID(final Collection<String> headers) {
         return areSameByID(headers, databaseId);
+    }
+
+    // private synchronized String getIDStringFromHeader(final String
+    // fastaHeader) {
+    // return getIDStringFromHeader(fastaHeader, databaseId);
+    // }
+
+    public boolean areSameByID(final Collection<String> headers, final DatabaseID databaseID) {
+        boolean result = true;
+        String idOld = null;
+        for (final String header : headers) {
+            headerDialect.setHeaderString(header);
+            final String id = getIDStringFromHeader(header, databaseID);
+            if (idOld == null || idOld.equals(id)) {
+                idOld = id;
+            } else if (idOld != null && !idOld.equals(id)) {
+                result = false;
+                break;
+            }
+        }
+        return result;
     }
 
     public synchronized int getCacheSize() {
@@ -240,6 +223,22 @@ public class PeptideSearcher {
         }
         cache.put(seq, result);
         return result;
+    }
+
+    private String getIDStringFromHeader(final String fastaHeader, final DatabaseID databaseId) {
+        headerDialect.setHeaderString(fastaHeader);
+        switch (databaseId) {
+            case ACCESSION:
+                return headerDialect.getAccessionNumber();
+            case GENE:
+                return headerDialect.getGeneName();
+            case PROTEIN:
+                return headerDialect.getProteinName();
+            case SPECIES:
+                return headerDialect.getSpeciesName();
+            default:
+                throw new RuntimeException("Unkown ID " + databaseId);
+        }
     }
 
     public synchronized Result getResult(final List<String> headers, final boolean redundant,

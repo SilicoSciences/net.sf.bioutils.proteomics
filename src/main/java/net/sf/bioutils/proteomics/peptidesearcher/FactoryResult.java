@@ -42,6 +42,10 @@ class FactoryResult {
 
     public Result create(final List<String> headers, final DatabaseID type) {
 
+        if (type == null) {
+            throw new IllegalArgumentException("No type defined");
+        }
+
         if (UtilCollection.nullOrEmpty(headers)) {
             return new Result();
         }
@@ -50,13 +54,37 @@ class FactoryResult {
             return Result.buildProteotypic(headers);
 
         } else {
-
-            if (type.equals(DatabaseID.PROTEIN_GENE)
-                    && (areSameByID(headers, DatabaseID.SPECIES) && (areSameByID(headers,
-                            DatabaseID.PROTEIN) || areSameByID(headers, DatabaseID.GENE)))) {
-                return Result.buildProteotypic(headers);
+            switch (type) {
+                case ACCESSION:
+                    if (areSameByID(headers, type)) {
+                        return Result.buildProteotypic(headers);
+                    }
+                    break;
+                case GENE:
+                    if (areSameByID(headers, type)) {
+                        return Result.buildProteotypic(headers);
+                    }
+                    break;
+                case PROTEIN:
+                    if (areSameByID(headers, type)) {
+                        return Result.buildProteotypic(headers);
+                    }
+                    break;
+                case SPECIES:
+                    if (areSameByID(headers, type)) {
+                        return Result.buildProteotypic(headers);
+                    }
+                    break;
+                case PROTEIN_GENE:
+                    if (areSameByID(headers, DatabaseID.SPECIES)
+                            && (areSameByID(headers, DatabaseID.PROTEIN) || areSameByID(headers,
+                                    DatabaseID.GENE))) {
+                        return Result.buildProteotypic(headers);
+                    }
+                    break;
+                default:
+                    throw new RuntimeException("Unkown type " + type);
             }
-
             return Result.buildDegen(headers);
         }
     }

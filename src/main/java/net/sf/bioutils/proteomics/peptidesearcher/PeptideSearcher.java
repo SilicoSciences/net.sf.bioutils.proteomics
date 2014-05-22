@@ -31,7 +31,6 @@ import net.sf.kerner.utils.Cache;
 import net.sf.kerner.utils.UtilString;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 import net.sf.kerner.utils.log.LogOnlyOnce;
-import net.sf.kerner.utils.pair.KeyValue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -139,15 +138,14 @@ public class PeptideSearcher {
         return cacheFASTAFile;
     }
 
-    public Result reduceToProteotipic(final String seq,
-            final List<? extends KeyValue<File, Boolean>> dbs, final DatabaseID type)
+    public Result reduceToProteotipic(final String seq, final List<File> dbs, final DatabaseID type)
             throws IOException {
         if (UtilString.emptyString(seq)) {
             throw new IllegalArgumentException();
         }
         Result result = new Result();
-        for (final KeyValue<File, Boolean> db : dbs) {
-            final List<String> headers = getFromDBFile(db.getFirst(), seq);
+        for (final File db : dbs) {
+            final List<String> headers = getFromDBFile(db, seq);
             result = getResult(headers, type);
             if (result.type.equals(Result.Type.NOT_FOUND)) {
                 // continue other DBs

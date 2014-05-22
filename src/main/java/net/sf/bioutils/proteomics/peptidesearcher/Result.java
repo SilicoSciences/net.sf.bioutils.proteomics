@@ -40,6 +40,8 @@ public class Result {
 
     @Override
     public String toString() {
+        if (!headers.isEmpty())
+            return headers.get(0) + " " + type.toString();
         return type.toString();
     }
 }

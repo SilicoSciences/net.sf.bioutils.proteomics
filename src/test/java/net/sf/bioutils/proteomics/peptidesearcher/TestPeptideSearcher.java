@@ -7,26 +7,14 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestPeptideSearcher {
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
-
     private PeptideSearcher s;
 
     private Result r;
-
-    private String i;
 
     @Before
     public void setUp() throws Exception {
@@ -37,7 +25,6 @@ public class TestPeptideSearcher {
     public void tearDown() throws Exception {
         s = null;
         r = null;
-        i = null;
     }
 
     @Test
@@ -74,8 +61,18 @@ public class TestPeptideSearcher {
     }
 
     @Test
+    public final void testReduceToProteotipic04b() throws IOException {
+        testReduceToProteotipicAllForSeqSwissProtCached("FLYEYSR");
+    }
+
+    @Test
     public final void testReduceToProteotipic05() throws IOException {
         testReduceToProteotipicAllForSeqSwissProt("LSQKFPK");
+    }
+
+    @Test
+    public final void testReduceToProteotipic05b() throws IOException {
+        testReduceToProteotipicAllForSeqSwissProtCached("LSQKFPK");
     }
 
     @Test
@@ -84,8 +81,18 @@ public class TestPeptideSearcher {
     }
 
     @Test
+    public final void testReduceToProteotipic06b() throws IOException {
+        testReduceToProteotipicAllForSeqTrmblCached("FLYEYSR");
+    }
+
+    @Test
     public final void testReduceToProteotipic07() throws IOException {
         testReduceToProteotipicAllForSeqTrmbl("LSQKFPK");
+    }
+
+    @Test
+    public final void testReduceToProteotipic07b() throws IOException {
+        testReduceToProteotipicAllForSeqTrmblCached("LSQKFPK");
     }
 
     @Test
@@ -94,8 +101,18 @@ public class TestPeptideSearcher {
     }
 
     @Test
+    public final void testReduceToProteotipic08b() throws IOException {
+        testReduceToProteotipicAllForSeqSwissProtTrmblCached("FLYEYSR");
+    }
+
+    @Test
     public final void testReduceToProteotipic09() throws IOException {
         testReduceToProteotipicAllForSeqSwissProtTrmbl("LSQKFPK");
+    }
+
+    @Test
+    public final void testReduceToProteotipic09b() throws IOException {
+        testReduceToProteotipicAllForSeqSwissProtTrmblCached("LSQKFPK");
     }
 
     final void testReduceToProteotipicAllForSeqSwissProt(final String i) throws IOException {
@@ -121,6 +138,33 @@ public class TestPeptideSearcher {
         // Fond only once, so automatically proteotypic independent of
         // identifier
         r = testReduceToProteotipic(i, "src/test/resources/20140522_Bovine_SwissProt.fasta",
+                DatabaseID.SPECIES);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+    }
+
+    final void testReduceToProteotipicAllForSeqSwissProtCached(final String i) throws IOException {
+
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_SwissProt.fasta",
+                DatabaseID.ACCESSION);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_SwissProt.fasta",
+                DatabaseID.GENE);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_SwissProt.fasta",
+                DatabaseID.PROTEIN);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        // e.g. sp|P02769|ALBU_BOVIN Serum albumin OS=Bos taurus GN=ALB PE=1
+        // SV=4 PROTEOTYPIC
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_SwissProt.fasta",
+                DatabaseID.PROTEIN_GENE);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        // Fond only once, so automatically proteotypic independent of
+        // identifier
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_SwissProt.fasta",
                 DatabaseID.SPECIES);
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
     }
@@ -152,6 +196,35 @@ public class TestPeptideSearcher {
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
     }
 
+    final void testReduceToProteotipicAllForSeqSwissProtTrmblCached(final String i)
+            throws IOException {
+
+        r = testReduceToProteotipicCached(i,
+                "src/test/resources/20140522_Bovine_SwissProt-TrEMBL.fasta", DatabaseID.ACCESSION);
+        assertEquals(Result.Type.DEGEN, r.type);
+
+        r = testReduceToProteotipicCached(i,
+                "src/test/resources/20140522_Bovine_SwissProt-TrEMBL.fasta", DatabaseID.GENE);
+        assertEquals(Result.Type.DEGEN, r.type);
+
+        r = testReduceToProteotipicCached(i,
+                "src/test/resources/20140522_Bovine_SwissProt-TrEMBL.fasta", DatabaseID.PROTEIN);
+        assertEquals(Result.Type.DEGEN, r.type);
+
+        // e.g. sp|P02769|ALBU_BOVIN Serum albumin OS=Bos taurus GN=ALB PE=1
+        // SV=4, tr|G3MYZ3|G3MYZ3_BOVIN Uncharacterized protein OS=Bos taurus
+        // GN=AFM PE=4 SV=1 DEGEN
+        r = testReduceToProteotipicCached(i,
+                "src/test/resources/20140522_Bovine_SwissProt-TrEMBL.fasta",
+                DatabaseID.PROTEIN_GENE);
+        assertEquals(Result.Type.DEGEN, r.type);
+
+        // all have same species
+        r = testReduceToProteotipicCached(i,
+                "src/test/resources/20140522_Bovine_SwissProt-TrEMBL.fasta", DatabaseID.SPECIES);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+    }
+
     final void testReduceToProteotipicAllForSeqTrmbl(final String i) throws IOException {
 
         r = testReduceToProteotipic(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
@@ -177,6 +250,39 @@ public class TestPeptideSearcher {
         r = testReduceToProteotipic(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
                 DatabaseID.SPECIES);
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
+    }
+
+    final void testReduceToProteotipicAllForSeqTrmblCached(final String i) throws IOException {
+
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
+                DatabaseID.ACCESSION);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
+                DatabaseID.GENE);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
+                DatabaseID.PROTEIN);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        // e.g. tr|G3MYZ3|G3MYZ3_BOVIN Uncharacterized protein OS=Bos taurus
+        // GN=AFM PE=4 SV=1 PROTEOTYPIC
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
+                DatabaseID.PROTEIN_GENE);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+
+        // Fond only once, so automatically proteotypic independent of
+        // identifier
+        r = testReduceToProteotipicCached(i, "src/test/resources/20140522_Bovine_TrEMBL.fasta",
+                DatabaseID.SPECIES);
+        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+    }
+
+    final Result testReduceToProteotipicCached(final String i, final String db,
+            final DatabaseID type) throws IOException {
+        s.setCacheFASTAFile(true);
+        return s.reduceToProteotipic(i, Arrays.asList(new File(db)), type);
     }
 
 }

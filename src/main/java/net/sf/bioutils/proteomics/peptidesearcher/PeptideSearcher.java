@@ -17,6 +17,7 @@ package net.sf.bioutils.proteomics.peptidesearcher;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -30,14 +31,13 @@ import net.sf.jfasta.impl.FASTAFileReaderImpl;
 import net.sf.kerner.utils.Cache;
 import net.sf.kerner.utils.UtilString;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
-import net.sf.kerner.utils.log.LogOnlyOnce;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class PeptideSearcher {
 
-    private final LogOnlyOnce logo = new LogOnlyOnce(log);
+    // private final LogOnlyOnce logo = new LogOnlyOnce(log);
 
     private final static Logger log = LoggerFactory.getLogger(PeptideSearcher.class);
 
@@ -80,6 +80,11 @@ public class PeptideSearcher {
         cacheFASTAFileMap = new HashMap<File, FASTAFile>();
     }
 
+    public PeptideSearcher(final Cache<String, List<String>> cache) {
+        this.cache = cache;
+        cacheFASTAFileMap = new HashMap<File, FASTAFile>();
+    }
+
     public PeptideSearcher(final Cache<String, List<String>> cache,
             final Map<File, FASTAFile> cacheFASTAFileMap) {
         this.cache = cache;
@@ -102,21 +107,21 @@ public class PeptideSearcher {
             synchronized (cacheFASTAFileMap) {
                 file = cacheFASTAFileMap.get(db);
                 if (file == null) {
-                    if (log.isDebugEnabled()) {
-                        log.debug("read from file");
-                    }
+                    // if (log.isDebugEnabled()) {
+                    // log.debug("read from file");
+                    // }
                     file = new FASTAFileReaderImpl(db).read();
-                    if (log.isDebugEnabled()) {
-                        log.debug("done reading");
-                    }
+                    // if (log.isDebugEnabled()) {
+                    // log.debug("done reading");
+                    // }
                     cacheFASTAFileMap.put(db, file);
-                    if (log.isDebugEnabled()) {
-                        log.debug("write to cache");
-                    }
+                    // if (log.isDebugEnabled()) {
+                    // log.debug("write to cache");
+                    // }
                 } else {
-                    if (log.isDebugEnabled()) {
-                        logo.debug("got from cache");
-                    }
+                    // if (log.isDebugEnabled()) {
+                    // logo.debug("got from cache");
+                    // }
                 }
             }
             result = getList(file.iterator(), seq);
@@ -136,6 +141,11 @@ public class PeptideSearcher {
 
     public boolean isCacheFASTAFile() {
         return cacheFASTAFile;
+    }
+
+    public Result reduceToProteotipic(final String seq, final File db, final DatabaseID type)
+            throws IOException {
+        return reduceToProteotipic(seq, Arrays.asList(db), type);
     }
 
     public Result reduceToProteotipic(final String seq, final List<File> dbs, final DatabaseID type)

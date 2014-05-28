@@ -153,7 +153,7 @@ public class PeptideSearcher {
         if (UtilString.emptyString(seq)) {
             throw new IllegalArgumentException();
         }
-        Result result = new Result();
+        Result result = Result.buildNotSearched();
         for (final File db : dbs) {
             final List<String> headers = getFromDBFile(db, seq);
             result = getResult(headers, type);

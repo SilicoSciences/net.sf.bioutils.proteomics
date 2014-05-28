@@ -6,7 +6,7 @@ import java.util.List;
 public class Result {
 
     public static enum Type {
-        DEGEN, PROTEOTYPIC, NOT_FOUND
+        DEGEN, PROTEOTYPIC, NOT_FOUND, NOT_SEARCHED
     }
 
     public static Result buildDegen(final List<String> headers) {
@@ -14,6 +14,10 @@ public class Result {
     }
 
     public static Result buildNotFound() {
+        return new Result(new ArrayList<String>(0), Type.NOT_FOUND);
+    }
+
+    public static Result buildNotSearched() {
         return new Result();
     }
 
@@ -22,10 +26,11 @@ public class Result {
     }
 
     public List<String> headers;
+
     public final Type type;
 
-    public Result() {
-        this(new ArrayList<String>(0), Type.NOT_FOUND);
+    private Result() {
+        this(new ArrayList<String>(0), Type.NOT_SEARCHED);
     }
 
     public Result(final List<String> headers, final Type type) {

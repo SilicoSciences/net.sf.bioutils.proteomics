@@ -47,7 +47,7 @@ class FactoryResult {
         }
 
         if (UtilCollection.nullOrEmpty(headers)) {
-            return new Result();
+            return Result.buildNotFound();
         }
 
         if (headers.size() == 1) {

@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -94,15 +94,11 @@ public class FractionPeaks implements Fraction, FractionModifiable {
         standards.add(standard);
     }
 
-    /**
-     * @throws IllegalArgumentException
-     *             if {@code p} is instance of {@link Feature}
-     */
     protected void checkPeak(final Peak p) throws IllegalArgumentException {
         Util.checkForNull(p);
-        if (p instanceof Feature) {
-            throw new IllegalArgumentException("we dont want features");
-        }
+        // if (p instanceof Feature) {
+        // throw new IllegalArgumentException("we dont want features");
+        // }
     }
 
     /**

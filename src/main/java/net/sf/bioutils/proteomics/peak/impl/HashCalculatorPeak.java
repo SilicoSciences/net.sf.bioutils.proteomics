@@ -26,7 +26,7 @@ public class HashCalculatorPeak extends HashCalculatorAbstract<Peak> {
         if (peak.getFraction() == null) {
             return UtilHash.getHash(null, peak.getMz());
         }
-        return UtilHash.getHash(peak.getFractionIndex(), peak.getMz());
+        return UtilHash.getHash(peak.getFractionIndex(), peak.getMz(), peak.getSampleName());
 
     }
 

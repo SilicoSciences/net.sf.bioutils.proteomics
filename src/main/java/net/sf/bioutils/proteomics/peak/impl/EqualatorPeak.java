@@ -77,6 +77,19 @@ public class EqualatorPeak implements Equalator<Peak> {
         }
         if (!UtilEqual.areEqual(peak.getFractionIndex(), ((Peak) obj).getFractionIndex()))
             return false;
+        if (peak.getSampleName() != null && ((Peak) obj).getSampleName() == null) {
+            return false;
+        }
+        if (peak.getSampleName() == null && ((Peak) obj).getSampleName() != null) {
+            return false;
+        }
+        if (peak.getSampleName() == null && ((Peak) obj).getSampleName() == null) {
+
+        } else {
+            if (!peak.getSampleName().equals(((Peak) obj).getSampleName())) {
+                return false;
+            }
+        }
         return true;
     }
 

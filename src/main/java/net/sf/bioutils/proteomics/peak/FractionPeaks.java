@@ -32,28 +32,6 @@ import net.sf.kerner.utils.Util;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 import net.sf.kerner.utils.exception.ExceptionReadOnly;
 
-/**
- * Implementation of {@link Fraction}, which accepts no {@link Feature Features}
- * .
- * <p>
- * <b>Example:</b><br>
- * </p>
- * <p>
- *
- * <pre>
- * TODO example
- * </pre>
- *
- * </p>
- * <p>
- * last reviewed 2014-04-15
- * </p>
- *
- * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
- *
- *
- *
- */
 public class FractionPeaks implements Fraction, FractionModifiable {
 
     protected transient int cacheIndex = -1;
@@ -68,14 +46,14 @@ public class FractionPeaks implements Fraction, FractionModifiable {
 
     private transient String cacheSampleName;
 
+    public FractionPeaks() {
+        name = null;
+    }
+
     public FractionPeaks(final String name) {
         this.name = name;
     }
 
-    /**
-     * @throws IllegalArgumentException
-     *             if {@code peak} is instance of {@link Feature}
-     */
     @Override
     public synchronized void addPeak(final Peak peak) throws IllegalArgumentException {
         checkPeak(peak);
@@ -83,10 +61,6 @@ public class FractionPeaks implements Fraction, FractionModifiable {
         peaks.add(peak);
     }
 
-    /**
-     * @throws IllegalArgumentException
-     *             if {@code standard} is instance of {@link Feature}
-     */
     @Override
     public synchronized void addStandard(final Standard standard) throws IllegalArgumentException {
         checkPeak(standard);
@@ -101,9 +75,6 @@ public class FractionPeaks implements Fraction, FractionModifiable {
         // }
     }
 
-    /**
-     *
-     */
     @Override
     public synchronized FractionPeaks clone() {
         final FractionPeaks result = getInstance(getName());
@@ -114,9 +85,6 @@ public class FractionPeaks implements Fraction, FractionModifiable {
         return result;
     }
 
-    /**
-     *
-     */
     @Override
     public synchronized FractionPeaks cloneWOPeaks() {
         final FractionPeaks result = getInstance(getName());
@@ -128,13 +96,33 @@ public class FractionPeaks implements Fraction, FractionModifiable {
     }
 
     @Override
-    public boolean equals(final Object obj) {
-        // Fractions must not be equal, since List#indexOf needs them to differ.
-        return super.equals(obj);
+    public synchronized boolean equals(final Object obj) {
+        return this == obj;
+        // if (this == obj)
+        // return true;
+        // if (obj == null)
+        // return false;
+        // if (!(obj instanceof FractionPeaks))
+        // return false;
+        // final FractionPeaks other = (FractionPeaks) obj;
+        // if (peaks == null) {
+        // if (other.peaks != null)
+        // return false;
+        // } else if (!peaks.equals(other.peaks))
+        // return false;
+        // if (standards == null) {
+        // if (other.standards != null)
+        // return false;
+        // } else if (!standards.equals(other.standards))
+        // return false;
+        // return true;
     }
 
     @Override
     public synchronized int getIndex() {
+        if (getSample() == null) {
+            return -1;
+        }
         int result = cacheIndex;
         if (result < 0) {
             result = getSample().getFractions().indexOf(this);
@@ -197,9 +185,13 @@ public class FractionPeaks implements Fraction, FractionModifiable {
     }
 
     @Override
-    public int hashCode() {
-
-        // Fractions must not be equal, since List#indexOf needs them to differ.
+    public synchronized int hashCode() {
+        // final int prime = 31;
+        // int result = 1;
+        // result = prime * result + ((peaks == null) ? 0 : peaks.hashCode());
+        // result = prime * result + ((standards == null) ? 0 :
+        // standards.hashCode());
+        // return result;
         return super.hashCode();
     }
 

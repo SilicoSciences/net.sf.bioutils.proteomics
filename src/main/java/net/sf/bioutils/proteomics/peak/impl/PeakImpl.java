@@ -103,6 +103,9 @@ public class PeakImpl implements Peak, Standard {
 
     @Override
     public String getSampleName() {
+        if (getSample() == null) {
+            return null;
+        }
         return getSample().getName();
     }
 

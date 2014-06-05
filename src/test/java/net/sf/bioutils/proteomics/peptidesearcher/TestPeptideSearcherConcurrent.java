@@ -106,7 +106,7 @@ public class TestPeptideSearcherConcurrent {
         Result r;
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.ACCESSION);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.GENE);
@@ -114,11 +114,7 @@ public class TestPeptideSearcherConcurrent {
 
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
-
-        r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
-                "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN_GENE);
@@ -132,7 +128,7 @@ public class TestPeptideSearcherConcurrent {
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.ACCESSION);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.GENE);
@@ -140,11 +136,7 @@ public class TestPeptideSearcherConcurrent {
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
-
-        r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
-                "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN_GENE);

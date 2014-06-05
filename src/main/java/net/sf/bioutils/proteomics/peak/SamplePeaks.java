@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Properties;
 
 import net.sf.bioutils.proteomics.User;
+import net.sf.bioutils.proteomics.UtilFraction;
 import net.sf.bioutils.proteomics.fraction.FactoryFraction;
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.fraction.FractionModifiable;
@@ -58,8 +59,6 @@ import org.slf4j.LoggerFactory;
 public class SamplePeaks implements SampleModifiable {
 
     private final static Logger log = LoggerFactory.getLogger(SamplePeaks.class);
-
-    private final static FactoryFraction factoryFraction = new FactoryFractionPeaks();
 
     static void addPeak(final Sample sample, final Peak peak, final FactoryFraction factoryFraction) {
         addPeaks(sample, Arrays.asList(peak), factoryFraction);
@@ -162,6 +161,8 @@ public class SamplePeaks implements SampleModifiable {
         }
     }
 
+    private final FactoryFraction factoryFraction = new FactoryFractionPeaks();
+
     private List<Fraction> fractions = UtilList.newList();
 
     private Properties properties = new Properties();
@@ -244,18 +245,20 @@ public class SamplePeaks implements SampleModifiable {
             return true;
         if (obj == null)
             return false;
-        if (!(obj instanceof SamplePeaks))
+        if (!(obj instanceof Sample))
             return false;
-        final SamplePeaks other = (SamplePeaks) obj;
+        final Sample other = (Sample) obj;
+        if (!UtilFraction.getPeaks(fractions).equals(UtilFraction.getPeaks(other.getFractions())))
+            return false;
         if (name == null) {
-            if (other.name != null)
+            if (other.getName() != null)
                 return false;
-        } else if (!name.equals(other.name))
+        } else if (!name.equals(other.getName()))
             return false;
-        if (properties == null) {
-            if (other.properties != null)
+        if (user == null) {
+            if (other.getUser() != null)
                 return false;
-        } else if (!properties.equals(other.properties))
+        } else if (!user.equals(other.getUser()))
             return false;
         return true;
     }
@@ -298,11 +301,13 @@ public class SamplePeaks implements SampleModifiable {
     }
 
     @Override
-    public synchronized int hashCode() {
+    public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result
+                + ((fractions == null) ? 0 : UtilFraction.getPeaks(fractions).hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((properties == null) ? 0 : properties.hashCode());
+        result = prime * result + ((user == null) ? 0 : user.hashCode());
         return result;
     }
 

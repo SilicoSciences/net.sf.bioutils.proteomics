@@ -159,6 +159,9 @@ public class FractionPeaks implements Fraction, FractionModifiable {
 
     @Override
     public synchronized String getSampleName() {
+        if (getSample() == null) {
+            return null;
+        }
         String result = cacheSampleName;
         if (result == null) {
             result = getSample().getName();

@@ -1,0 +1,14 @@
+package net.sf.bioutils.proteomics.peak;
+
+import net.sf.bioutils.proteomics.peak.impl.PeakUnmodifiable;
+import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
+
+public class TransformerPeakToUnmodifiable extends
+        AbstractTransformingListFactory<Peak, PeakUnmodifiable> {
+
+    @Override
+    public PeakUnmodifiable transform(final Peak element) {
+        return new PeakUnmodifiable(element);
+    }
+
+}

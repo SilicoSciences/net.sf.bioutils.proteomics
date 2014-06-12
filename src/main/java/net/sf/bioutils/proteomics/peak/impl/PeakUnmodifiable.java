@@ -14,7 +14,7 @@ import net.sf.bioutils.proteomics.sample.Sample;
 
 public class PeakUnmodifiable implements PeakAnnotatable {
 
-    private final PeakAnnotatable delegate;
+    protected final PeakAnnotatable delegate;
 
     public PeakUnmodifiable(final Peak delegate) {
         this.delegate = (PeakAnnotatable) delegate;
@@ -32,6 +32,9 @@ public class PeakUnmodifiable implements PeakAnnotatable {
 
     @Override
     public Collection<AnnotationSerializable> getAnnotation() {
+        if (delegate.getAnnotation() == null) {
+            return null;
+        }
         return Collections.unmodifiableCollection(delegate.getAnnotation());
     }
 

@@ -29,6 +29,8 @@ import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.fraction.FractionModifiable;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.sample.SampleModifiable;
+import net.sf.bioutils.proteomics.sample.impl.EqualatorSample;
+import net.sf.bioutils.proteomics.sample.impl.HashCalculatorSample;
 import net.sf.kerner.utils.UtilString;
 import net.sf.kerner.utils.collections.list.impl.UtilList;
 import net.sf.kerner.utils.exception.ExceptionReadOnly;
@@ -241,26 +243,7 @@ public class SamplePeaks implements SampleModifiable {
 
     @Override
     public boolean equals(final Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Sample))
-            return false;
-        final Sample other = (Sample) obj;
-        if (!UtilFraction.getPeaks(fractions).equals(UtilFraction.getPeaks(other.getFractions())))
-            return false;
-        if (name == null) {
-            if (other.getName() != null)
-                return false;
-        } else if (!name.equals(other.getName()))
-            return false;
-        if (user == null) {
-            if (other.getUser() != null)
-                return false;
-        } else if (!user.equals(other.getUser()))
-            return false;
-        return true;
+        return new EqualatorSample().areEqual(this, obj);
     }
 
     protected FactoryFraction getFactoryFraction() {
@@ -279,6 +262,11 @@ public class SamplePeaks implements SampleModifiable {
     @Override
     public String getName() {
         return name;
+    }
+
+    @Override
+    public List<Peak> getPeaks() {
+        return UtilFraction.getPeaks(fractions);
     }
 
     @Override
@@ -302,13 +290,7 @@ public class SamplePeaks implements SampleModifiable {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result
-                + ((fractions == null) ? 0 : UtilFraction.getPeaks(fractions).hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((user == null) ? 0 : user.hashCode());
-        return result;
+        return new HashCalculatorSample().calculateHash(this);
     }
 
     @Override

@@ -53,6 +53,13 @@ public class SampleUnmodifiable implements Sample {
     }
 
     @Override
+    public List<Peak> getPeaks() {
+        final List<Peak> l = new ArrayList<Peak>(
+                new TransformerPeakToUnmodifiable().transformCollection(delegate.getPeaks()));
+        return Collections.unmodifiableList(l);
+    }
+
+    @Override
     public Properties getProperties() {
         return delegate.getProperties();
     }

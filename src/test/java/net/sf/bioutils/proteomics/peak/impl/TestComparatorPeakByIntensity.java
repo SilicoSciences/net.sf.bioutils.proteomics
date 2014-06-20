@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.impl;
+package net.sf.bioutils.proteomics.peak.impl;
 
 import static org.junit.Assert.assertEquals;
 import net.sf.bioutils.proteomics.comparator.ComparatorIntensity;

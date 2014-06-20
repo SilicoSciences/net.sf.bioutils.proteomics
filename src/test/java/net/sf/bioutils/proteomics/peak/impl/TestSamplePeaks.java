@@ -1,10 +1,12 @@
-package net.sf.bioutils.proteomics.peak;
+package net.sf.bioutils.proteomics.peak.impl;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 
 import java.util.Arrays;
 
+import net.sf.bioutils.proteomics.peak.FractionPeaks;
+import net.sf.bioutils.proteomics.peak.SamplePeaks;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 import net.sf.bioutils.proteomics.sample.Sample;
 

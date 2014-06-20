@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.impl;
+package net.sf.bioutils.proteomics.peak.impl;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import net.sf.bioutils.proteomics.peak.FilterPeakByMzRange;
+import static org.junit.Assert.assertEquals;
+import net.sf.bioutils.proteomics.peak.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
-import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,13 +26,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * Test PeakFilterByMass(DoubleRange).
- * 
- * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
- * @version 2011-08-01
- */
-public class TestPeakFilterByMass2 {
+public class TestComparatorPeakByMZ {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -44,13 +36,13 @@ public class TestPeakFilterByMass2 {
     public static void tearDownAfterClass() throws Exception {
     }
 
-    private FilterPeakByMzRange f;
+    private ComparatorPeakByMZ c;
 
-    private Peak p1;
+    private Peak p1, p2;
 
     @Before
     public void setUp() throws Exception {
-
+        c = new ComparatorPeakByMZ();
     }
 
     @After
@@ -58,17 +50,45 @@ public class TestPeakFilterByMass2 {
     }
 
     @Test
-    public final void testVisit01() {
+    public final void testCompare01() {
         p1 = new PeakImpl(1, 1);
-        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
-        assertTrue(f.filter(p1));
+        p2 = new PeakImpl(1, 1);
+        assertEquals(0, c.compare(p1, p2));
     }
 
     @Test
-    public final void testVisit02() {
-        p1 = new PeakImpl(1.0011, 1);
-        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
-        assertFalse(f.filter(p1));
+    public final void testCompare02() {
+        p1 = null;
+        p2 = null;
+        assertEquals(0, c.compare(p1, p2));
+    }
+
+    @Test
+    public final void testCompare03() {
+        p1 = new PeakImpl(1, 1);
+        p2 = null;
+        assertEquals(1, c.compare(p1, p2));
+    }
+
+    @Test
+    public final void testCompare04() {
+        p2 = new PeakImpl(1, 1);
+        p1 = null;
+        assertEquals(-1, c.compare(p1, p2));
+    }
+
+    @Test
+    public final void testCompare05() {
+        p1 = new PeakImpl(2, 1);
+        p2 = new PeakImpl(1, 1);
+        assertEquals(1, c.compare(p1, p2));
+    }
+
+    @Test
+    public final void testCompare06() {
+        p1 = new PeakImpl(2, 1);
+        p2 = new PeakImpl(3, 1);
+        assertEquals(-1, c.compare(p1, p2));
     }
 
 }

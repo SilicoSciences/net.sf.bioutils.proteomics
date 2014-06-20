@@ -13,16 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.impl;
+package net.sf.bioutils.proteomics.peak.impl;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import net.sf.bioutils.proteomics.peak.FilterPeakByMZ;
 import net.sf.bioutils.proteomics.peak.FilterPeakByMzRange;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
-import net.sf.kerner.utils.collections.filter.Filter;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -30,7 +28,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestPeakFilterByMZ {
+/**
+ * Test PeakFilterByMass(DoubleRange).
+ * 
+ * @author <a href="mailto:alex.kerner.24@googlemail.com">Alexander Kerner</a>
+ * @version 2011-08-01
+ */
+public class TestPeakFilterByMass2 {
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -40,12 +44,13 @@ public class TestPeakFilterByMZ {
     public static void tearDownAfterClass() throws Exception {
     }
 
-    private Filter<Peak> filter;
+    private FilterPeakByMzRange f;
 
-    private PeakImpl p1;
+    private Peak p1;
 
     @Before
     public void setUp() throws Exception {
+
     }
 
     @After
@@ -54,50 +59,16 @@ public class TestPeakFilterByMZ {
 
     @Test
     public final void testVisit01() {
-        filter = new FilterPeakByMZ(0.001);
-        p1 = new PeakImpl(0.001, 1);
-        assertTrue(filter.filter(p1));
-    }
-
-    @Test(expected = NullPointerException.class)
-    public final void testVisit03() {
-        filter = new FilterPeakByMZ(0.001);
-        filter.filter(null);
+        p1 = new PeakImpl(1, 1);
+        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
+        assertTrue(f.filter(p1));
     }
 
     @Test
-    public final void testVisit04() {
-        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
-        p1 = new PeakImpl(0.001, 1);
-        assertTrue(filter.filter(p1));
-    }
-
-    @Test
-    public final void testVisit05() {
-        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
-        p1 = new PeakImpl(0.002, 1);
-        assertTrue(filter.filter(p1));
-    }
-
-    @Test
-    public final void testVisit06() {
-        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
-        p1 = new PeakImpl(0.0015, 1);
-        assertTrue(filter.filter(p1));
-    }
-
-    @Test
-    public final void testVisit07() {
-        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
-        p1 = new PeakImpl(0.0009, 1);
-        assertFalse(filter.filter(p1));
-    }
-
-    @Test
-    public final void testVisit08() {
-        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
-        p1 = new PeakImpl(0.0021, 1);
-        assertFalse(filter.filter(p1));
+    public final void testVisit02() {
+        p1 = new PeakImpl(1.0011, 1);
+        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
+        assertFalse(f.filter(p1));
     }
 
 }

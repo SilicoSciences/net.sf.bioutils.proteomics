@@ -24,7 +24,7 @@ import net.sf.kerner.utils.pair.Pair;
 /**
  *
  * Compares {@code element} with {@code object} for equality. m/z and fraction
- * index are considered values.
+ * index are values which are considered.
  *
  *
  * </p>
@@ -36,7 +36,7 @@ import net.sf.kerner.utils.pair.Pair;
  * Fully thread save since stateless.
  * </p>
  * <p>
- * last reviewed: 2014-06-04
+ * last reviewed: 2014-06-16
  * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -45,8 +45,8 @@ import net.sf.kerner.utils.pair.Pair;
 public class EqualatorPeak implements Equalator<Peak> {
 
     /**
-     * Compares {@code peak} with {@code object} for equality. m/z and fraction
-     * index are considered values.
+     * Compares {@code element} with {@code object} for equality. m/z and
+     * fraction index are values which are considered.
      *
      * @param peak
      *            a {@code Peak}

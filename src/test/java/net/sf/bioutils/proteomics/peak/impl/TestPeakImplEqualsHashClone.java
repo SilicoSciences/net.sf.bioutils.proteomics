@@ -66,10 +66,13 @@ public class TestPeakImplEqualsHashClone {
     }
 
     private PairSame<PeakImpl> getPeaksForEqualsHash04() {
+
+        // is same, since a fraction which is not in a sample returns -1 for
+        // index, so does a peak which is not in a fraction
+
         p1 = new PeakImpl(1, 1);
         p1.setFraction(new FractionPeaks(null));
         p2 = new PeakImpl(1, 1);
-        // p2.setFraction(new FractionPeaks(null));
         return new PairSameImpl<PeakImpl>(p1, p2);
     }
 
@@ -150,7 +153,7 @@ public class TestPeakImplEqualsHashClone {
     @Test
     public void testEquals04() {
         final PairSame<PeakImpl> pair = getPeaksForEqualsHash04();
-        assertNotEquals(pair.getFirst(), pair.getSecond());
+        assertEquals(pair.getFirst(), pair.getSecond());
     }
 
     @Test
@@ -186,7 +189,7 @@ public class TestPeakImplEqualsHashClone {
     @Test
     public void testHashCode04() {
         final PairSame<PeakImpl> pair = getPeaksForEqualsHash04();
-        assertNotEquals(pair.getFirst().hashCode(), pair.getSecond().hashCode());
+        assertEquals(pair.getFirst().hashCode(), pair.getSecond().hashCode());
     }
 
     @Test

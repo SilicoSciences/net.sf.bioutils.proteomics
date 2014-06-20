@@ -55,6 +55,7 @@ Import-Package: net.sf.jfasta;version="2.1.2",
  net.sf.kerner.utils.pair,
  net.sf.kerner.utils.transformer,
  org.junit;resolution:=optional,
- org.slf4j
-Bundle-ClassPath: lib/testng-6.8.8.jar,
- .
+ org.slf4j,
+ org.testng;resolution:=optional,
+ org.testng.annotations;resolution:=optional
+Bundle-ClassPath: .

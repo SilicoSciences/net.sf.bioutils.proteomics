@@ -15,26 +15,54 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.peak.impl;
 
+import net.sf.bioutils.proteomics.annotation.AnnotatableElementProto;
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
 
-public class PeakImpl implements Peak, Standard {
-
-    private Fraction fraction;
-
-    private final double intensity;
-
-    private final double intensityToNoise;
-
-    private final double mz;
-
-    private final String name;
+/**
+ *
+ * Prototype implementation of {@link Peak}.
+ *
+ * <p>
+ * <b>Example:</b><br>
+ * </p>
+ *
+ * <p>
+ *
+ * <pre>
+ * TODO example
+ * </pre>
+ *
+ * </p>
+ *
+ * <p>
+ * <b>Threading:</b> Fully thread save since stateless.
+ * </p>
+ *
+ * <p>
+ * last reviewed: 2014-06-16
+ * </p>
+ *
+ * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
+ *
+ */
+public class PeakImpl extends AnnotatableElementProto implements Peak, Standard {
 
     public final static HashCalculatorPeak HASH_CALCULATOR_PEAK = new HashCalculatorPeak();
 
     public final static EqualatorPeak EQUALATOR_PEAK = new EqualatorPeak();
+
+    protected Fraction fraction;
+
+    protected double intensity;
+
+    protected double intensityToNoise;
+
+    protected double mz;
+
+    protected String name;
 
     public PeakImpl(final double mz, final double intensity) {
         this(null, null, mz, intensity, -1);
@@ -55,54 +83,68 @@ public class PeakImpl implements Peak, Standard {
         this(null, name, mz, intensity, intensityToNoise);
     }
 
+    /**
+     * Performs a shallow copy of this {@code Peak}.
+     */
     @Override
-    public PeakImpl clone() {
+    public synchronized PeakImpl clone() {
         return new PeakImpl(getFraction(), getName(), getMz(), getIntensity(),
                 getIntensityToNoise());
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public synchronized boolean equals(final Object obj) {
         return EQUALATOR_PEAK.areEqual(this, obj);
     }
 
     @Override
-    public Fraction getFraction() {
+    public synchronized Fraction getFraction() {
         return fraction;
     }
 
     @Override
-    public int getFractionIndex() {
+    public synchronized int getFractionIndex() {
         return getFraction().getIndex();
     }
 
     @Override
-    public double getIntensity() {
+    public synchronized String getFractionName() {
+        if (getFraction() == null) {
+            return null;
+        }
+        return getFraction().getName();
+    }
+
+    @Override
+    public synchronized double getIntensity() {
         return intensity;
     }
 
     @Override
-    public double getIntensityToNoise() {
+    public synchronized double getIntensityToNoise() {
         return intensityToNoise;
     }
 
     @Override
-    public double getMz() {
+    public synchronized double getMz() {
         return mz;
     }
 
     @Override
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
     @Override
-    public Sample getSample() {
+    public synchronized Sample getSample() {
+        if (getFraction() == null) {
+            return null;
+        }
         return getFraction().getSample();
     }
 
     @Override
-    public String getSampleName() {
+    public synchronized String getSampleName() {
         if (getSample() == null) {
             return null;
         }
@@ -110,18 +152,18 @@ public class PeakImpl implements Peak, Standard {
     }
 
     @Override
-    public int hashCode() {
+    public synchronized int hashCode() {
         return HASH_CALCULATOR_PEAK.calculateHash(this);
     }
 
     @Override
-    public void setFraction(final Fraction fraction) {
+    public synchronized void setFraction(final Fraction fraction) {
         this.fraction = fraction;
     }
 
     @Override
-    public String toString() {
-        return "mz:" + mz + ",int:" + intensity;
+    public synchronized String toString() {
+        return getClass().getSimpleName() + ":mz:" + mz + ",int:" + intensity;
     }
 
 }

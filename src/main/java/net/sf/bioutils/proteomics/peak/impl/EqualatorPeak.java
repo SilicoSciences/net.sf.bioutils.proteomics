@@ -36,7 +36,7 @@ import net.sf.kerner.utils.pair.Pair;
  * Fully thread save since stateless.
  * </p>
  * <p>
- * last reviewed: 2014-06-16
+ * last reviewed: 2014-06-20
  * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -66,15 +66,6 @@ public class EqualatorPeak implements Equalator<Peak> {
         if (!UtilEqual.areEqual(UtilMath.round(peak.getMz(), 4),
                 UtilMath.round(((Peak) obj).getMz(), 4)))
             return false;
-        if (peak.getFraction() == null && ((Peak) obj).getFraction() != null) {
-            return false;
-        }
-        if (peak.getFraction() != null && ((Peak) obj).getFraction() == null) {
-            return false;
-        }
-        if (peak.getFraction() == null && ((Peak) obj).getFraction() == null) {
-            return true;
-        }
         if (!UtilEqual.areEqual(peak.getFractionIndex(), ((Peak) obj).getFractionIndex()))
             return false;
         if (peak.getSampleName() != null && ((Peak) obj).getSampleName() == null) {

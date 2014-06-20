@@ -179,8 +179,9 @@ public class SamplePeaks implements SampleModifiable {
 
     public SamplePeaks(final Sample sample, final String newName) {
         this(newName, sample.getUser());
-        // set fractions will create defensive copy, no need to do this here
-        setFractions(UtilList.clone(sample.getFractions()));
+        for (final Peak p : sample.getPeaks()) {
+            addPeak(p.clone());
+        }
         getProperties().putAll(sample.getProperties());
     }
 

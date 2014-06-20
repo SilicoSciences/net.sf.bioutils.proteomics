@@ -18,15 +18,14 @@ package net.sf.bioutils.proteomics.peak.impl;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.hash.HashCalculatorAbstract;
 import net.sf.kerner.utils.hash.UtilHash;
+import net.sf.kerner.utils.math.UtilMath;
 
 public class HashCalculatorPeak extends HashCalculatorAbstract<Peak> {
 
     @Override
     public int calculateHash(final Peak peak) {
-        if (peak.getFraction() == null) {
-            return UtilHash.getHash(null, peak.getMz());
-        }
-        return UtilHash.getHash(peak.getFractionIndex(), peak.getMz(), peak.getSampleName());
+        return UtilHash.getHash(peak.getSampleName(), peak.getFractionIndex(),
+                UtilMath.round(peak.getMz(), 4));
 
     }
 

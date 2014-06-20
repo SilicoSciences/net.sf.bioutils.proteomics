@@ -1,12 +1,12 @@
 /*******************************************************************************
  * Copyright 2011-2014 Alexander Kerner. All rights reserved.
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -16,6 +16,7 @@
 package net.sf.bioutils.proteomics.peak;
 
 import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.fraction.FractionModifiable;
 import net.sf.bioutils.proteomics.provider.ProviderFractionIndex;
 import net.sf.bioutils.proteomics.provider.ProviderIntensity;
 import net.sf.bioutils.proteomics.provider.ProviderMz;
@@ -43,7 +44,7 @@ import net.sf.kerner.utils.Cloneable;
  * TODO example
  * </pre>
  * <p>
- * last reviewed: 2014-04-09
+ * last reviewed: 2014-06-16
  * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -53,52 +54,64 @@ public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionInd
         Cloneable<Peak> {
 
     /**
-     * Creates a clone of this {@code Peak}.</br> <b>Note:</b></br>
-     * Bidirectional relationship to {@link Fraction} and its {@link Sample}:
-     * When cloning {@link Fraction} or taking over its direct reference,
-     * {@link Fraction} - {@code Peak} relationship is broken: The cloned
-     * {@code Peak} will have a reference to a {@link Fraction} and its
-     * {@link Sample}, but this {@link Fraction} does not know about the newly
-     * cloned {@code Peak}. The cloned {@code Peak} will therefore not be
-     * accessible via {@link Fraction} and its {@link Sample}!
+     * Creates a copy of this {@code Peak} which is identical to {@code this}
+     * {@code Peak} with one exception: {@link Fraction} of new {@code Peak}
+     * will be {@code null}!
+     *
+     * @return a clone of this Peak
      */
     @Override
     Peak clone();
 
     /**
+     * Returns {@link Fraction} which contains this {@code Peak}; or
+     * {@code null} if this {@code Peak} is not contained in any
+     * {@link Fraction}
      *
-     * @return {@link Fraction}, which contains this {@code Peak}; or
+     * @return {@link Fraction} which contains this {@code Peak}; or
      *         {@code null} if this {@code Peak} is not contained in any
      *         {@link Fraction}
      */
     Fraction getFraction();
 
     /**
-     * Shortcut for {@link Peak.getFraction().getIndex()}. </br> Can be helpful
-     * for implementations of {@code Peak} which do not have a {@link Fraction}.
+     * Shortcut for {@code Peak.getFraction().getIndex()}.
      *
-     * @return index of {@link Fraction} which contains this {@code Peak}
+     * @return index of {@link Fraction} which contains this {@code Peak}; or
+     *         {@code -1} if his {@code Peak} is not contained in any
+     *         {@link Fraction}
      */
     @Override
     int getFractionIndex();
 
+    /**
+     * Returns name of {@link Fraction} which contains this {@code Peak}; or
+     * {@code null} if this {@code Peak} is not contained in any
+     * {@link Fraction}
+     *
+     * @return name of {@link Fraction} which contains this {@code Peak}; or
+     *         {@code null} if this {@code Peak} is not contained in any
+     *         {@link Fraction}
+     */
+    String getFractionName();
+
     String getName();
 
     /**
-     * Shortcut for {@link Peak.getFraction().getSample()}. </br> Can be helpful
-     * for implementations of {@code Peak} which do not have a {@link Fraction}.
+     * Shortcut for {@code Peak.getFraction().getSample()}.
      *
-     * @return {@link Sample} which contains this {@code Peak}
+     * @return {@link Sample} which contains this {@code Peak}; or {@code null}
+     *         if this peak is not associated to any {@link Sample}.
      */
     @Override
     Sample getSample();
 
     /**
-     * Shortcut for {@link Peak.getFraction().getSample().getName()}. </br> Can
-     * be helpful for implementations of {@code Peak} which do not have a
-     * {@link Fraction} or {@link Sample}.
+     * Shortcut for {@code Peak.getFraction().getSample().getName()}.
      *
-     * @return {@link Sample} which is assigned to this {@code peak}
+     * @return name of the {@link Sample} which is assigned to this {@code peak}
+     *         ; or {@code null} if this peak is not associated to any
+     *         {@link Sample}.
      */
     @Override
     String getSampleName();
@@ -109,6 +122,8 @@ public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionInd
      *
      * @param fraction
      *            {@link Fraction}, which contains this {@code Peak}
+     *
+     * @see FractionModifiable#addPeak(Peak)
      */
     void setFraction(Fraction fraction);
 

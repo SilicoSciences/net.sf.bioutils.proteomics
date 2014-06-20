@@ -11,12 +11,14 @@ import net.sf.bioutils.proteomics.peak.FractionUnmodifiable;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.SampleUnmodifiable;
 import net.sf.bioutils.proteomics.sample.Sample;
+import net.sf.kerner.utils.Util;
 
 public class PeakUnmodifiable implements PeakAnnotatable {
 
     protected final PeakAnnotatable delegate;
 
     public PeakUnmodifiable(final Peak delegate) {
+        Util.checkForNull(delegate);
         this.delegate = (PeakAnnotatable) delegate;
     }
 
@@ -40,12 +42,20 @@ public class PeakUnmodifiable implements PeakAnnotatable {
 
     @Override
     public Fraction getFraction() {
+        if (delegate.getFraction() == null) {
+            return null;
+        }
         return new FractionUnmodifiable(delegate.getFraction());
     }
 
     @Override
     public int getFractionIndex() {
         return delegate.getFractionIndex();
+    }
+
+    @Override
+    public String getFractionName() {
+        return delegate.getFractionName();
     }
 
     @Override

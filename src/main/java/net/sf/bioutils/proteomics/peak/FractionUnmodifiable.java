@@ -10,12 +10,14 @@ import java.util.Set;
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
+import net.sf.kerner.utils.Util;
 
 public class FractionUnmodifiable implements Fraction {
 
     private final Fraction delegate;
 
     public FractionUnmodifiable(final Fraction delegate) {
+        Util.checkForNull(delegate);
         this.delegate = delegate;
     }
 

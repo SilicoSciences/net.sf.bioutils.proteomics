@@ -9,12 +9,14 @@ import java.util.Properties;
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.sample.Sample;
+import net.sf.kerner.utils.Util;
 
 public class SampleUnmodifiable implements Sample {
 
     private final Sample delegate;
 
     public SampleUnmodifiable(final Sample delegate) {
+        Util.checkForNull(delegate);
         this.delegate = delegate;
     }
 

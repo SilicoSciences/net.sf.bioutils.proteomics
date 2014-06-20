@@ -198,6 +198,6 @@ public class TestPeakImplEqualsHashClone {
     @Test
     public void testHashCode06() {
         final PairSame<PeakImpl> pair = getPeaksForEqualsHash06();
-        assertNotEquals(pair.getFirst().hashCode(), pair.getSecond().hashCode());
+        assertEquals(pair.getFirst().hashCode(), pair.getSecond().hashCode());
     }
 }

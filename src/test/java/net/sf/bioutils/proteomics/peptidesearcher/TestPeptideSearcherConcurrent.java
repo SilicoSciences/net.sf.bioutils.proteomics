@@ -38,7 +38,7 @@ public class TestPeptideSearcherConcurrent {
 
     }
 
-    @Test(threadPoolSize = 16, invocationCount = 100)
+    @Test(threadPoolSize = 16, invocationCount = 100, enabled = false)
     public void reduceToProteotipic01() throws IOException {
         final PeptideSearcher s = new PeptideSearcher(c);
         s.setCacheFASTAFile(true);
@@ -68,7 +68,7 @@ public class TestPeptideSearcherConcurrent {
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
     }
 
-    @Test(threadPoolSize = 16, invocationCount = 100)
+    @Test(threadPoolSize = 16, invocationCount = 100, enabled = false)
     public void reduceToProteotipic02() throws IOException {
         final PeptideSearcher s = new PeptideSearcher(c);
         s.setCacheFASTAFile(true);
@@ -99,7 +99,7 @@ public class TestPeptideSearcherConcurrent {
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
     }
 
-    @Test(threadPoolSize = 16, invocationCount = 100)
+    @Test(threadPoolSize = 16, invocationCount = 100, enabled = false)
     public void reduceToProteotipic03() throws IOException {
         final PeptideSearcher s = new PeptideSearcher(c);
         s.setCacheFASTAFile(true);

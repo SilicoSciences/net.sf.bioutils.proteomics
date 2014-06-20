@@ -42,7 +42,7 @@ import net.sf.bioutils.proteomics.standard.Standard;
  * </p>
  *
  * <p>
- * last reviewed: 2014-06-16
+ * last reviewed: 2014-06-20
  * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -98,12 +98,15 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
     }
 
     @Override
-    public synchronized Fraction getFraction() {
+    public Fraction getFraction() {
         return fraction;
     }
 
     @Override
     public synchronized int getFractionIndex() {
+        if (getFraction() == null) {
+            return -1;
+        }
         return getFraction().getIndex();
     }
 
@@ -116,22 +119,22 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
     }
 
     @Override
-    public synchronized double getIntensity() {
+    public double getIntensity() {
         return intensity;
     }
 
     @Override
-    public synchronized double getIntensityToNoise() {
+    public double getIntensityToNoise() {
         return intensityToNoise;
     }
 
     @Override
-    public synchronized double getMz() {
+    public double getMz() {
         return mz;
     }
 
     @Override
-    public synchronized String getName() {
+    public String getName() {
         return name;
     }
 

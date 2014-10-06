@@ -84,6 +84,7 @@ public class SamplePeaks implements SampleModifiable {
     static void addPeaks(final Sample sample, final Collection<? extends Peak> peaksToAdd,
             final FactoryFraction factoryFraction) {
         for (final Peak p : peaksToAdd) {
+
             final int index;
             index = p.getFractionIndex();
             if (index < 0) {

@@ -13,22 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.peak;
+package net.sf.bioutils.proteomics;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-
-import net.sf.kerner.utils.collections.ComparatorInverter;
 import net.sf.kerner.utils.collections.Selector;
 
-public class SelectorPeakHighestInt<T extends Peak> implements Selector<T> {
+public interface ComposableElementCollapsed<T> extends ComposableElement<T> {
 
-    @Override
-    public T select(final Collection<? extends T> elements) {
-        final ArrayList<T> list = new ArrayList<T>(elements);
-        Collections.sort(list, new ComparatorInverter<Peak>(new ComparatorPeakByIntensity()));
-        return list.get(0);
-    }
+    T getMaster();
+
+    Selector<T> getSelector();
+
+    void setSelector(Selector<T> selector);
 
 }

@@ -26,7 +26,7 @@ import java.util.TreeSet;
 import net.sf.kerner.utils.collections.ComparatorInverter;
 import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.filter.Filter;
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 import net.sf.kerner.utils.transformer.Transformer;
 
 /**

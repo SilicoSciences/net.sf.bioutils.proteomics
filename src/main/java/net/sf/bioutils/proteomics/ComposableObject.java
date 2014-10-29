@@ -18,7 +18,7 @@ package net.sf.bioutils.proteomics;
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 
 /**
  * 

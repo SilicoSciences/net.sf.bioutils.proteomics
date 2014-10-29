@@ -17,8 +17,8 @@ package net.sf.bioutils.proteomics.transformer;
 
 import net.sf.bioutils.proteomics.provider.ProviderSample;
 import net.sf.bioutils.proteomics.sample.Sample;
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 import net.sf.kerner.utils.collections.list.FactoryList;
-import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 
 public class TransformerPeakToSample extends
         AbstractTransformingListFactory<ProviderSample, Sample> {

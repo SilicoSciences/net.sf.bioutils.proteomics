@@ -19,8 +19,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 import net.sf.kerner.utils.collections.list.TransformerList;
-import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 
 public class PeptideSequencesImpl implements PeptideSequences {
 

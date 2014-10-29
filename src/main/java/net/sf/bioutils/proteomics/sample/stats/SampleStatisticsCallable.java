@@ -7,7 +7,7 @@ import java.util.concurrent.Callable;
 import net.sf.bioutils.proteomics.feature.Feature;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.sample.Sample;
-import net.sf.kerner.utils.collections.list.impl.ListWalkerDefault;
+import net.sf.kerner.utils.collections.list.ListWalkerDefault;
 
 public class SampleStatisticsCallable extends ListWalkerDefault<Peak> implements
         Callable<SampleStatistics> {

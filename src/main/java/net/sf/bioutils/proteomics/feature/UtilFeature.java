@@ -26,7 +26,7 @@ import net.sf.bioutils.proteomics.peak.ComparatorPeakByMZ;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.PeakFractionated;
 import net.sf.kerner.utils.collections.UtilCollection;
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 
 public class UtilFeature {
 

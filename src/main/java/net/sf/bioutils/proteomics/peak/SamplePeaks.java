@@ -32,7 +32,7 @@ import net.sf.bioutils.proteomics.sample.SampleModifiable;
 import net.sf.bioutils.proteomics.sample.impl.EqualatorSample;
 import net.sf.bioutils.proteomics.sample.impl.HashCalculatorSample;
 import net.sf.kerner.utils.UtilString;
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 import net.sf.kerner.utils.exception.ExceptionReadOnly;
 
 import org.slf4j.Logger;

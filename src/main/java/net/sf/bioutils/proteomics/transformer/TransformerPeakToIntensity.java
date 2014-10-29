@@ -16,7 +16,7 @@
 package net.sf.bioutils.proteomics.transformer;
 
 import net.sf.bioutils.proteomics.provider.ProviderIntensity;
-import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 
 /**
  * 

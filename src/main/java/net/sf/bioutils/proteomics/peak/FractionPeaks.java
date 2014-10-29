@@ -29,7 +29,7 @@ import net.sf.bioutils.proteomics.fraction.FractionModifiable;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
 import net.sf.kerner.utils.Util;
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 import net.sf.kerner.utils.exception.ExceptionReadOnly;
 
 public class FractionPeaks implements Fraction, FractionModifiable {

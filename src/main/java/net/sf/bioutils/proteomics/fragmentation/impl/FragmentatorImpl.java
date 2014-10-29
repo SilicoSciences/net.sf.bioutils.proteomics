@@ -23,7 +23,7 @@ import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.bioutils.proteomics.peptides.BIonChargedSingle;
 import net.sf.bioutils.proteomics.peptides.Peptide;
 import net.sf.bioutils.proteomics.peptides.YIonChargedSingle;
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 
 public class FragmentatorImpl implements Fragmentator {
 

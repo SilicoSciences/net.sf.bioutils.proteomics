@@ -15,8 +15,8 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.sample;
 
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 import net.sf.kerner.utils.collections.list.FactoryList;
-import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 
 public class TransformerSampleToName extends AbstractTransformingListFactory<Sample, String> {
 

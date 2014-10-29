@@ -15,8 +15,8 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics;
 
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 import net.sf.kerner.utils.collections.list.FactoryList;
-import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 import net.sf.kerner.utils.math.UtilMath;
 
 public class TransformerToLog2 extends AbstractTransformingListFactory<Double, Double> {

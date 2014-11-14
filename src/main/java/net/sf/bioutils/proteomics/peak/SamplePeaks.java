@@ -193,9 +193,6 @@ public class SamplePeaks implements SampleModifiable {
     public SamplePeaks(final String name, final User user) {
         this.user = user;
         this.name = name;
-        if (UtilString.emptyString(name)) {
-            throw new IllegalArgumentException("invalid sample name");
-        }
     }
 
     @Override

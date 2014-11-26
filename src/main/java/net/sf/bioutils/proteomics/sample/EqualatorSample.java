@@ -1,6 +1,5 @@
-package net.sf.bioutils.proteomics.sample.impl;
+package net.sf.bioutils.proteomics.sample;
 
-import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.kerner.utils.equal.Equalator;
 import net.sf.kerner.utils.pair.Pair;
 
@@ -22,6 +21,12 @@ public class EqualatorSample implements Equalator<Sample> {
             if (other.getName() != null)
                 return false;
         } else if (!element.getName().equals(other.getName()))
+            return false;
+
+        if (element.getNameBase() == null) {
+            if (other.getNameBase() != null)
+                return false;
+        } else if (!element.getNameBase().equals(other.getNameBase()))
             return false;
 
         if (element.getUser() == null) {

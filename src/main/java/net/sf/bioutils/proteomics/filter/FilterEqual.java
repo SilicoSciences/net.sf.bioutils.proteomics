@@ -13,25 +13,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.filter;
 
-import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
-import net.sf.kerner.utils.collections.list.FactoryList;
-import net.sf.kerner.utils.math.UtilMath;
+import java.util.Collection;
 
-public class TransformerToLog2 extends AbstractTransformingListFactory<Double, Double> {
+import net.sf.kerner.utils.collections.filter.Filter;
+import net.sf.kerner.utils.equal.Equalator;
 
-    public TransformerToLog2() {
+public class FilterEqual<T> implements Filter<T> {
+
+    private final Collection<? extends T> elements;
+
+    private final Equalator<T> equalator;
+
+    public FilterEqual(final Collection<? extends T> elements, final Equalator<T> equalator) {
         super();
+        this.elements = elements;
+        this.equalator = equalator;
     }
 
-    public TransformerToLog2(final FactoryList<Double> factory) {
-        super(factory);
-    }
-
-    @Override
-    public Double transform(final Double element) {
-        return UtilMath.log2(element);
+    public boolean filter(final T e) {
+        for (final T o : elements) {
+            if (o.hashCode() == e.hashCode()) {
+                continue;
+            }
+            if (equalator.areEqual(e, o)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

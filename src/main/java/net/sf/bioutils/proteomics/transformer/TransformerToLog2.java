@@ -13,29 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics;
+package net.sf.bioutils.proteomics.transformer;
 
-import java.util.HashMap;
-import java.util.Map;
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
+import net.sf.kerner.utils.collections.list.FactoryList;
+import net.sf.kerner.utils.math.UtilMath;
 
-import net.sf.bioutils.proteomics.fraction.Fraction;
-import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.bioutils.proteomics.sample.Sample;
+public class TransformerToLog2 extends AbstractTransformingListFactory<Double, Double> {
 
-public class MapQuickAcccess {
-
-    private final Map<Peak, Fraction> mapPeakToFraction = new HashMap<Peak, Fraction>();
-
-    public MapQuickAcccess(final Sample sample) {
-        for (final Fraction fraction : sample.getFractions()) {
-            for (final Peak peak : fraction.getPeaks()) {
-                mapPeakToFraction.put(peak, fraction);
-            }
-        }
+    public TransformerToLog2() {
+        super();
     }
 
-    public Map<Peak, Fraction> getMapPeakToFraction() {
-        return mapPeakToFraction;
+    public TransformerToLog2(final FactoryList<Double> factory) {
+        super(factory);
+    }
+
+    @Override
+    public Double transform(final Double element) {
+        return UtilMath.log2(element);
     }
 
 }

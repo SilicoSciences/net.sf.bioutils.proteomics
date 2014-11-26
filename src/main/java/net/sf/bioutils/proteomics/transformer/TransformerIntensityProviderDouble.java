@@ -13,27 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.feature;
+package net.sf.bioutils.proteomics.transformer;
 
-import net.sf.bioutils.proteomics.User;
-import net.sf.bioutils.proteomics.peak.FactorySamplePeaks;
+import net.sf.bioutils.proteomics.provider.ProviderIntensity;
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 
-
-public class FactorySampleFeatures extends FactorySamplePeaks {
-
-    @Override
-    public SampleFeatures create() {
-        return new SampleFeatures(getName());
-    }
+public class TransformerIntensityProviderDouble extends
+        AbstractTransformingListFactory<ProviderIntensity, Double> {
 
     @Override
-    public SampleFeatures create(final String name) {
-        return new SampleFeatures(name);
-    }
-
-    @Override
-    public SampleFeatures create(final String name, final User user) {
-        return new SampleFeatures(name, user);
+    public Double transform(final ProviderIntensity element) {
+        return Double.valueOf(element.getIntensity());
     }
 
 }

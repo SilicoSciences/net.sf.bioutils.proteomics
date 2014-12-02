@@ -1,5 +1,6 @@
 package net.sf.bioutils.proteomics.annotation;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -14,7 +15,7 @@ import java.util.Collection;
  */
 public class AnnotatableElementProto implements AnnotatableElement {
 
-    private Collection<AnnotationSerializable> annotation;
+    private Collection<AnnotationSerializable> annotation = new ArrayList<AnnotationSerializable>(0);
 
     @Override
     public Collection<AnnotationSerializable> getAnnotation() {

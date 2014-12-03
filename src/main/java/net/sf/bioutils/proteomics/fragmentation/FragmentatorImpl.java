@@ -13,12 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.fragmentation.impl;
+package net.sf.bioutils.proteomics.fragmentation;
 
 import java.util.Collections;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.fragmentation.Fragmentator;
 import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.bioutils.proteomics.peptides.BIonChargedSingle;
 import net.sf.bioutils.proteomics.peptides.Peptide;

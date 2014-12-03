@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.digest.impl;
+package net.sf.bioutils.proteomics.digest;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import net.sf.bioutils.proteomics.digest.DigesterAbstract;
 import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.bioutils.proteomics.peptides.Peptide;
 import net.sf.bioutils.proteomics.peptides.PeptideSequenceChargedSingle;

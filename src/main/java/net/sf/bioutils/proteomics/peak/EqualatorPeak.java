@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.peak.impl;
+package net.sf.bioutils.proteomics.peak;
 
-import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.equal.Equalator;
 import net.sf.kerner.utils.equal.UtilEqual;
 import net.sf.kerner.utils.math.UtilMath;

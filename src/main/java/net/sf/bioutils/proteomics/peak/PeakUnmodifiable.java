@@ -1,15 +1,10 @@
-package net.sf.bioutils.proteomics.peak.impl;
+package net.sf.bioutils.proteomics.peak;
 
 import java.util.Collection;
 import java.util.Collections;
 
-import net.sf.bioutils.proteomics.Spectrum;
 import net.sf.bioutils.proteomics.annotation.AnnotationSerializable;
 import net.sf.bioutils.proteomics.annotation.PeakAnnotatable;
-import net.sf.bioutils.proteomics.fraction.Fraction;
-import net.sf.bioutils.proteomics.peak.FractionUnmodifiable;
-import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.bioutils.proteomics.peak.SampleUnmodifiable;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.kerner.utils.Util;
 
@@ -41,21 +36,8 @@ public class PeakUnmodifiable implements PeakAnnotatable {
     }
 
     @Override
-    public Fraction getFraction() {
-        if (delegate.getFraction() == null) {
-            return null;
-        }
-        return new FractionUnmodifiable(delegate.getFraction());
-    }
-
-    @Override
     public int getFractionIndex() {
         return delegate.getFractionIndex();
-    }
-
-    @Override
-    public String getFractionName() {
-        return delegate.getFractionName();
     }
 
     @Override
@@ -89,11 +71,6 @@ public class PeakUnmodifiable implements PeakAnnotatable {
     }
 
     @Override
-    public Spectrum getSpectrum() {
-        return delegate.getSpectrum();
-    }
-
-    @Override
     public int hashCode() {
         return delegate.hashCode();
     }
@@ -104,12 +81,12 @@ public class PeakUnmodifiable implements PeakAnnotatable {
     }
 
     @Override
-    public void setFraction(final Fraction fraction) {
+    public void setFractionIndex(final int index) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void setSpectrum(final Spectrum spectra) {
+    public void setSample(final Sample sample) {
         throw new UnsupportedOperationException();
     }
 

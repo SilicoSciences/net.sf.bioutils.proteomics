@@ -13,37 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-package net.sf.bioutils.proteomics.peak.impl;
+package net.sf.bioutils.proteomics.peak;
+
+import java.util.Collection;
 
 import net.sf.bioutils.proteomics.annotation.AnnotatableElementProto;
-import net.sf.bioutils.proteomics.fraction.Fraction;
-import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.annotation.AnnotationSerializable;
+import net.sf.bioutils.proteomics.annotation.PeakAnnotatable;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.bioutils.proteomics.standard.Standard;
+import net.sf.kerner.utils.collections.UtilCollection;
 
 /**
  *
  * Prototype implementation of {@link Peak}.
- *
- * <p>
- * <b>Example:</b><br>
- * </p>
- *
- * <p>
- *
- * <pre>
- * TODO example
- * </pre>
- *
- * </p>
- *
- * <p>
- * <b>Threading:</b> Fully thread save since stateless.
- * </p>
- *
- * <p>
- * last reviewed: 2014-06-20
- * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  *
@@ -54,7 +37,7 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
 
     public final static EqualatorPeak EQUALATOR_PEAK = new EqualatorPeak();
 
-    protected Fraction fraction;
+    protected Sample sample;
 
     protected double intensity;
 
@@ -64,23 +47,40 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
 
     protected String name;
 
-    public PeakImpl(final double mz, final double intensity) {
-        this(null, null, mz, intensity, -1);
+    private int fractionIndex;
+
+    public PeakImpl() {
+        this(-1, -1);
     }
 
-    public PeakImpl(final Fraction fraction, final String name, final double mz,
-            final double intensity, final double intensityToNoise) {
+    public PeakImpl(final double mz, final double intensity) {
+        this(mz, intensity, -1);
+    }
+
+    public PeakImpl(final double mz, final double intensity, final int fractionIndex) {
+        this(null, fractionIndex, mz, intensity, -1, null);
+    }
+
+    public PeakImpl(final Peak template) {
+        this(template.getName(), template.getFractionIndex(), template.getMz(), template
+                .getIntensity(), template.getIntensityToNoise(), template.getSample());
+        if (template instanceof PeakAnnotatable) {
+            final Collection<AnnotationSerializable> annos = ((PeakAnnotatable) template)
+                    .getAnnotation();
+            if (UtilCollection.notNullNotEmpty(annos))
+                getAnnotation().addAll(annos);
+        }
+    }
+
+    public PeakImpl(final String name, final int fractionIndex, final double mz,
+            final double intensity, final double intensityToNoise, final Sample sample) {
         super();
-        this.fraction = fraction;
         this.intensity = intensity;
         this.intensityToNoise = intensityToNoise;
         this.mz = mz;
         this.name = name;
-    }
-
-    public PeakImpl(final String name, final double mz, final double intensity,
-            final double intensityToNoise) {
-        this(null, name, mz, intensity, intensityToNoise);
+        this.sample = sample;
+        this.fractionIndex = fractionIndex;
     }
 
     /**
@@ -88,8 +88,10 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
      */
     @Override
     public synchronized PeakImpl clone() {
-        return new PeakImpl(getFraction(), getName(), getMz(), getIntensity(),
-                getIntensityToNoise());
+        final PeakImpl result = new PeakImpl(getName(), getFractionIndex(), getMz(),
+                getIntensity(), getIntensityToNoise(), null);
+        result.getAnnotation().addAll(getAnnotation());
+        return result;
     }
 
     @Override
@@ -98,52 +100,33 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
     }
 
     @Override
-    public Fraction getFraction() {
-        return fraction;
-    }
-
-    @Override
     public synchronized int getFractionIndex() {
-        if (getFraction() == null) {
-            return -1;
-        }
-        return getFraction().getIndex();
+        return fractionIndex;
     }
 
     @Override
-    public synchronized String getFractionName() {
-        if (getFraction() == null) {
-            return null;
-        }
-        return getFraction().getName();
-    }
-
-    @Override
-    public double getIntensity() {
+    public synchronized double getIntensity() {
         return intensity;
     }
 
     @Override
-    public double getIntensityToNoise() {
+    public synchronized double getIntensityToNoise() {
         return intensityToNoise;
     }
 
     @Override
-    public double getMz() {
+    public synchronized double getMz() {
         return mz;
     }
 
     @Override
-    public String getName() {
+    public synchronized String getName() {
         return name;
     }
 
     @Override
     public synchronized Sample getSample() {
-        if (getFraction() == null) {
-            return null;
-        }
-        return getFraction().getSample();
+        return sample;
     }
 
     @Override
@@ -160,8 +143,13 @@ public class PeakImpl extends AnnotatableElementProto implements Peak, Standard 
     }
 
     @Override
-    public synchronized void setFraction(final Fraction fraction) {
-        this.fraction = fraction;
+    public synchronized void setFractionIndex(final int index) {
+        fractionIndex = index;
+    }
+
+    @Override
+    public synchronized void setSample(final Sample sample) {
+        this.sample = sample;
     }
 
     @Override

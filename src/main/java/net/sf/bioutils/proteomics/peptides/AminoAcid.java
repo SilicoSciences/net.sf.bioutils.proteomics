@@ -15,7 +15,7 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.peptides;
 
-import net.sf.bioutils.proteomics.ExceptionUnknownAminoAcid;
+import net.sf.bioutils.proteomics.exception.ExceptionUnknownAminoAcid;
 
 /**
  * 

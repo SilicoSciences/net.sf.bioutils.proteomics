@@ -18,7 +18,7 @@ package net.sf.bioutils.proteomics.peak.impl;
 import static org.junit.Assert.assertEquals;
 import net.sf.bioutils.proteomics.comparator.ComparatorIntensity;
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
+import net.sf.bioutils.proteomics.peak.PeakImpl;
 
 import org.junit.After;
 import org.junit.AfterClass;

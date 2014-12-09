@@ -7,8 +7,8 @@ import java.util.List;
 
 import net.sf.bioutils.proteomics.annotation.FeatureAnnotatable;
 import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.bioutils.proteomics.peak.PeakUnmodifiable;
 import net.sf.bioutils.proteomics.peak.TransformerPeakToUnmodifiable;
-import net.sf.bioutils.proteomics.peak.impl.PeakUnmodifiable;
 
 public class FeatureUnmodifiable extends PeakUnmodifiable implements FeatureAnnotatable {
 

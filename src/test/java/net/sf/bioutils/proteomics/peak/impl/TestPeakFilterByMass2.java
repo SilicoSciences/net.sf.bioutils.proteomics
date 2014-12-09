@@ -19,7 +19,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import net.sf.bioutils.proteomics.peak.FilterPeakByMzRange;
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
+import net.sf.bioutils.proteomics.peak.PeakImpl;
 import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 
 import org.junit.After;

@@ -7,9 +7,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import net.sf.bioutils.proteomics.User;
-import net.sf.bioutils.proteomics.annotation.PeakAnnotatable;
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.bioutils.proteomics.peak.PeakModifiable;
 import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.map.MapList;
 
@@ -73,8 +71,10 @@ public class SampleBean implements SampleModifiable {
 
     @Override
     public void addPeak(final Peak peak) {
-        peaks.add(peak);
-        ((PeakModifiable) peak).setSample(this);
+        synchronized (this) {
+            peaks.add(peak);
+            peak.setSample(this);
+        }
     }
 
     @Override
@@ -95,9 +95,10 @@ public class SampleBean implements SampleModifiable {
         final SampleBean result = new SampleBean(newName, getUser(), getNameBase(), null,
                 getProperties());
         for (final Peak p : getPeaks()) {
-            if (p instanceof PeakAnnotatable && !((PeakAnnotatable) p).getAnnotation().isEmpty()) {
-                final int i = 0;
-            }
+            // if (p instanceof PeakAnnotatable && !((PeakAnnotatable)
+            // p).getAnnotation().isEmpty()) {
+            // final int i = 0;
+            // }
             result.addPeak(p.clone());
         }
         return result;
@@ -132,6 +133,8 @@ public class SampleBean implements SampleModifiable {
 
     @Override
     public String getNameBase() {
+        if (nameBase == null)
+            return getName();
         return nameBase;
     }
 
@@ -177,13 +180,18 @@ public class SampleBean implements SampleModifiable {
         this.name = name;
     }
 
+    @Override
     public void setNameBase(final String nameBase) {
         this.nameBase = nameBase;
     }
 
     @Override
     public void setPeaks(final List<Peak> peaks) {
-        this.peaks = peaks;
+        synchronized (this) {
+            for (final Peak p : peaks) {
+                addPeak(p);
+            }
+        }
     }
 
     @Override
@@ -198,7 +206,7 @@ public class SampleBean implements SampleModifiable {
 
     @Override
     public String toString() {
-        return getName();
+        return getName() + ", " + getSize();
     }
 
 }

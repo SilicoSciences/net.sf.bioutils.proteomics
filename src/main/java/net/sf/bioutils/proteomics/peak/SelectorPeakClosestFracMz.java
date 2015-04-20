@@ -6,13 +6,18 @@ import java.util.TreeMap;
 import net.sf.kerner.utils.collections.Selector;
 import net.sf.kerner.utils.collections.UtilCollection;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class SelectorPeakClosestFracMz implements Selector<Peak> {
 
     private final double mz;
 
-    private final int fracNr;
+    private final static Logger log = LoggerFactory.getLogger(SelectorPeakClosestFracMz.class);
 
-    public SelectorPeakClosestFracMz(final double mz, final int fracNr) {
+    private final double fracNr;
+
+    public SelectorPeakClosestFracMz(final double mz, final double fracNr) {
         this.mz = mz;
         this.fracNr = fracNr;
     }
@@ -22,12 +27,18 @@ public class SelectorPeakClosestFracMz implements Selector<Peak> {
         if (UtilCollection.nullOrEmpty(elements)) {
             throw new IllegalArgumentException("Empty param");
         }
+        if (log.isDebugEnabled() && elements.size() > 1) {
+            // log.debug("Have to choose from " + elements.size());
+        }
         final TreeMap<Double, Peak> map = new TreeMap<Double, Peak>();
         for (final Peak p : elements) {
-            final double diffAbsMz = Math.abs(p.getMz() - mz);
+            double diffAbsMz = Math.abs(p.getMz() - mz);
+            diffAbsMz = UtilPeak.getDeltaPpm(mz, diffAbsMz);
+            diffAbsMz = diffAbsMz / 100;
             final double diffAbsFrac = Math.abs(p.getFractionIndex() - fracNr);
-            // map.put(diffAbsFrac * diffAbsMz, p);
-            map.put(diffAbsFrac, p);
+            final double result = diffAbsFrac * (diffAbsMz);
+            map.put(result, p);
+            // map.put(diffAbsFrac, p);
         }
         return map.firstEntry().getValue();
     }

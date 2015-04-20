@@ -60,6 +60,8 @@ public interface SampleModifiable extends Sample {
      */
     void setName(String name);
 
+    void setNameBase(String baseName);
+
     /**
      *
      * @param user

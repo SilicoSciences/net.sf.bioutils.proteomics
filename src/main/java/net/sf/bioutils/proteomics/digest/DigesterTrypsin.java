@@ -25,7 +25,7 @@ import java.util.TreeSet;
 import net.sf.bioutils.proteomics.peptides.AminoAcid;
 import net.sf.bioutils.proteomics.peptides.Peptide;
 import net.sf.bioutils.proteomics.peptides.PeptideSequenceChargedSingle;
-import net.sf.jranges.range.integer.impl.DummyIntegerRange;
+import net.sf.jranges.range.integerrange.impl.RangeIntegerDummy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +52,7 @@ public class DigesterTrypsin extends DigesterAbstract {
             result.add(seq);
         } else {
             if (log.isDebugEnabled()) {
-                log.debug("skip invalid range " + new DummyIntegerRange(indexLow, indexHigh));
+                log.debug("skip invalid range " + new RangeIntegerDummy(indexLow, indexHigh));
             }
         }
     }

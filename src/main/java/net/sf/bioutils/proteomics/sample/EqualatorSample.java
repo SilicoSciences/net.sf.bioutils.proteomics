@@ -40,9 +40,6 @@ public class EqualatorSample implements Equalator<Sample> {
                 return false;
         } else if (!element.getProperties().equals(other.getProperties()))
             return false;
-
-        if (!element.getPeaks().equals(other.getPeaks()))
-            return false;
         return true;
     }
 

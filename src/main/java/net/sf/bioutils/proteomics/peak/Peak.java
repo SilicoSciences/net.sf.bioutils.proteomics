@@ -16,6 +16,7 @@
 package net.sf.bioutils.proteomics.peak;
 
 import net.sf.bioutils.proteomics.fraction.Fraction;
+import net.sf.bioutils.proteomics.fraction.FractionModifiable;
 import net.sf.bioutils.proteomics.provider.ProviderFractionIndex;
 import net.sf.bioutils.proteomics.provider.ProviderIntensity;
 import net.sf.bioutils.proteomics.provider.ProviderMz;
@@ -33,6 +34,18 @@ import net.sf.kerner.utils.Cloneable;
  * A {@code Peak} is usually also associated to a {@link Sample} and, if it was
  * detected during a MALDI-MS experiment, also a {@link Fraction}.
  *
+ * <p>
+ * <b>Example:</b><br>
+ *
+ * </p>
+ * <p>
+ *
+ * <pre>
+ * TODO example
+ * </pre>
+ * <p>
+ * last reviewed: 2014-06-16
+ * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  *
@@ -40,19 +53,78 @@ import net.sf.kerner.utils.Cloneable;
 public interface Peak extends ProviderIntensity, ProviderMz, ProviderFractionIndex, ProviderSample,
         Cloneable<Peak> {
 
+    /**
+     * Creates a copy of this {@code Peak} which is identical to {@code this}
+     * {@code Peak} with one exception: {@link Fraction} of new {@code Peak}
+     * will be {@code null}!
+     *
+     * @return a clone of this Peak
+     */
     @Override
     Peak clone();
 
+    /**
+     * Returns {@link Fraction} which contains this {@code Peak}; or
+     * {@code null} if this {@code Peak} is not contained in any
+     * {@link Fraction}
+     *
+     * @return {@link Fraction} which contains this {@code Peak}; or
+     *         {@code null} if this {@code Peak} is not contained in any
+     *         {@link Fraction}
+     */
+    Fraction getFraction();
+
+    /**
+     * Shortcut for {@code Peak.getFraction().getIndex()}.
+     *
+     * @return index of {@link Fraction} which contains this {@code Peak}; or
+     *         {@code -1} if his {@code Peak} is not contained in any
+     *         {@link Fraction}
+     */
     @Override
     int getFractionIndex();
 
+    /**
+     * Returns name of {@link Fraction} which contains this {@code Peak}; or
+     * {@code null} if this {@code Peak} is not contained in any
+     * {@link Fraction}
+     *
+     * @return name of {@link Fraction} which contains this {@code Peak}; or
+     *         {@code null} if this {@code Peak} is not contained in any
+     *         {@link Fraction}
+     */
+    String getFractionName();
+
     String getName();
 
+    /**
+     * Shortcut for {@code Peak.getFraction().getSample()}.
+     *
+     * @return {@link Sample} which contains this {@code Peak}; or {@code null}
+     *         if this peak is not associated to any {@link Sample}.
+     */
     @Override
     Sample getSample();
 
-    void setFractionIndex(int index);
+    /**
+     * Shortcut for {@code Peak.getFraction().getSample().getName()}.
+     *
+     * @return name of the {@link Sample} which is assigned to this {@code peak}
+     *         ; or {@code null} if this peak is not associated to any
+     *         {@link Sample}.
+     */
+    @Override
+    String getSampleName();
 
-    void setSample(Sample sample);
+    /**
+     * Sets the {@link Fraction} which contains this {@code Peak}. </br>
+     * Typically, this method is called by {@link Fraction} itself!
+     *
+     * @param fraction
+     *            {@link Fraction}, which contains this {@code Peak}
+     *
+     * @see FractionModifiable#addPeak(Peak)
+     */
+    void setFraction(Fraction fraction);
 
 }

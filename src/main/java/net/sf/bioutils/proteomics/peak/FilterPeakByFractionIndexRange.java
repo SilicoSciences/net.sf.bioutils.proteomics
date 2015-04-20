@@ -15,7 +15,7 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.peak;
 
-import net.sf.jranges.range.integerrange.RangeInteger;
+import net.sf.jranges.range.integer.IntegerRange;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 /**
@@ -37,7 +37,7 @@ import net.sf.kerner.utils.collections.filter.Filter;
  */
 public class FilterPeakByFractionIndexRange implements Filter<Peak> {
 
-    private final RangeInteger range;
+    private final IntegerRange range;
 
     /**
      * Create a new {@code FilterPeakByMZRange}.
@@ -46,7 +46,7 @@ public class FilterPeakByFractionIndexRange implements Filter<Peak> {
      *            m/z range in which a peak's m/z must be in in order for this
      *            {@code Filter} t accept this peak
      */
-    public FilterPeakByFractionIndexRange(final RangeInteger range) {
+    public FilterPeakByFractionIndexRange(final IntegerRange range) {
         this.range = range;
     }
 
@@ -57,6 +57,6 @@ public class FilterPeakByFractionIndexRange implements Filter<Peak> {
 
     @Override
     public String toString() {
-        return "fracRange=" + range;
+        return "fracNr.range=" + range;
     }
 }

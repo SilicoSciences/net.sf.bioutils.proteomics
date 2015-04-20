@@ -15,13 +15,9 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.peak;
 
-import net.sf.bioutils.proteomics.sample.Sample;
+import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 
 public class FactoryPeakImpl implements FactoryPeak {
-
-    private Sample sample;
-
-    private int fractionIndex;
 
     @Override
     public PeakImpl create(final double mz, final double intensity, final double intensityToNoise) {
@@ -31,23 +27,7 @@ public class FactoryPeakImpl implements FactoryPeak {
     @Override
     public PeakImpl create(final String name, final double mz, final double intensity,
             final double intensityToNoise) {
-        return new PeakImpl(name, getFractionIndex(), mz, intensity, intensityToNoise, getSample());
-    }
-
-    public synchronized int getFractionIndex() {
-        return fractionIndex;
-    }
-
-    public synchronized Sample getSample() {
-        return sample;
-    }
-
-    public synchronized void setFractionIndex(final int fractionIndex) {
-        this.fractionIndex = fractionIndex;
-    }
-
-    public synchronized void setSample(final Sample sample) {
-        this.sample = sample;
+        return new PeakImpl(name, mz, intensity, intensityToNoise);
     }
 
 }

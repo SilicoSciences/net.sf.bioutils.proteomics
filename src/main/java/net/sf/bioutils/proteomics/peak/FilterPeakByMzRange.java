@@ -15,7 +15,7 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.peak;
 
-import net.sf.jranges.range.doublerange.RangeDouble;
+import net.sf.jranges.range.doublerange.DoubleRange;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 /**
@@ -37,7 +37,7 @@ import net.sf.kerner.utils.collections.filter.Filter;
  */
 public class FilterPeakByMzRange implements Filter<Peak> {
 
-    private final RangeDouble range;
+    private final DoubleRange range;
 
     /**
      * Create a new {@code FilterPeakByMZRange}.
@@ -46,7 +46,7 @@ public class FilterPeakByMzRange implements Filter<Peak> {
      *            m/z range in which a peak's m/z must be in in order for this
      *            {@code Filter} t accept this peak
      */
-    public FilterPeakByMzRange(final RangeDouble range) {
+    public FilterPeakByMzRange(final DoubleRange range) {
         this.range = range;
     }
 

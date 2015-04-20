@@ -16,8 +16,8 @@
 package net.sf.bioutils.proteomics.transformer;
 
 import net.sf.bioutils.proteomics.provider.ProviderIntensity;
-import net.sf.kerner.utils.math.TransformerLog10;
 import net.sf.kerner.utils.math.TransformerScale;
+import net.sf.kerner.utils.math.TransformerLog10;
 import net.sf.kerner.utils.math.UtilMath;
 
 /**

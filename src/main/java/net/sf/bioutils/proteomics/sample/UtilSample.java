@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.concurrent.locks.Lock;
 
 import net.sf.bioutils.proteomics.peak.Peak;
-import net.sf.kerner.utils.collections.map.MapList;
 
 public class UtilSample {
 
@@ -32,14 +31,6 @@ public class UtilSample {
         final List<Sample> result = new ArrayList<Sample>(samples.size());
         for (final Sample s : samples) {
             result.add(s.clone());
-        }
-        return result;
-    }
-
-    public static MapList<Integer, Peak> getPeakMap(final Sample sample) {
-        final MapList<Integer, Peak> result = new MapList<Integer, Peak>();
-        for (final Peak p : sample.getPeaks()) {
-            result.put(p.getFractionIndex(), p);
         }
         return result;
     }

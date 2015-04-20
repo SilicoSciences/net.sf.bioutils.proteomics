@@ -15,13 +15,14 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.sample;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.locks.ReadWriteLock;
+import java.util.Properties;
 
 import net.sf.bioutils.proteomics.User;
+import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.Cloneable;
-import net.sf.kerner.utils.collections.map.MapList;
 
 /**
  *
@@ -46,7 +47,7 @@ import net.sf.kerner.utils.collections.map.MapList;
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  *
  */
-public interface Sample extends Cloneable<Sample> {
+public interface Sample extends Iterable<Fraction>, Cloneable<Sample> {
 
     /**
      * Creates a clone of this {@code Sample}.
@@ -62,17 +63,22 @@ public interface Sample extends Cloneable<Sample> {
      */
     Sample clone(String newName);
 
-    Sample cloneWOPeaks(String newName);
+    /**
+     *
+     * Clones sample, dismissing fractions.
+     *
+     * @see #clone()
+     */
+    Sample cloneWOFractions();
 
-    ReadWriteLock getLock();
+    @Deprecated
+    List<Fraction> getFractions();
 
     String getName();
 
-    String getNameBase();
-
     List<Peak> getPeaks();
 
-    MapList<String, Object> getProperties();
+    Properties getProperties();
 
     /**
      *
@@ -82,8 +88,12 @@ public interface Sample extends Cloneable<Sample> {
 
     User getUser();
 
-    void setPeaks(List<Peak> peaks);
+    @Deprecated
+    @Override
+    public Iterator<Fraction> iterator();
 
-    void setProperties(MapList<String, Object> properties);
+    void setFractions(List<? extends Fraction> fraction);
+
+    void setProperties(Properties properties);
 
 }

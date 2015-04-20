@@ -15,8 +15,6 @@
  ******************************************************************************/
 package net.sf.bioutils.proteomics.peak;
 
-import net.sf.bioutils.proteomics.sample.Sample;
-
 /**
  *
  * Extends {@link Peak} by modifiability.
@@ -58,7 +56,5 @@ public interface PeakModifiable extends Peak {
     void setIntensityToNoise(double intensityToNoise);
 
     void setName(String name);
-
-    void setSample(Sample sample);
 
 }

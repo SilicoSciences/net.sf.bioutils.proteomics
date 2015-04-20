@@ -10,7 +10,7 @@ import java.util.concurrent.Future;
 
 import net.sf.bioutils.proteomics.sample.Sample;
 
-public class SampleStatisticsCalculatorFuture {
+public class SampleStatisticsCalculator {
 
     // private final static Logger log =
     // LoggerFactory.getLogger(SampleStatisticsFactory.class);

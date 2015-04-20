@@ -21,7 +21,7 @@ import net.sf.bioutils.proteomics.peak.FilterPeakByMZ;
 import net.sf.bioutils.proteomics.peak.FilterPeakByMzRange;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.PeakImpl;
-import net.sf.jranges.range.doublerange.impl.RangeDoubleDummy;
+import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
 import net.sf.kerner.utils.collections.filter.Filter;
 
 import org.junit.After;
@@ -67,35 +67,35 @@ public class TestPeakFilterByMZ {
 
     @Test
     public final void testVisit04() {
-        filter = new FilterPeakByMzRange(new RangeDoubleDummy(0.001, 0.002));
+        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.001, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test
     public final void testVisit05() {
-        filter = new FilterPeakByMzRange(new RangeDoubleDummy(0.001, 0.002));
+        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.002, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test
     public final void testVisit06() {
-        filter = new FilterPeakByMzRange(new RangeDoubleDummy(0.001, 0.002));
+        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.0015, 1);
         assertTrue(filter.filter(p1));
     }
 
     @Test
     public final void testVisit07() {
-        filter = new FilterPeakByMzRange(new RangeDoubleDummy(0.001, 0.002));
+        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.0009, 1);
         assertFalse(filter.filter(p1));
     }
 
     @Test
     public final void testVisit08() {
-        filter = new FilterPeakByMzRange(new RangeDoubleDummy(0.001, 0.002));
+        filter = new FilterPeakByMzRange(new DummyDoubleRange(0.001, 0.002));
         p1 = new PeakImpl(0.0021, 1);
         assertFalse(filter.filter(p1));
     }

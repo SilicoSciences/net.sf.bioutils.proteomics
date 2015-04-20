@@ -1,6 +1,5 @@
 package net.sf.bioutils.proteomics.peak;
 
-import net.sf.bioutils.proteomics.peak.impl.PeakUnmodifiable;
 
 public class FactoryPeakUnmodifiable implements FactoryPeak {
 

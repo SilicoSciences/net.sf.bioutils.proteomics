@@ -20,7 +20,7 @@ import static org.junit.Assert.assertTrue;
 import net.sf.bioutils.proteomics.peak.FilterPeakByMzRange;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.bioutils.proteomics.peak.PeakImpl;
-import net.sf.jranges.range.doublerange.impl.DummyDoubleRange;
+import net.sf.jranges.range.doublerange.impl.RangeDoubleDummy;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,14 +60,14 @@ public class TestPeakFilterByMass2 {
     @Test
     public final void testVisit01() {
         p1 = new PeakImpl(1, 1);
-        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
+        f = new FilterPeakByMzRange(new RangeDoubleDummy(0.999, 1.001));
         assertTrue(f.filter(p1));
     }
 
     @Test
     public final void testVisit02() {
         p1 = new PeakImpl(1.0011, 1);
-        f = new FilterPeakByMzRange(new DummyDoubleRange(0.999, 1.001));
+        f = new FilterPeakByMzRange(new RangeDoubleDummy(0.999, 1.001));
         assertFalse(f.filter(p1));
     }
 

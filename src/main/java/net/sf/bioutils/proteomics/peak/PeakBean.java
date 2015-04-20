@@ -4,15 +4,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import net.sf.bioutils.proteomics.Spectrum;
 import net.sf.bioutils.proteomics.annotation.FeatureAnnotatable;
 import net.sf.bioutils.proteomics.feature.Feature;
-import net.sf.bioutils.proteomics.peak.impl.PeakImpl;
 import net.sf.bioutils.proteomics.sample.Sample;
 
 public class PeakBean extends PeakImpl implements FeatureAnnotatable, PeakModifiable {
-
-    protected Spectrum spectrum;
 
     protected int indexFirst = -1, indexLast = -1;
 
@@ -135,7 +131,7 @@ public class PeakBean extends PeakImpl implements FeatureAnnotatable, PeakModifi
     }
 
     @Override
-    public void setSample(final Sample sample) {
+    public synchronized void setSample(final Sample sample) {
         this.sample = sample;
     }
 

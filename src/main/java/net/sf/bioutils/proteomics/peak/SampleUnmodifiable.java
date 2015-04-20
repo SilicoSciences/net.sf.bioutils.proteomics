@@ -2,14 +2,13 @@ package net.sf.bioutils.proteomics.peak;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Properties;
+import java.util.concurrent.locks.ReadWriteLock;
 
 import net.sf.bioutils.proteomics.User;
-import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.sample.Sample;
 import net.sf.kerner.utils.Util;
+import net.sf.kerner.utils.collections.map.MapList;
 
 public class SampleUnmodifiable implements Sample {
 
@@ -31,8 +30,8 @@ public class SampleUnmodifiable implements Sample {
     }
 
     @Override
-    public Sample cloneWOFractions() {
-        return new SampleUnmodifiable(delegate.cloneWOFractions());
+    public Sample cloneWOPeaks(final String newName) {
+        return delegate.cloneWOPeaks(newName);
     }
 
     @Override
@@ -41,15 +40,18 @@ public class SampleUnmodifiable implements Sample {
     }
 
     @Override
-    public List<Fraction> getFractions() {
-        final List<Fraction> l = new ArrayList<Fraction>(
-                new TransformerFractionToUnmodifiable().transformCollection(delegate.getFractions()));
-        return Collections.unmodifiableList(l);
+    public ReadWriteLock getLock() {
+        return delegate.getLock();
     }
 
     @Override
     public String getName() {
         return delegate.getName();
+    }
+
+    @Override
+    public String getNameBase() {
+        return delegate.getNameBase();
     }
 
     @Override
@@ -60,7 +62,7 @@ public class SampleUnmodifiable implements Sample {
     }
 
     @Override
-    public Properties getProperties() {
+    public MapList<String, Object> getProperties() {
         return delegate.getProperties();
     }
 
@@ -80,17 +82,12 @@ public class SampleUnmodifiable implements Sample {
     }
 
     @Override
-    public Iterator<Fraction> iterator() {
-        return delegate.iterator();
-    }
-
-    @Override
-    public void setFractions(final List<? extends Fraction> fraction) {
+    public void setPeaks(final List<Peak> peaks) {
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public void setProperties(final Properties properties) {
+    public void setProperties(final MapList<String, Object> properties) {
         throw new UnsupportedOperationException();
     }
 

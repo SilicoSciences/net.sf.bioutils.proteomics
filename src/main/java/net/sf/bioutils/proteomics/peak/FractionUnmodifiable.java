@@ -3,7 +3,6 @@ package net.sf.bioutils.proteomics.peak;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -19,6 +18,18 @@ public class FractionUnmodifiable implements Fraction {
     public FractionUnmodifiable(final Fraction delegate) {
         Util.checkForNull(delegate);
         this.delegate = delegate;
+    }
+
+    @Override
+    public void addPeak(final Peak peak) {
+        throw new UnsupportedOperationException();
+
+    }
+
+    @Override
+    public void addStandard(final Standard standard) {
+        throw new UnsupportedOperationException();
+
     }
 
     @Override
@@ -55,12 +66,7 @@ public class FractionUnmodifiable implements Fraction {
 
     @Override
     public Sample getSample() {
-        return new SampleUnmodifiable(delegate.getSample());
-    }
-
-    @Override
-    public String getSampleName() {
-        return delegate.getSampleName();
+        return delegate.getSample();
     }
 
     @Override
@@ -81,11 +87,6 @@ public class FractionUnmodifiable implements Fraction {
     @Override
     public boolean isEmpty() {
         return delegate.isEmpty();
-    }
-
-    @Override
-    public Iterator<Peak> iterator() {
-        return delegate.iterator();
     }
 
     @Override

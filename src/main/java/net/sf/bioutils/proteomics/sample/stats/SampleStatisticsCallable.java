@@ -36,7 +36,7 @@ public class SampleStatisticsCallable extends ListWalkerDefault<Peak> implements
         // PeakBean implements Feature
         // if (p instanceof Feature) {
 
-        if (p instanceof Feature && ((Feature) p).getMembers().size() > 1) {
+        if (p instanceof Feature) {
             result.incrementNumberOfFeatures();
             final Feature f = (Feature) p;
             result.setNumberOfPeaks(result.getNumberOfPeaks() + f.getMembers().size());

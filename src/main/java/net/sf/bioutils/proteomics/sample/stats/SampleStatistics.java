@@ -2,8 +2,37 @@ package net.sf.bioutils.proteomics.sample.stats;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Collection;
 
 public class SampleStatistics {
+
+    public static SampleStatistics merge(final Collection<? extends SampleStatistics> stats) {
+        final SampleStatistics result = new SampleStatistics();
+        long intt = 0;
+        long sn = 0;
+        for (final SampleStatistics s : stats) {
+            result.setNumberOfFeatures(result.getNumberOfFeatures() + s.getNumberOfFeatures());
+            result.setNumberOfPeaks(result.getNumberOfPeaks() + s.getNumberOfPeaks());
+            result.setTotalIntensity(result.getTotalIntensity().add(s.getTotalIntensity()));
+            result.setTotalIntensityToNoise(result.getTotalIntensityToNoise().add(
+                    s.getTotalIntensityToNoise()));
+            intt += s.getMedianPeakIntensity();
+            sn += s.getMeanPeakSN();
+            if (result.getMaxPeakInt() < s.getMaxPeakInt()) {
+                result.setMaxPeakInt(s.getMaxPeakInt());
+            }
+            if (result.getMaxPeakMz() < s.getMaxPeakMz()) {
+                result.setMaxPeakMz(s.getMaxPeakMz());
+            }
+            if (result.getMaxPeakSN() < s.getMaxPeakSN()) {
+                result.setMaxPeakSN(s.getMaxPeakSN());
+            }
+
+            result.setMedianPeakIntensity(intt / stats.size());
+            result.setMedianPeakSn(sn / stats.size());
+        }
+        return result;
+    }
 
     private BigDecimal totalIntensity = BigDecimal.ZERO;
 
@@ -24,6 +53,23 @@ public class SampleStatistics {
     private double medianPeakIntensity;
 
     private double medianPeakSn;
+
+    public SampleStatistics() {
+
+    }
+
+    public SampleStatistics(final SampleStatistics s) {
+        setMaxPeakInt(s.getMaxPeakInt());
+        setTotalIntensityToNoise(s.getTotalIntensityToNoise());
+        setTotalIntensity(s.getTotalIntensity());
+        setMaxPeakMz(s.getMaxPeakMz());
+        setMaxPeakSN(s.getMaxPeakSN());
+        setMedianPeakIntensity(s.getMedianPeakIntensity());
+        setMedianPeakMz(s.getMedianPeakMz());
+        setMedianPeakSn(s.getMedianPeakSn());
+        setNumberOfFeatures(s.getNumberOfFeatures());
+        setNumberOfPeaks(s.getNumberOfPeaks());
+    }
 
     public synchronized double getMaxPeakInt() {
         return maxPeakInt;

@@ -18,12 +18,13 @@ package net.sf.bioutils.proteomics;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import net.sf.bioutils.proteomics.fraction.Fraction;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.collections.filter.Filter;
-import net.sf.kerner.utils.collections.filter.impl.FilterApplierProto;
+import net.sf.kerner.utils.collections.filter.FilterApplierProto;
 
 /**
  *

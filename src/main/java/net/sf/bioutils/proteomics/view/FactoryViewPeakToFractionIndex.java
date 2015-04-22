@@ -16,8 +16,8 @@
 package net.sf.bioutils.proteomics.view;
 
 import net.sf.bioutils.proteomics.peak.Peak;
+import net.sf.kerner.utils.collections.list.AbstractTransformingListFactory;
 import net.sf.kerner.utils.collections.list.FactoryList;
-import net.sf.kerner.utils.collections.list.impl.AbstractTransformingListFactory;
 
 public class FactoryViewPeakToFractionIndex extends AbstractTransformingListFactory<Peak, ViewPeakToFractionIndex> {
 

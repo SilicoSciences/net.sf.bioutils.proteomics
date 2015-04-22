@@ -30,7 +30,7 @@ import net.sf.jfasta.impl.FASTAElementIterator;
 import net.sf.jfasta.impl.FASTAFileReaderImpl;
 import net.sf.kerner.utils.Cache;
 import net.sf.kerner.utils.UtilString;
-import net.sf.kerner.utils.collections.list.impl.UtilList;
+import net.sf.kerner.utils.collections.list.UtilList;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

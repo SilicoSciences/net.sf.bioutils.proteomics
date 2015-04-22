@@ -38,7 +38,7 @@ public class TestPeptideSearcherConcurrent {
 
     }
 
-    @Test(threadPoolSize = 16, invocationCount = 400)
+    @Test(threadPoolSize = 16, invocationCount = 100, enabled = false)
     public void reduceToProteotipic01() throws IOException {
         final PeptideSearcher s = new PeptideSearcher(c);
         s.setCacheFASTAFile(true);
@@ -68,7 +68,7 @@ public class TestPeptideSearcherConcurrent {
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
     }
 
-    @Test(threadPoolSize = 16, invocationCount = 400)
+    @Test(threadPoolSize = 16, invocationCount = 100, enabled = false)
     public void reduceToProteotipic02() throws IOException {
         final PeptideSearcher s = new PeptideSearcher(c);
         s.setCacheFASTAFile(true);
@@ -99,14 +99,14 @@ public class TestPeptideSearcherConcurrent {
         assertEquals(Result.Type.PROTEOTYPIC, r.type);
     }
 
-    @Test(threadPoolSize = 16, invocationCount = 400)
+    @Test(threadPoolSize = 16, invocationCount = 100, enabled = false)
     public void reduceToProteotipic03() throws IOException {
         final PeptideSearcher s = new PeptideSearcher(c);
         s.setCacheFASTAFile(true);
         Result r;
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.ACCESSION);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.GENE);
@@ -114,11 +114,7 @@ public class TestPeptideSearcherConcurrent {
 
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
-
-        r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
-                "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("CQPSPDEARPLQALLDGR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN_GENE);
@@ -132,7 +128,7 @@ public class TestPeptideSearcherConcurrent {
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.ACCESSION);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.GENE);
@@ -140,11 +136,7 @@ public class TestPeptideSearcherConcurrent {
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
-
-        r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
-                "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN);
-        assertEquals(Result.Type.PROTEOTYPIC, r.type);
+        assertEquals(Result.Type.DEGEN, r.type);
 
         r = s.reduceToProteotipic("SAGSVESPSVSSTHR", new File(
                 "src/test/resources/human-mouse_DB.fasta"), DatabaseID.PROTEIN_GENE);

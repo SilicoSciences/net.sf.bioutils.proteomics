@@ -35,11 +35,11 @@ public class EqualatorSample implements Equalator<Sample> {
         } else if (!element.getUser().equals(other.getUser()))
             return false;
 
-        if (element.getProperties() == null) {
-            if (other.getProperties() != null)
-                return false;
-        } else if (!element.getProperties().equals(other.getProperties()))
-            return false;
+        // if (element.getProperties() == null) {
+        // if (other.getProperties() != null)
+        // return false;
+        // } else if (!element.getProperties().equals(other.getProperties()))
+        // return false;
         return true;
     }
 

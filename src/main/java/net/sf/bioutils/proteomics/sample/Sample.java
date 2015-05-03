@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2011-2014 Alexander Kerner. All rights reserved.
+ * Copyright 2011-2015 Alexander Kerner. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ import net.sf.kerner.utils.collections.map.MapList;
  * </p>
  *
  * <p>
- * last reviewed: 2014-04-09
+ * last reviewed: 2015-05-01
  * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -48,42 +48,44 @@ import net.sf.kerner.utils.collections.map.MapList;
  */
 public interface Sample extends Cloneable<Sample> {
 
-    /**
-     * Creates a clone of this {@code Sample}.
-     */
-    @Override
-    Sample clone();
+	/**
+	 * Creates a clone of this {@code Sample}.
+	 */
+	@Override
+	Sample clone();
 
-    /**
-     *
-     * Clones sample, using new given name.
-     *
-     * @see #clone()
-     */
-    Sample clone(String newName);
+	/**
+	 *
+	 * Clones sample, using new given name.
+	 *
+	 * @see #clone()
+	 */
+	Sample clone(String newName);
 
-    Sample cloneWOPeaks(String newName);
+	Sample cloneWOPeaks(String newName);
 
-    ReadWriteLock getLock();
+	ReadWriteLock getLock();
 
-    String getName();
+	String getName();
 
-    String getNameBase();
+	String getNameBase();
 
-    List<Peak> getPeaks();
+	List<Peak> getPeaks();
 
-    MapList<String, Object> getProperties();
+	MapList<String, Object> getProperties();
 
-    /**
-     *
-     * @return the number of {@link Peak peaks} in this {@code Sample}.
-     */
-    int getSize();
+	/**
+	 *
+	 * @return the number of {@link Peak peaks} in this {@code Sample}.
+	 */
+	int getSize();
 
-    User getUser();
+	User getUser();
 
-    void setPeaks(List<Peak> peaks);
+	void setPeaks(List<Peak> peaks);
 
-    void setProperties(MapList<String, Object> properties);
+	RawSample getRawSample();
+
+	void setProperties(MapList<String, Object> properties);
 
 }

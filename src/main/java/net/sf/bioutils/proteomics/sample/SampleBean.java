@@ -13,200 +13,218 @@ import net.sf.kerner.utils.collections.map.MapList;
 
 public class SampleBean implements SampleModifiable {
 
-    protected final ReadWriteLock lock = new ReentrantReadWriteLock();
+	@Override
+	public RawSample getRawSample() {
+		synchronized (this) {
+			return rawSample;
+		}
+	}
 
-    private MapList<String, Object> properties = new MapList<String, Object>();
+	public void setRawSample(RawSample rawSample) {
+		synchronized (this) {
+			this.rawSample = rawSample;
+		}
+	}
 
-    private String name;
+	protected final ReadWriteLock lock = new ReentrantReadWriteLock();
 
-    private String nameBase;
+	private MapList<String, Object> properties = new MapList<String, Object>();
 
-    private User user;
+	private String name;
 
-    private List<Peak> peaks = new ArrayList<Peak>();
+	private String nameBase;
 
-    public SampleBean() {
-        this(null, null, null, null, null);
-    }
+	private User user;
 
-    public SampleBean(final Sample template) {
-        this(template.getName(), template.getUser(), template.getNameBase(), template.getPeaks(),
-                template.getProperties());
-    }
+	private RawSample rawSample;
 
-    public SampleBean(final Sample template, final String newName) {
-        this(newName, template.getUser(), template.getNameBase(), template.getPeaks(), template
-                .getProperties());
-    }
+	private List<Peak> peaks = new ArrayList<Peak>();
 
-    public SampleBean(final Sample template, final String newName, final boolean empty) {
-        this(newName, template.getUser(), template.getNameBase(), null, template.getProperties());
-        if (!empty) {
-            setPeaks(template.getPeaks());
-        }
-    }
+	public SampleBean() {
+		this(null, null, null, null, null);
+	}
 
-    public SampleBean(final String name) {
-        this(name, null, null, null, null);
-    }
+	public SampleBean(final Sample template) {
+		this(template.getName(), template.getUser(), template.getNameBase(),
+				template.getPeaks(), template.getProperties());
+	}
 
-    public SampleBean(final String name, final Collection<? extends Peak> peaks) {
-        this(name, null, null, peaks, null);
-    }
+	public SampleBean(final Sample template, final String newName) {
+		this(newName, template.getUser(), template.getNameBase(), template
+				.getPeaks(), template.getProperties());
+	}
 
-    public SampleBean(final String name, final User user, final String baseName) {
-        this(name, user, baseName, null, null);
-    }
+	public SampleBean(final Sample template, final String newName,
+			final boolean empty) {
+		this(newName, template.getUser(), template.getNameBase(), null,
+				template.getProperties());
+		if (!empty) {
+			setPeaks(template.getPeaks());
+		}
+	}
 
-    public SampleBean(final String name, final User user, final String baseName,
-            final Collection<? extends Peak> peaks, final MapList<String, Object> properties) {
-        if (properties != null)
-            this.properties.putAll(properties);
-        this.name = name;
-        nameBase = baseName;
-        this.user = user;
-        if (UtilCollection.notNullNotEmpty(peaks))
-            this.peaks = new ArrayList<Peak>(peaks);
-    }
+	public SampleBean(final String name) {
+		this(name, null, null, null, null);
+	}
 
-    @Override
-    public void addPeak(final Peak peak) {
-        synchronized (this) {
-            peaks.add(peak);
-            peak.setSample(this);
-        }
-    }
+	public SampleBean(final String name, final Collection<? extends Peak> peaks) {
+		this(name, null, null, peaks, null);
+	}
 
-    @Override
-    public void addPeaks(final Collection<? extends Peak> peaks) {
-        this.peaks.addAll(peaks);
-        for (final Peak p : peaks) {
-            p.setSample(this);
-        }
-    }
+	public SampleBean(final String name, final User user, final String baseName) {
+		this(name, user, baseName, null, null);
+	}
 
-    @Override
-    public SampleBean clone() {
-        return clone(getName());
-    }
+	public SampleBean(final String name, final User user,
+			final String baseName, final Collection<? extends Peak> peaks,
+			final MapList<String, Object> properties) {
+		if (properties != null)
+			this.properties.putAll(properties);
+		this.name = name;
+		nameBase = baseName;
+		this.user = user;
+		if (UtilCollection.notNullNotEmpty(peaks))
+			this.peaks = new ArrayList<Peak>(peaks);
+	}
 
-    @Override
-    public SampleBean clone(final String newName) {
-        final SampleBean result = new SampleBean(newName, getUser(), getNameBase(), null,
-                getProperties());
-        for (final Peak p : getPeaks()) {
-            // if (p instanceof PeakAnnotatable && !((PeakAnnotatable)
-            // p).getAnnotation().isEmpty()) {
-            // final int i = 0;
-            // }
-            result.addPeak(p.clone());
-        }
-        return result;
-    }
+	@Override
+	public void addPeak(final Peak peak) {
+		synchronized (this) {
+			peaks.add(peak);
+			peak.setSample(this);
+		}
+	}
 
-    /**
-     * Clones this {@code SampleBean} without peaks.
-     *
-     * @return a clone of this {@code SampleBean}, that contains no peaks
-     */
-    @Override
-    public SampleBean cloneWOPeaks(final String newName) {
-        final SampleBean result = new SampleBean(newName, getUser(), getNameBase(), null,
-                getProperties());
-        return result;
-    }
+	@Override
+	public void addPeaks(final Collection<? extends Peak> peaks) {
+		this.peaks.addAll(peaks);
+		for (final Peak p : peaks) {
+			p.setSample(this);
+		}
+	}
 
-    @Override
-    public boolean equals(final Object obj) {
-        return new EqualatorSample().areEqual(this, obj);
-    }
+	@Override
+	public SampleBean clone() {
+		return clone(getName());
+	}
 
-    @Override
-    public ReadWriteLock getLock() {
-        return lock;
-    }
+	@Override
+	public SampleBean clone(final String newName) {
+		final SampleBean result = new SampleBean(newName, getUser(),
+				getNameBase(), null, getProperties());
+		for (final Peak p : getPeaks()) {
+			// if (p instanceof PeakAnnotatable && !((PeakAnnotatable)
+			// p).getAnnotation().isEmpty()) {
+			// final int i = 0;
+			// }
+			result.addPeak(p.clone());
+		}
+		return result;
+	}
 
-    @Override
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Clones this {@code SampleBean} without peaks.
+	 *
+	 * @return a clone of this {@code SampleBean}, that contains no peaks
+	 */
+	@Override
+	public SampleBean cloneWOPeaks(final String newName) {
+		final SampleBean result = new SampleBean(newName, getUser(),
+				getNameBase(), null, getProperties());
+		return result;
+	}
 
-    @Override
-    public String getNameBase() {
-        if (nameBase == null)
-            return getName();
-        return nameBase;
-    }
+	@Override
+	public boolean equals(final Object obj) {
+		return new EqualatorSample().areEqual(this, obj);
+	}
 
-    @Override
-    public List<Peak> getPeaks() {
-        return peaks;
-    }
+	@Override
+	public ReadWriteLock getLock() {
+		return lock;
+	}
 
-    @Override
-    public MapList<String, Object> getProperties() {
-        return properties;
-    }
+	@Override
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public int getSize() {
-        return peaks.size();
-    }
+	@Override
+	public String getNameBase() {
+		if (nameBase == null)
+			return getName();
+		return nameBase;
+	}
 
-    @Override
-    public User getUser() {
-        return user;
-    }
+	@Override
+	public List<Peak> getPeaks() {
+		return peaks;
+	}
 
-    @Override
-    public int hashCode() {
-        return new HashCalculatorSample().calculateHash(this);
-    }
+	@Override
+	public MapList<String, Object> getProperties() {
+		return properties;
+	}
 
-    @Override
-    public void removePeak(final Peak peak) {
-        peaks.remove(peak);
+	@Override
+	public int getSize() {
+		return peaks.size();
+	}
 
-    }
+	@Override
+	public User getUser() {
+		return user;
+	}
 
-    @Override
-    public void removePeaks(final Collection<? extends Peak> peaks) {
-        this.peaks.removeAll(peaks);
+	@Override
+	public int hashCode() {
+		return new HashCalculatorSample().calculateHash(this);
+	}
 
-    }
+	@Override
+	public void removePeak(final Peak peak) {
+		peaks.remove(peak);
 
-    @Override
-    public void setName(final String name) {
-        this.name = name;
-    }
+	}
 
-    @Override
-    public void setNameBase(final String nameBase) {
-        this.nameBase = nameBase;
-    }
+	@Override
+	public void removePeaks(final Collection<? extends Peak> peaks) {
+		this.peaks.removeAll(peaks);
 
-    @Override
-    public void setPeaks(final List<Peak> peaks) {
-        synchronized (this) {
-            for (final Peak p : peaks) {
-                addPeak(p);
-            }
-        }
-    }
+	}
 
-    @Override
-    public void setProperties(final MapList<String, Object> properties) {
-        this.properties = properties;
-    }
+	@Override
+	public void setName(final String name) {
+		this.name = name;
+	}
 
-    @Override
-    public void setUser(final User user) {
-        this.user = user;
-    }
+	@Override
+	public void setNameBase(final String nameBase) {
+		this.nameBase = nameBase;
+	}
 
-    @Override
-    public String toString() {
-        return getName() + ", " + getSize();
-    }
+	@Override
+	public void setPeaks(final List<Peak> peaks) {
+		synchronized (this) {
+			for (final Peak p : peaks) {
+				addPeak(p);
+			}
+		}
+	}
+
+	@Override
+	public void setProperties(final MapList<String, Object> properties) {
+		this.properties = properties;
+	}
+
+	@Override
+	public void setUser(final User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return getName() + ", " + getSize();
+	}
 
 }

@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Name: BioUtilitis - Proteomics
 Bundle-SymbolicName: net.sf.bioutils.proteomics
-Bundle-Version: 3.1.3
+Bundle-Version: 3.1.4
 Export-Package: net.sf.bioutils.proteomics,
  net.sf.bioutils.proteomics.annotation,
  net.sf.bioutils.proteomics.comparator,

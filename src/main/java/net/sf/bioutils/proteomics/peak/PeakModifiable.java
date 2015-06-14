@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2011-2014 Alexander Kerner. All rights reserved.
+ * Copyright 2011-2015 Alexander Kerner. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,7 +34,7 @@ import net.sf.bioutils.proteomics.sample.Sample;
  *
  * </p>
  * <p>
- * last reviewed: 2014-05-16
+ * last reviewed: 2015-06-14
  * </p>
  *
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
@@ -42,23 +42,24 @@ import net.sf.bioutils.proteomics.sample.Sample;
  */
 public interface PeakModifiable extends Peak {
 
-    /**
-     * Sets this Peak's intensity to given intensity.
-     *
-     * <p>
-     * <b>Note:</b> A new intensity may change this Peak's hash code and
-     * equality!
-     * </p>
-     *
-     * @param intensity
-     *            new intensity
-     */
-    void setIntensity(double intensity);
+	/**
+	 * Sets this Peak's intensity to given intensity.
+	 *
+	 * <p>
+	 * <b>Note:</b> A new intensity may change this Peak's hash code and
+	 * equality!
+	 * </p>
+	 *
+	 * @param intensity
+	 *            new intensity
+	 */
+	void setIntensity(double intensity);
 
-    void setIntensityToNoise(double intensityToNoise);
+	void setIntensityToNoise(double intensityToNoise);
 
-    void setName(String name);
+	void setName(String name);
 
-    void setSample(Sample sample);
+	@Override
+	void setSample(Sample sample);
 
 }

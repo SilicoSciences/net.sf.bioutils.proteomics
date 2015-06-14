@@ -20,6 +20,12 @@ import net.sf.bioutils.proteomics.sample.Sample;
 /**
  *
  * Extends {@link Peak} by modifiability.
+ * <ol>
+ * <li>Intensity,</li>
+ * <li>name</li>
+ * <li>and sample</li>
+ * </ol>
+ * may be set.
  *
  * <p>
  * <b>Example:</b><br>
@@ -45,16 +51,17 @@ public interface PeakModifiable extends Peak {
 	/**
 	 * Sets this Peak's intensity to given intensity.
 	 *
-	 * <p>
-	 * <b>Note:</b> A new intensity may change this Peak's hash code and
-	 * equality!
-	 * </p>
-	 *
 	 * @param intensity
 	 *            new intensity
 	 */
 	void setIntensity(double intensity);
 
+	/**
+	 * Sets this Peak's s/n to given s/n.
+	 *
+	 * @param intensityToNoise
+	 *            new s/n
+	 */
 	void setIntensityToNoise(double intensityToNoise);
 
 	void setName(String name);

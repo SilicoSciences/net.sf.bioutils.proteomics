@@ -46,23 +46,7 @@ import net.sf.bioutils.proteomics.sample.Sample;
  * @author <a href="mailto:alexanderkerner24@gmail.com">Alexander Kerner</a>
  *
  */
-public interface PeakModifiable extends Peak {
-
-	/**
-	 * Sets this Peak's intensity to given intensity.
-	 *
-	 * @param intensity
-	 *            new intensity
-	 */
-	void setIntensity(double intensity);
-
-	/**
-	 * Sets this Peak's s/n to given s/n.
-	 *
-	 * @param intensityToNoise
-	 *            new s/n
-	 */
-	void setIntensityToNoise(double intensityToNoise);
+public interface PeakModifiable extends Peak, PeakModifiableIntensity {
 
 	void setName(String name);
 

@@ -7,7 +7,7 @@
 	</parent>
 	<groupId>net.sf.bioutils.proteomics</groupId>
 	<artifactId>proteomics</artifactId>
-	<version>3.1.6-SNAPSHOT</version>
+	<version>3.1.6</version>
 	<name>BioUtils - Proteomics</name>
 	<description>Lightweight framework for handling biological and bioinformatical data related to proteomics.</description>
 	<properties>
@@ -17,7 +17,7 @@
 		<url>git://git.code.sf.net/p/bioutils-proteo/code</url>
 		<connection>scm:git://git.code.sf.net/p/bioutils-proteo/code</connection>
 		<developerConnection>scm:git:ssh://akerner@git.code.sf.net/p/bioutils-proteo/code</developerConnection>
-		<tag>HEAD</tag>
+		<tag>proteomics-3.1.6</tag>
 	</scm>
 	<distributionManagement>
 		<site>

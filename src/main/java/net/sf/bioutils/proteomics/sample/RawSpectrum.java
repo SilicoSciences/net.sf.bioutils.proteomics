@@ -1,149 +1,158 @@
 package net.sf.bioutils.proteomics.sample;
 
 import java.util.Arrays;
-
 import net.sf.kerner.utils.UtilArray;
 
 public class RawSpectrum implements Comparable<RawSpectrum> {
 
-	public synchronized int getPrecursorChargeState() {
-		return precursorChargeState;
-	}
+    private final String id;
 
-	public synchronized void setPrecursorChargeState(int precursorChargeState) {
-		this.precursorChargeState = precursorChargeState;
-	}
+    private final int index;
+    private int msLevel;
+    private final Number[] numbersInt;
+    private final Number[] numbersMz;
+    private int precursorChargeState;
+    private double precursorInt;
+    private double precursorMz;
+    private RawSpectrum precursorSpectrum;
 
-	public synchronized RawSpectrum getPrecursorSpectrum() {
-		return precursorSpectrum;
-	}
+    public RawSpectrum(String id, int index, Number[] numbersMz,
+            Number[] numbersInt) {
+        super();
+        this.id = id;
+        this.index = index;
+        this.numbersMz = numbersMz;
+        this.numbersInt = numbersInt;
+        if ((numbersInt != null && numbersMz != null) && (numbersInt.length != numbersMz.length)) {
+            throw new IllegalArgumentException("Array length differs "
+                    + numbersInt.length + " " + numbersMz.length);
+        }
+    }
 
-	public synchronized void setPrecursorSpectrum(RawSpectrum precursorSpectrum) {
-		this.precursorSpectrum = precursorSpectrum;
-	}
+    @Override
+    public synchronized int compareTo(RawSpectrum o) {
+        return Integer.valueOf(getIndex()).compareTo(o.getIndex());
+    }
 
-	public int getLength() {
-		return numbersInt.length;
-	}
+    @Override
+    public synchronized boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof RawSpectrum)) {
+            return false;
+        }
+        RawSpectrum other = (RawSpectrum) obj;
+        if (index != other.index) {
+            return false;
+        }
+        if (!Arrays.equals(numbersInt, other.numbersInt)) {
+            return false;
+        }
+        if (!Arrays.equals(numbersMz, other.numbersMz)) {
+            return false;
+        }
+        return true;
+    }
 
-	private RawSpectrum precursorSpectrum;
+    public synchronized String getId() {
+        return id;
+    }
 
-	public synchronized double getPrecursorMz() {
-		return precursorMz;
-	}
+    public synchronized int getIndex() {
+        return index;
+    }
 
-	public synchronized void setPrecursorMz(double precursorMz) {
-		this.precursorMz = precursorMz;
-	}
+    public synchronized double[] getInt() {
+        return UtilArray.toPrimitive(getNumbersInt());
+    }
 
-	public synchronized double getPrecursorInt() {
-		return precursorInt;
-	}
+    public synchronized double getIntSum() {
+        double result = 0;
+        if (numbersInt != null) {
+            for (Number n : numbersInt) {
+                result += n.doubleValue();
+            }
+        }
+        return result;
+    }
 
-	public synchronized void setPrecursorInt(double precursorInt) {
-		this.precursorInt = precursorInt;
-	}
+    public synchronized int getLength() {
+        return numbersInt.length;
+    }
 
-	public synchronized int getMsLevel() {
-		return msLevel;
-	}
+    public synchronized int getMsLevel() {
+        return msLevel;
+    }
 
-	public synchronized void setMsLevel(int msLevel) {
-		this.msLevel = msLevel;
-	}
+    public synchronized void setMsLevel(int msLevel) {
+        this.msLevel = msLevel;
+    }
 
-	private double precursorMz;
+    public synchronized double[] getMz() {
+        return UtilArray.toPrimitive(getNumbersMz());
+    }
 
-	private double precursorInt;
+    public synchronized Number[] getNumbersInt() {
+        return numbersInt;
+    }
 
-	private int precursorChargeState;
+    public synchronized Number[] getNumbersMz() {
+        return numbersMz;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + index;
-		result = prime * result + Arrays.hashCode(numbersInt);
-		result = prime * result + Arrays.hashCode(numbersMz);
-		return result;
-	}
+    public synchronized int getPrecursorChargeState() {
+        return precursorChargeState;
+    }
 
-	@Override
-	public String toString() {
-		return "Index:" + getIndex() + ", signals:" + numbersInt.length;
-	}
+    public synchronized void setPrecursorChargeState(int precursorChargeState) {
+        this.precursorChargeState = precursorChargeState;
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (!(obj instanceof RawSpectrum)) {
-			return false;
-		}
-		RawSpectrum other = (RawSpectrum) obj;
-		if (index != other.index) {
-			return false;
-		}
-		if (!Arrays.equals(numbersInt, other.numbersInt)) {
-			return false;
-		}
-		if (!Arrays.equals(numbersMz, other.numbersMz)) {
-			return false;
-		}
-		return true;
-	}
+    public synchronized double getPrecursorInt() {
+        return precursorInt;
+    }
 
-	private final Number[] numbersMz;
-	private final Number[] numbersInt;
-	private final int index;
-	private final String id;
+    public synchronized void setPrecursorInt(double precursorInt) {
+        this.precursorInt = precursorInt;
+    }
 
-	public RawSpectrum(String id, int index, Number[] numbersMz,
-			Number[] numbersInt) {
-		super();
-		this.id = id;
-		this.index = index;
-		this.numbersMz = numbersMz;
-		this.numbersInt = numbersInt;
-		if (numbersInt.length != numbersMz.length) {
-			throw new IllegalArgumentException("Array length differs "
-					+ numbersInt.length + " " + numbersMz.length);
-		}
-	}
+    public synchronized double getPrecursorMz() {
+        return precursorMz;
+    }
 
-	public String getId() {
-		return id;
-	}
+    public synchronized void setPrecursorMz(double precursorMz) {
+        this.precursorMz = precursorMz;
+    }
 
-	public Number[] getNumbersMz() {
-		return numbersMz;
-	}
+    public synchronized RawSpectrum getPrecursorSpectrum() {
+        return precursorSpectrum;
+    }
 
-	public Number[] getNumbersInt() {
-		return numbersInt;
-	}
+    public synchronized void setPrecursorSpectrum(RawSpectrum precursorSpectrum) {
+        this.precursorSpectrum = precursorSpectrum;
+    }
 
-	public double[] getMz() {
-		return UtilArray.toPrimitive(getNumbersMz());
-	}
+    @Override
+    public synchronized int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + index;
+        result = prime * result + Arrays.hashCode(numbersInt);
+        result = prime * result + Arrays.hashCode(numbersMz);
+        return result;
+    }
 
-	public double[] getInt() {
-		return UtilArray.toPrimitive(getNumbersInt());
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	@Override
-	public int compareTo(RawSpectrum o) {
-		return Integer.valueOf(getIndex()).compareTo(o.getIndex());
-	}
-
-	private int msLevel;
+    @Override
+    public synchronized String toString() {
+        int length = 0;
+        if (numbersInt != null) {
+            length = numbersInt.length;
+        }
+        return "Index:" + getIndex() + ", signals:" + length;
+    }
 
 }

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
-
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.sample.RawSample;
 import net.sf.bioutils.proteomics.sample.Sample;
@@ -13,94 +12,99 @@ import net.sf.kerner.utils.collections.map.MapList;
 
 public class SampleUnmodifiable implements Sample {
 
-	private final Sample delegate;
+    private final Sample delegate;
 
-	public SampleUnmodifiable(final Sample delegate) {
-		Util.checkForNull(delegate);
-		this.delegate = delegate;
-	}
+    @Override
+    public long getId() {
+        return delegate.getId();
+    }
 
-	@Override
-	public RawSample getRawSample() {
-		return delegate.getRawSample();
-	}
+    public SampleUnmodifiable(final Sample delegate) {
+        Util.checkForNull(delegate);
+        this.delegate = delegate;
+    }
 
-	@Override
-	public SampleUnmodifiable clone() {
-		return new SampleUnmodifiable(delegate.clone());
-	}
+    @Override
+    public RawSample getRawSample() {
+        return delegate.getRawSample();
+    }
 
-	@Override
-	public Sample clone(final String newName) {
-		return new SampleUnmodifiable(delegate.clone(newName));
-	}
+    @Override
+    public SampleUnmodifiable clone() {
+        return new SampleUnmodifiable(delegate.clone());
+    }
 
-	@Override
-	public Sample cloneWOPeaks(final String newName) {
-		return delegate.cloneWOPeaks(newName);
-	}
+    @Override
+    public Sample clone(final String newName) {
+        return new SampleUnmodifiable(delegate.clone(newName));
+    }
 
-	@Override
-	public boolean equals(final Object obj) {
-		return delegate.equals(obj);
-	}
+    @Override
+    public Sample cloneWOPeaks(final String newName) {
+        return delegate.cloneWOPeaks(newName);
+    }
 
-	@Override
-	public ReadWriteLock getLock() {
-		return delegate.getLock();
-	}
+    @Override
+    public boolean equals(final Object obj) {
+        return delegate.equals(obj);
+    }
 
-	@Override
-	public String getName() {
-		return delegate.getName();
-	}
+    @Override
+    public ReadWriteLock getLock() {
+        return delegate.getLock();
+    }
 
-	@Override
-	public String getNameBase() {
-		return delegate.getNameBase();
-	}
+    @Override
+    public String getName() {
+        return delegate.getName();
+    }
 
-	@Override
-	public List<Peak> getPeaks() {
-		final List<Peak> l = new ArrayList<Peak>(
-				new TransformerPeakToUnmodifiable()
-						.transformCollection(delegate.getPeaks()));
-		return Collections.unmodifiableList(l);
-	}
+    @Override
+    public String getNameBase() {
+        return delegate.getNameBase();
+    }
 
-	@Override
-	public MapList<String, Object> getProperties() {
-		return delegate.getProperties();
-	}
+    @Override
+    public List<Peak> getPeaks() {
+        final List<Peak> l = new ArrayList<Peak>(
+                new TransformerPeakToUnmodifiable()
+                .transformCollection(delegate.getPeaks()));
+        return Collections.unmodifiableList(l);
+    }
 
-	@Override
-	public int getSize() {
-		return delegate.getSize();
-	}
+    @Override
+    public MapList<String, Object> getProperties() {
+        return delegate.getProperties();
+    }
 
-	@Override
-	public User getUser() {
-		return delegate.getUser();
-	}
+    @Override
+    public int getSize() {
+        return delegate.getSize();
+    }
 
-	@Override
-	public int hashCode() {
-		return delegate.hashCode();
-	}
+    @Override
+    public User getUser() {
+        return delegate.getUser();
+    }
 
-	@Override
-	public void setPeaks(final List<Peak> peaks) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public int hashCode() {
+        return delegate.hashCode();
+    }
 
-	@Override
-	public void setProperties(final MapList<String, Object> properties) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public void setPeaks(final List<Peak> peaks) {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public String toString() {
-		return "SampleUnmodifiable:" + delegate;
-	}
+    @Override
+    public void setProperties(final MapList<String, Object> properties) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public String toString() {
+        return "SampleUnmodifiable:" + delegate;
+    }
 
 }

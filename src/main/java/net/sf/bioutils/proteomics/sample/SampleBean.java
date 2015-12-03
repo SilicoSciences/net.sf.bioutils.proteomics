@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
-
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.UtilString;
@@ -13,6 +12,10 @@ import net.sf.kerner.utils.collections.UtilCollection;
 import net.sf.kerner.utils.collections.map.MapList;
 
 public class SampleBean implements SampleModifiable {
+
+    private static long cnt = 0;
+
+    private final long id;
 
     @Override
     public RawSample getRawSample() {
@@ -75,8 +78,10 @@ public class SampleBean implements SampleModifiable {
 
     public SampleBean(final String name, final User user, final String baseName,
             final Collection<? extends Peak> peaks, final MapList<String, Object> properties) {
-        if (properties != null)
+        this.id = cnt++;
+        if (properties != null) {
             this.properties.putAll(properties);
+        }
         this.name = name;
         if (UtilString.emptyString(baseName)) {
             nameBase = name;
@@ -89,6 +94,11 @@ public class SampleBean implements SampleModifiable {
             addPeaks(peaks);
         }
 
+    }
+
+    @Override
+    public long getId() {
+        return id;
     }
 
     @Override
@@ -153,8 +163,9 @@ public class SampleBean implements SampleModifiable {
 
     @Override
     public String getNameBase() {
-        if (nameBase == null)
+        if (nameBase == null) {
             return getName();
+        }
         return nameBase;
     }
 

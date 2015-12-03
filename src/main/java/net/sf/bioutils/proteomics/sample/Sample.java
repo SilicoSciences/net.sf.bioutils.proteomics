@@ -1,4 +1,5 @@
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Copyright 2011-2015 Alexander Kerner. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +13,12 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- ******************************************************************************/
+ *****************************************************************************
+ */
 package net.sf.bioutils.proteomics.sample;
 
 import java.util.List;
 import java.util.concurrent.locks.ReadWriteLock;
-
 import net.sf.bioutils.proteomics.User;
 import net.sf.bioutils.proteomics.peak.Peak;
 import net.sf.kerner.utils.Cloneable;
@@ -48,44 +49,47 @@ import net.sf.kerner.utils.collections.map.MapList;
  */
 public interface Sample extends Cloneable<Sample> {
 
-	/**
-	 * Creates a clone of this {@code Sample}.
-	 */
-	@Override
-	Sample clone();
+    long getId();
 
-	/**
-	 *
-	 * Clones sample, using new given name.
-	 *
-	 * @see #clone()
-	 */
-	Sample clone(String newName);
+    /**
+     * Creates a clone of this {@code Sample}.
+     */
+    @Override
+    Sample clone();
 
-	Sample cloneWOPeaks(String newName);
+    /**
+     *
+     * Clones sample, using new given name.
+     *
+     * @see #clone()
+     */
+    Sample clone(String newName);
 
-	ReadWriteLock getLock();
+    Sample cloneWOPeaks(String newName);
 
-	String getName();
+    @Deprecated
+    ReadWriteLock getLock();
 
-	String getNameBase();
+    String getName();
 
-	List<Peak> getPeaks();
+    String getNameBase();
 
-	MapList<String, Object> getProperties();
+    List<Peak> getPeaks();
 
-	/**
-	 *
-	 * @return the number of {@link Peak peaks} in this {@code Sample}.
-	 */
-	int getSize();
+    MapList<String, Object> getProperties();
 
-	User getUser();
+    /**
+     *
+     * @return the number of {@link Peak peaks} in this {@code Sample}.
+     */
+    int getSize();
 
-	void setPeaks(List<Peak> peaks);
+    User getUser();
 
-	RawSample getRawSample();
+    void setPeaks(List<Peak> peaks);
 
-	void setProperties(MapList<String, Object> properties);
+    RawSample getRawSample();
+
+    void setProperties(MapList<String, Object> properties);
 
 }
